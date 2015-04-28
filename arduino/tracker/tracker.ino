@@ -1,7 +1,7 @@
 #include <TinyGPS++.h>
 
 #define SDWRITE
-#define DEBUG
+//#define DEBUG
 
 #ifdef SDWRITE
   #include <SD.h> 
@@ -13,7 +13,7 @@ String FILENAME = "data1.txt"; //Default filename
 TinyGPSPlus gps;
 boolean gps_ready = false;
 
-
+boolean BT_ENABLE = false;
 
 void setup() {
   Serial.begin(9600);
@@ -27,6 +27,7 @@ void setup() {
   pinMode(chipSelect, OUTPUT);
   
   if (!SD.begin(chipSelect)) {
+    //TODO: add a red light to tell the user what is wrong
     Serial.println("Card failed, or not present");
     // don't do anything more:
     return;
@@ -35,6 +36,9 @@ void setup() {
   createNewFile();
   
   #endif
+  
+  //initBT();
+  
 }
   
   
@@ -88,5 +92,8 @@ void loop() {
 #endif
   
  readGPS();
+ 
+ if (BT_ENABLE)
+     readCommand();
 }
 

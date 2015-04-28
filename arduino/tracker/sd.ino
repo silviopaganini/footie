@@ -1,3 +1,6 @@
+
+#ifdef SDWRITE
+
 void createNewFile() {
     File fileNumber = SD.open("last",  FILE_READ);
     String number = "";
@@ -33,3 +36,5 @@ void writeLastNumber(int number) {
     }
     fileNumber.close();
 }
+
+#endif
