@@ -1,13 +1,12 @@
 void initBT() {
-  Serial2.begin(9600);
   BT_ENABLE = true;
 }
 
 void readCommand() {
   String command = "";
-  if (Serial2.available()) {
-      while(Serial2.available() > 0) {
-            command += (char)Serial2.read();
+  if (Serial.available()) {
+      while(Serial.available() > 0) {
+            command += (char)Serial.read();
             delay(10);
       }
   }
@@ -21,7 +20,6 @@ void readCommand() {
 }
 
 void stopBT() {
-  Serial2.end();
   BT_ENABLE = false;
 }
 
@@ -31,13 +29,13 @@ void sendFile() {
   FILENAME.toCharArray(tmpFile, sizeof(tmpFile));
   File fileNumber = SD.open(tmpFile,  FILE_READ);
   if (fileNumber) {
-     Serial2.println("start print");
+     Serial.println("start print");
       while (fileNumber.available()) {
-          Serial2.print((char)fileNumber.read());
+          Serial.print((char)fileNumber.read());
       }
-      Serial2.println("end");
+      Serial.println("end");
   } else 
-     Serial2.println("error");
+     Serial.println("error");
   fileNumber.close();
   #endif
 }

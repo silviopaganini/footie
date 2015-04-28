@@ -1,3 +1,4 @@
+#include <SoftwareSerial.h>
 #include <TinyGPS++.h>
 
 #define SDWRITE
@@ -12,13 +13,19 @@ String FILENAME = "data1.txt"; //Default filename
 
 TinyGPSPlus gps;
 boolean gps_ready = false;
+SoftwareSerial gpsSerial(2, 3); // RX, TX
 
 boolean BT_ENABLE = false;
 
+int pinBT = 5;
+int pinLED = 6;
+
 void setup() {
   Serial.begin(9600);
-  Serial1.begin(9600);
+  gpsSerial.begin(9600);  
   
+  pinMode(pinBT,INPUT);
+  pinMode(pinLED,OUTPUT);
   
   #ifdef SDWRITE
   // make sure that the default chip select pin is set to
@@ -27,7 +34,7 @@ void setup() {
   pinMode(chipSelect, OUTPUT);
   
   if (!SD.begin(chipSelect)) {
-    //TODO: add a red light to tell the user what is wrong
+    digitalWrite(pinLED,HIGH); //Solid led means something wrong
     Serial.println("Card failed, or not present");
     // don't do anything more:
     return;
@@ -37,7 +44,14 @@ void setup() {
   
   #endif
   
-  //initBT();
+  //Blinking means ok
+  digitalWrite(pinLED,HIGH); 
+  delay(10);
+  digitalWrite(pinLED,LOW); 
+  delay(10);
+  digitalWrite(pinLED,HIGH); 
+  delay(10);
+  digitalWrite(pinLED,LOW); 
   
 }
   
@@ -91,9 +105,11 @@ void loop() {
  }
 #endif
   
- readGPS();
  
+ //Read command from bluetooth and dont read update from GPS
  if (BT_ENABLE)
      readCommand();
+ else
+     readGPS();
 }
 
