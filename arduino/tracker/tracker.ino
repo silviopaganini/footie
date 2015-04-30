@@ -13,11 +13,15 @@ String FILENAME = "data1.txt"; //Default filename
 TinyGPSPlus gps;
 boolean gps_ready = false;
 
+boolean GPS_ENABLE = true;
 boolean BT_ENABLE = false;
 
 void setup() {
   Serial.begin(9600);
   Serial1.begin(9600);
+  
+  attachInterrupt(0, buttonPower, CHANGE);
+  attachInterrupt(1, buttonMode, CHANGE);
   
   
   #ifdef SDWRITE
@@ -64,7 +68,7 @@ void loop() {
  File dataFile = SD.open(tmpFile,  O_CREAT | O_APPEND | O_WRITE); //Append the file 
  //Make sure that file is ready and gps as well
  if (dataFile) {
-    if (gps_ready) {
+    if (gps_ready && GPS_ENABLE) {
     #ifdef DEBUG
     Serial.println("Location wrote into the file");
     #endif
@@ -91,9 +95,26 @@ void loop() {
  }
 #endif
   
- readGPS();
- 
  if (BT_ENABLE)
      readCommand();
+ else
+     if (GPS_ENABLE)
+         readGPS();
 }
 
+
+// Enable or disable the gps tracking
+void buttonPower() {
+  GPS_ENABLE = !GPS_ENABLE;
+}
+
+//Change mode Bluetooth or GPS
+void buttonMode() {
+  if (BT_ENABLE) {
+      BT_ENABLE = false;
+      GPS_ENABLE  = true;
+  } else {
+      BT_ENABLE = true;
+      GPS_ENABLE  = false;
+  }
+}
