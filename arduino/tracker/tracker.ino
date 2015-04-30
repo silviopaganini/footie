@@ -15,17 +15,27 @@ TinyGPSPlus gps;
 boolean gps_ready = false;
 SoftwareSerial gpsSerial(2, 3); // RX, TX
 
+boolean GPS_ENABLE = true;
 boolean BT_ENABLE = false;
 
 int pinBT = 5;
-int pinLED = 6;
+int pinLEDRed = 6;
+int pinLEDBlue = 6;
+int pinLEDGreen = 6;
+
 
 void setup() {
   Serial.begin(9600);
   gpsSerial.begin(9600);  
   
   pinMode(pinBT,INPUT);
-  pinMode(pinLED,OUTPUT);
+  pinMode(pinLEDRed,OUTPUT);
+  pinMode(pinLEDBlue,OUTPUT);
+  pinMode(pinLEDGreen,OUTPUT);
+  
+  attachInterrupt(0, buttonPower, CHANGE);
+  attachInterrupt(1, buttonMode, CHANGE);
+
   
   #ifdef SDWRITE
   // make sure that the default chip select pin is set to
@@ -34,7 +44,7 @@ void setup() {
   pinMode(chipSelect, OUTPUT);
   
   if (!SD.begin(chipSelect)) {
-    digitalWrite(pinLED,HIGH); //Solid led means something wrong
+    ledColor(255,0,0); //Solid led means something wrong
     Serial.println("Card failed, or not present");
     // don't do anything more:
     return;
@@ -45,13 +55,13 @@ void setup() {
   #endif
   
   //Blinking means ok
-  digitalWrite(pinLED,HIGH); 
+  ledColor(0,255,0);
   delay(10);
-  digitalWrite(pinLED,LOW); 
+  ledColor(0,0,0);
   delay(10);
-  digitalWrite(pinLED,HIGH); 
+  ledColor(0,255,0);
   delay(10);
-  digitalWrite(pinLED,LOW); 
+  ledColor(0,0,0);
   
 }
   
@@ -107,9 +117,39 @@ void loop() {
   
  
  //Read command from bluetooth and dont read update from GPS
- if (BT_ENABLE)
+ if (BT_ENABLE) {
      readCommand();
+     ledColor(0,0,255);
+ }
  else
-     readGPS();
+     if (GPS_ENABLE) {
+         readGPS();
+         ledColor(0,255,0);
+     } else { //Led off, that means not action made
+          ledColor(0,0,0);
+     }
 }
 
+
+// Enable or disable the gps tracking
+void buttonPower() {
+  GPS_ENABLE = !GPS_ENABLE;
+}
+
+//Change mode Bluetooth or GPS
+void buttonMode() {
+  if (BT_ENABLE) {
+      BT_ENABLE = false;
+      GPS_ENABLE  = true;
+  } else {
+      BT_ENABLE = true;
+      GPS_ENABLE  = false;
+  }
+}
+
+
+void ledColor(int red,int green,int blue) {
+  analogWrite(pinLEDRed,red);
+  analogWrite(pinLEDGreen,green);
+  analogWrite(pinLEDBlue,blue);
+}
