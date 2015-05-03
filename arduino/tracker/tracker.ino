@@ -2,7 +2,7 @@
 #include <TinyGPS++.h>
 
 #define SDWRITE
-//#define DEBUG
+#define DEBUG
 
 #ifdef SDWRITE
   #include <SD.h> 
@@ -13,15 +13,18 @@ String FILENAME = "data1.txt"; //Default filename
 
 TinyGPSPlus gps;
 boolean gps_ready = false;
-SoftwareSerial gpsSerial(2, 3); // RX, TX
+SoftwareSerial gpsSerial(8, 7); // RX, TX
 
 boolean GPS_ENABLE = true;
 boolean BT_ENABLE = false;
 
 int pinBT = 5;
-int pinLEDRed = 6;
+int pinLEDRed = 10;
 int pinLEDBlue = 6;
-int pinLEDGreen = 6;
+int pinLEDGreen = 9;
+
+unsigned long lastPressedMode = 0;
+unsigned long lastPressedGPS = 0;
 
 
 void setup() {
@@ -32,9 +35,10 @@ void setup() {
   pinMode(pinLEDRed,OUTPUT);
   pinMode(pinLEDBlue,OUTPUT);
   pinMode(pinLEDGreen,OUTPUT);
+  ledColor(0,0,0);
   
-  attachInterrupt(0, buttonPower, CHANGE);
-  attachInterrupt(1, buttonMode, CHANGE);
+  attachInterrupt(0, buttonPower, RISING);
+  attachInterrupt(1, buttonMode, RISING);
 
   
   #ifdef SDWRITE
@@ -56,12 +60,13 @@ void setup() {
   
   //Blinking means ok
   ledColor(0,255,0);
-  delay(10);
+  delay(100);
   ledColor(0,0,0);
-  delay(10);
+  delay(100);
   ledColor(0,255,0);
-  delay(10);
+  delay(100);
   ledColor(0,0,0);
+  delay(1000);
   
 }
   
@@ -133,11 +138,16 @@ void loop() {
 
 // Enable or disable the gps tracking
 void buttonPower() {
+  if ((millis()-lastPressedGPS) < 1000) return;
+  Serial.println("button mode");
   GPS_ENABLE = !GPS_ENABLE;
+  lastPressedGPS = millis();
 }
 
 //Change mode Bluetooth or GPS
 void buttonMode() {
+  if ((millis()-lastPressedMode) < 1000) return;
+  Serial.println("button mode");
   if (BT_ENABLE) {
       BT_ENABLE = false;
       GPS_ENABLE  = true;
@@ -145,6 +155,7 @@ void buttonMode() {
       BT_ENABLE = true;
       GPS_ENABLE  = false;
   }
+  lastPressedMode = millis();
 }
 
 

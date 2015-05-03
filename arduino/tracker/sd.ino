@@ -2,7 +2,7 @@
 #ifdef SDWRITE
 
 void createNewFile() {
-    File fileNumber = SD.open("last",  FILE_READ);
+    File fileNumber = SD.open("last.txt",  FILE_READ);
     String number = "";
     if (fileNumber) {
         while (fileNumber.available()) {
@@ -29,11 +29,17 @@ void createNewFile() {
     }
 }
 
-void writeLastNumber(int number) {
-    File fileNumber = SD.open("last",  O_WRITE | O_CREAT | O_TRUNC); //Trunc will set the length to 0, equal to erase the file
+void writeLastNumber(int number) { //O_WRITE | O_CREAT | O_TRUNC
+    File fileNumber = SD.open("last.txt", FILE_WRITE ); //Trunc will set the length to 0, equal to erase the file
     if (fileNumber) {
+       #ifdef DEBUG
+       Serial.println("writing number");
+       #endif
        fileNumber.print(number);
-    }
+    } 
+    #ifdef DEBUG
+    else Serial.println("fail to write number");
+    #endif
     fileNumber.close();
 }
 
