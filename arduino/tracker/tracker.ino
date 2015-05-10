@@ -2,7 +2,7 @@
 #include <TinyGPS++.h>
 
 #define SDWRITE
-#define DEBUG
+//#define DEBUG
 
 #ifdef SDWRITE
   #include <SD.h> 
@@ -51,7 +51,8 @@ void setup() {
     ledColor(255,0,0); //Solid led means something wrong
     Serial.println("Card failed, or not present");
     // don't do anything more:
-    return;
+    while(true);
+
   }
   Serial.println("card initialized.");
   createNewFile();
@@ -76,16 +77,16 @@ void setup() {
 void loop() {
   
 #ifdef DEBUG 
-   if (gps_ready) {
-     Serial.print(F("Location: ")); 
+   //if (gps_ready) {
+   /*  Serial.print(F("Location: ")); 
      if (gps.location.isValid()) {
          Serial.print(gps.location.lat(), 6);
          Serial.print(F(","));
          Serial.print(gps.location.lng(), 6);
      } else 
          Serial.print(F("INVALID"));
-     Serial.println();
-   }
+     Serial.println();*/
+   //}
 #endif
 #ifdef SDWRITE   
  char tmpFile[FILENAME.length()+1];
@@ -93,7 +94,7 @@ void loop() {
  File dataFile = SD.open(tmpFile,  O_CREAT | O_APPEND | O_WRITE); //Append the file 
  //Make sure that file is ready and gps as well
  if (dataFile) {
-    if (gps_ready) {
+   // if (gps_ready) {
     #ifdef DEBUG
     Serial.println("Location wrote into the file");
     #endif
@@ -115,7 +116,7 @@ void loop() {
       else
          dataFile.println("-1");
     }
-    }
+   // }
     dataFile.close();
  }
 #endif
@@ -142,12 +143,15 @@ void buttonPower() {
   Serial.println("button mode");
   GPS_ENABLE = !GPS_ENABLE;
   lastPressedGPS = millis();
+    #ifdef DEBUG
+   Serial.println("button power pressed");
+   #endif
 }
 
 //Change mode Bluetooth or GPS
 void buttonMode() {
   if ((millis()-lastPressedMode) < 1000) return;
-  Serial.println("button mode");
+ 
   if (BT_ENABLE) {
       BT_ENABLE = false;
       GPS_ENABLE  = true;
@@ -156,6 +160,9 @@ void buttonMode() {
       GPS_ENABLE  = false;
   }
   lastPressedMode = millis();
+  #ifdef DEBUG
+   Serial.println("button mode pressed");
+   #endif
 }
 
 

@@ -30,7 +30,7 @@ void createNewFile() {
 }
 
 void writeLastNumber(int number) { //O_WRITE | O_CREAT | O_TRUNC
-    File fileNumber = SD.open("last.txt", FILE_WRITE ); //Trunc will set the length to 0, equal to erase the file
+    File fileNumber = SD.open("last.txt", O_WRITE | O_CREAT | O_TRUNC); //Trunc will set the length to 0, equal to erase the file
     if (fileNumber) {
        #ifdef DEBUG
        Serial.println("writing number");
