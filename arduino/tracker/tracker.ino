@@ -130,7 +130,10 @@ void loop() {
  else
      if (GPS_ENABLE) {
          readGPS();
-         ledColor(0,255,0);
+         if (gps.location.isValid())
+           ledColor(0,255,0);
+         else
+           ledColor(255,100,50);
      } else { //Led off, that means not action made
           ledColor(0,0,0);
      }
