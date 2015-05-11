@@ -15,6 +15,11 @@ void readCommand() {
         sendFile();        
     } else if  (command.indexOf("stop") >= 0) {
         stopBT();
+        Serial.println("bye!");
+    } else if  (command.indexOf("new") >= 0) {
+        createNewFile();
+        Serial.print("New file name: ");
+        Serial.println(FILENAME);
     }
   }
 }
