@@ -3,6 +3,7 @@
 
 #define SDWRITE
 //#define DEBUG
+#define MAX_DELAY 10000 //write on the sdcard every 10 second
 
 #ifdef SDWRITE
   #include <SD.h> 
@@ -25,6 +26,7 @@ int pinLEDGreen = 9;
 
 unsigned long lastPressedMode = 0;
 unsigned long lastPressedGPS = 0;
+unsigned long lastWrite = 0;
 
 
 void setup() {
@@ -99,22 +101,26 @@ void loop() {
     Serial.println("Location wrote into the file");
     #endif
     if (gps.location.isValid()) {
-      dataFile.print("la:");
-      dataFile.print(gps.location.lat(),6);
-      dataFile.print("lg:");
-      dataFile.print(gps.location.lng(),6);
-      
-      dataFile.print("d:");
-      if (gps.date.isValid()) 
-          dataFile.print(gps.date.value());
-      else 
-         dataFile.print("-1"); 
-          
-      dataFile.print("t:");
-      if (gps.time.isValid())
-         dataFile.println(gps.time.value());
-      else
-         dataFile.println("-1");
+      if ((millis()-lastWrite) > MAX_DELAY) {
+	      dataFile.print("la:");
+	      dataFile.print(gps.location.lat(),6);
+	      dataFile.print("lg:");
+	      dataFile.print(gps.location.lng(),6);
+	      
+	      dataFile.print("d:");
+	      if (gps.date.isValid()) 
+		  dataFile.print(gps.date.value());
+	      else 
+		 dataFile.print("-1"); 
+		  
+	      dataFile.print("t:");
+	      if (gps.time.isValid())
+		 dataFile.println(gps.time.value());
+	      else
+		 dataFile.println("-1");
+
+	      lastWrite = millis();
+      }
     }
    // }
     dataFile.close();
