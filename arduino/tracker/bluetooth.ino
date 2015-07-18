@@ -38,6 +38,8 @@ void sendFile() {
       while (fileNumber.available()) {
           Serial.print((char)fileNumber.read());
       }
+      //Send the } because it will not write it when button is on only at the new creation of the file
+      Serial.println("}");
       Serial.println("end");
   } else 
      Serial.println("error");

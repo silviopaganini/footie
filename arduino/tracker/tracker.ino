@@ -2,7 +2,7 @@
 #include <TinyGPS++.h>
 
 #define SDWRITE
-//#define DEBUG
+#define DEBUG
 #define MAX_DELAY 10000 //write on the sdcard every 10 second
 
 #ifdef SDWRITE
@@ -33,11 +33,12 @@ void setup() {
   Serial.begin(9600);
   gpsSerial.begin(9600);  
   
-  pinMode(pinBT,INPUT);
+  pinMode(pinBT,OUTPUT);
   pinMode(pinLEDRed,OUTPUT);
   pinMode(pinLEDBlue,OUTPUT);
   pinMode(pinLEDGreen,OUTPUT);
   ledColor(0,0,0);
+  digitalWrite(pinBT,LOW);
   
   attachInterrupt(0, buttonPower, RISING);
   attachInterrupt(1, buttonMode, RISING);
@@ -97,28 +98,26 @@ void loop() {
  //Make sure that file is ready and gps as well
  if (dataFile) {
    // if (gps_ready) {
-    #ifdef DEBUG
-    Serial.println("Location wrote into the file");
-    #endif
+   
     if (gps.location.isValid()) {
       if ((millis()-lastWrite) > MAX_DELAY) {
-	      dataFile.print("la:");
+               #ifdef DEBUG
+                Serial.println("Location wrote into the file");
+                #endif
+	      dataFile.print("[lat;");
 	      dataFile.print(gps.location.lat(),6);
-	      dataFile.print("lg:");
+	      dataFile.print(",lng:");
 	      dataFile.print(gps.location.lng(),6);
 	      
-	      dataFile.print("d:");
-	      if (gps.date.isValid()) 
-		  dataFile.print(gps.date.value());
-	      else 
-		 dataFile.print("-1"); 
-		  
-	      dataFile.print("t:");
-	      if (gps.time.isValid())
-		 dataFile.println(gps.time.value());
+	      dataFile.print(",time:");
+	      if (gps.date.isValid() && gps.time.isValid()) {
+		    unsigned long timestamp = makeTime(gps.time.hour(),gps.time.minute(),gps.time.second(),gps.date.day(),gps.date.month(),gps.date.year());
+                    dataFile.print(timestamp);
+              }
 	      else
-		 dataFile.println("-1");
-
+		 dataFile.print("-1"); 
+              dataFile.println("],");
+              
 	      lastWrite = millis();
       }
     }
@@ -163,10 +162,12 @@ void buttonMode() {
  
   if (BT_ENABLE) {
       BT_ENABLE = false;
-      GPS_ENABLE  = true;
+      GPS_ENABLE  = true;  
+      digitalWrite(pinBT,LOW);
   } else {
       BT_ENABLE = true;
       GPS_ENABLE  = false;
+      digitalWrite(pinBT,HIGH);
   }
   lastPressedMode = millis();
   #ifdef DEBUG
