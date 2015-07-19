@@ -2,8 +2,8 @@
 #include <TinyGPS++.h>
 
 #define SDWRITE
-#define DEBUG
-#define MAX_DELAY 10000 //write on the sdcard every 10 second
+//#define DEBUG
+#define MAX_DELAY 100 //write on the sdcard every 10 second
 
 #ifdef SDWRITE
   #include <SD.h> 
@@ -27,6 +27,8 @@ int pinLEDGreen = 9;
 unsigned long lastPressedMode = 0;
 unsigned long lastPressedGPS = 0;
 unsigned long lastWrite = 0;
+
+boolean isFirstWrite = true;
 
 
 void setup() {
@@ -100,26 +102,31 @@ void loop() {
    // if (gps_ready) {
    
     if (gps.location.isValid()) {
-      if ((millis()-lastWrite) > MAX_DELAY) {
+     // if ((millis()-lastWrite) > MAX_DELAY) {
                #ifdef DEBUG
                 Serial.println("Location wrote into the file");
                 #endif
-	      dataFile.print("[lat;");
+              //Write coma to separate records
+              if (!isFirstWrite) dataFile.print(",");
+              else isFirstWrite = false;
+              //Write data
+	      dataFile.print("{\"lat\":\"");
 	      dataFile.print(gps.location.lat(),6);
-	      dataFile.print(",lng:");
+	      dataFile.print("\", \"lng\":\"");
 	      dataFile.print(gps.location.lng(),6);
 	      
-	      dataFile.print(",time:");
+	      dataFile.print("\",\"time\": ");
 	      if (gps.date.isValid() && gps.time.isValid()) {
 		    unsigned long timestamp = makeTime(gps.time.hour(),gps.time.minute(),gps.time.second(),gps.date.day(),gps.date.month(),gps.date.year());
                     dataFile.print(timestamp);
               }
 	      else
 		 dataFile.print("-1"); 
-              dataFile.println("],");
+
+              dataFile.println("}");
               
 	      lastWrite = millis();
-      }
+    //  }
     }
    // }
     dataFile.close();

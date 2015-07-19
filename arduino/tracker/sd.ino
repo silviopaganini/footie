@@ -42,6 +42,7 @@ void createNewFile() {
       writeJSONTag(1);
       writeLastNumber(1);
     }
+    isFirstWrite = true;
 }
 
 
@@ -52,9 +53,9 @@ void writeJSONTag(int position) {
   
  if (dataFile) {
      if (position == 1) //Write beginning of the tag
-        dataFile.println("{");
+        dataFile.println("[");
      else //Write end of the tag
-         dataFile.println("}");
+         dataFile.println("]");
  }  
  dataFile.close();
 }
