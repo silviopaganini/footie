@@ -18286,6 +18286,7 @@ This is a SMD LED that is mounted to one side of a PCB and shines through a hole
 <pinref part="U$4" gate="G$1" pin="3V"/>
 <wire x1="137.16" y1="43.18" x2="137.16" y2="40.64" width="0.1524" layer="91"/>
 <wire x1="137.16" y1="53.34" x2="137.16" y2="45.72" width="0.1524" layer="91"/>
+<junction x="137.16" y="43.18"/>
 </segment>
 </net>
 </nets>

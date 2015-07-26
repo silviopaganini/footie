@@ -17770,6 +17770,8 @@ This is a SMD LED that is mounted to one side of a PCB and shines through a hole
 <pinref part="GND26" gate="1" pin="GND"/>
 <wire x1="264.16" y1="83.82" x2="266.7" y2="83.82" width="0.1524" layer="91"/>
 <wire x1="266.7" y1="83.82" x2="266.7" y2="78.74" width="0.1524" layer="91"/>
+<junction x="264.16" y="83.82"/>
+<junction x="266.7" y="78.74"/>
 </segment>
 <segment>
 <pinref part="GND32" gate="1" pin="GND"/>

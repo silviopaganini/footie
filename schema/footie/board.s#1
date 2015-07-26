@@ -17514,8 +17514,8 @@ This is a SMD LED that is mounted to one side of a PCB and shines through a hole
 <attribute name="OHM" value="1k"/>
 </part>
 <part name="GND32" library="supply1" deviceset="GND" device=""/>
-<part name="C8" library="resistor" deviceset="CPOL-US" device="A"/>
-<part name="C4" library="resistor" deviceset="CPOL-US" device="A"/>
+<part name="C8" library="resistor" deviceset="CPOL-US" device="A" value="10 uf"/>
+<part name="C4" library="resistor" deviceset="CPOL-US" device="A" value="10 uf"/>
 <part name="LED3" library="led" deviceset="GM1WA55311A" device=""/>
 <part name="GND15" library="supply1" deviceset="GND" device=""/>
 <part name="GND1" library="supply1" deviceset="GND" device=""/>
@@ -17797,6 +17797,9 @@ This is a SMD LED that is mounted to one side of a PCB and shines through a hole
 <segment>
 <pinref part="GND15" gate="1" pin="GND"/>
 <wire x1="50.8" y1="137.16" x2="50.8" y2="134.62" width="0.1524" layer="91"/>
+<pinref part="LED3" gate="G$1" pin="A"/>
+<junction x="50.8" y="134.62"/>
+<junction x="50.8" y="137.16"/>
 </segment>
 <segment>
 <pinref part="U$4" gate="G$1" pin="GND"/>
@@ -17878,6 +17881,8 @@ This is a SMD LED that is mounted to one side of a PCB and shines through a hole
 <pinref part="+3V10" gate="G$1" pin="+3V3"/>
 <wire x1="170.18" y1="129.54" x2="190.5" y2="129.54" width="0.1524" layer="91"/>
 <wire x1="190.5" y1="129.54" x2="190.5" y2="127" width="0.1524" layer="91"/>
+<junction x="170.18" y="129.54"/>
+<junction x="190.5" y="127"/>
 </segment>
 </net>
 <net name="N$1" class="0">
@@ -18231,15 +18236,6 @@ This is a SMD LED that is mounted to one side of a PCB and shines through a hole
 <pinref part="C6" gate="G$1" pin="2"/>
 </segment>
 </net>
-<net name="N$5" class="0">
-<segment>
-<pinref part="U$1" gate="G$1" pin="9_VCC_RF"/>
-<wire x1="58.42" y1="27.94" x2="55.88" y2="27.94" width="0.1524" layer="91"/>
-<wire x1="55.88" y1="27.94" x2="55.88" y2="22.86" width="0.1524" layer="91"/>
-<junction x="55.88" y="22.86"/>
-<junction x="58.42" y="27.94"/>
-</segment>
-</net>
 <net name="N$19" class="0">
 <segment>
 <pinref part="R3" gate="G$1" pin="2"/>
@@ -18276,18 +18272,23 @@ This is a SMD LED that is mounted to one side of a PCB and shines through a hole
 <net name="N$6" class="0">
 <segment>
 <wire x1="109.22" y1="53.34" x2="111.76" y2="53.34" width="0.1524" layer="91"/>
-<wire x1="111.76" y1="53.34" x2="137.16" y2="53.34" width="0.1524" layer="91"/>
+<wire x1="111.76" y1="53.34" x2="147.32" y2="53.34" width="0.1524" layer="91"/>
 <pinref part="U$1" gate="G$1" pin="22_V_BCKP"/>
 <junction x="111.76" y="53.34"/>
 <pinref part="R1" gate="G$1" pin="1"/>
 <junction x="147.32" y="53.34"/>
 <wire x1="147.32" y1="43.18" x2="147.32" y2="53.34" width="0.1524" layer="91"/>
-<wire x1="137.16" y1="45.72" x2="137.16" y2="43.18" width="0.1524" layer="91"/>
-<wire x1="137.16" y1="43.18" x2="147.32" y2="43.18" width="0.1524" layer="91"/>
+<wire x1="137.16" y1="40.64" x2="147.32" y2="43.18" width="0.1524" layer="91"/>
 <pinref part="U$4" gate="G$1" pin="3V"/>
-<wire x1="137.16" y1="43.18" x2="137.16" y2="40.64" width="0.1524" layer="91"/>
-<wire x1="137.16" y1="53.34" x2="137.16" y2="45.72" width="0.1524" layer="91"/>
-<junction x="137.16" y="43.18"/>
+</segment>
+</net>
+<net name="N$5" class="0">
+<segment>
+<pinref part="U$1" gate="G$1" pin="8_RESERVED"/>
+<wire x1="55.88" y1="27.94" x2="53.34" y2="27.94" width="0.1524" layer="91"/>
+<wire x1="53.34" y1="27.94" x2="53.34" y2="22.86" width="0.1524" layer="91"/>
+<pinref part="U$1" gate="G$1" pin="9_VCC_RF"/>
+<wire x1="53.34" y1="22.86" x2="55.88" y2="22.86" width="0.1524" layer="91"/>
 </segment>
 </net>
 </nets>
@@ -18300,8 +18301,10 @@ This is a SMD LED that is mounted to one side of a PCB and shines through a hole
 <approved hash="104,1,190.5,55.88,U1,AVCC,+3V3,,,"/>
 <approved hash="202,1,190.5,45.72,U1,ADC6,,,,"/>
 <approved hash="202,1,190.5,43.18,U1,ADC7,,,,"/>
+<approved hash="104,1,292.1,127,U4,VIN,N$2,,,"/>
+<approved hash="104,1,312.42,127,U4,VBAT,VCC,,,"/>
+<approved hash="104,1,312.42,121.92,U4,VSS,GND,,,"/>
 <approved hash="202,1,307.34,78.74,U5,BP,,,,"/>
-<approved hash="106,1,170.18,129.54,5V,,,,,"/>
 <approved hash="108,1,190.5,12.7,GND,,,,,"/>
 <approved hash="108,1,170.18,127,GND,,,,,"/>
 <approved hash="108,1,10.16,12.7,N$7,,,,,"/>

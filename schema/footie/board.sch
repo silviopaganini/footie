@@ -17628,7 +17628,7 @@ This is a SMD LED that is mounted to one side of a PCB and shines through a hole
 <busses>
 </busses>
 <nets>
-<net name="GND" class="0">
+<net name="N$22" class="0">
 <segment>
 <pinref part="U$1" gate="G$1" pin="24_GND"/>
 <pinref part="GND3" gate="1" pin="GND"/>
