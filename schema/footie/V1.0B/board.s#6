@@ -6339,7 +6339,7 @@ COM-09264 (Diffuse)</description>
 <instance part="GND28" gate="1" x="320.04" y="76.2"/>
 <instance part="GND29" gate="1" x="330.2" y="76.2"/>
 <instance part="+3V9" gate="G$1" x="337.82" y="101.6"/>
-<instance part="GND30" gate="1" x="312.42" y="68.58"/>
+<instance part="GND30" gate="1" x="312.42" y="63.5"/>
 <instance part="GND20" gate="1" x="172.72" y="40.64" rot="MR0"/>
 <instance part="GND31" gate="1" x="287.02" y="83.82" rot="R270"/>
 <instance part="U$4" gate="G$1" x="132.08" y="45.72" rot="R270"/>
@@ -6354,7 +6354,7 @@ COM-09264 (Diffuse)</description>
 <instance part="R6" gate="G$1" x="45.72" y="53.34"/>
 <instance part="R2" gate="G$1" x="152.4" y="53.34"/>
 <instance part="R1" gate="G$1" x="266.7" y="7.62"/>
-<instance part="R3" gate="G$1" x="312.42" y="76.2" rot="R90"/>
+<instance part="R3" gate="G$1" x="312.42" y="73.66" rot="R90"/>
 <instance part="R9" gate="G$1" x="322.58" y="119.38" rot="R90"/>
 <instance part="R8" gate="G$1" x="287.02" y="104.14" rot="R90"/>
 <instance part="R7" gate="G$1" x="124.46" y="121.92" rot="R90"/>
@@ -6652,8 +6652,11 @@ COM-09264 (Diffuse)</description>
 <label x="231.14" y="35.56" size="1.778" layer="95"/>
 </segment>
 <segment>
-<wire x1="33.02" y1="124.46" x2="33.02" y2="111.76" width="0.1524" layer="91"/>
+<wire x1="33.02" y1="124.46" x2="33.02" y2="121.92" width="0.1524" layer="91"/>
 <label x="33.02" y="116.84" size="1.778" layer="95"/>
+<pinref part="D1" gate="G$1" pin="GREEN_CATHODE"/>
+<wire x1="33.02" y1="121.92" x2="33.02" y2="111.76" width="0.1524" layer="91"/>
+<junction x="33.02" y="121.92"/>
 </segment>
 </net>
 <net name="D10" class="0">
@@ -6663,8 +6666,11 @@ COM-09264 (Diffuse)</description>
 <label x="231.14" y="33.02" size="1.778" layer="95"/>
 </segment>
 <segment>
-<wire x1="38.1" y1="124.46" x2="38.1" y2="111.76" width="0.1524" layer="91"/>
+<wire x1="38.1" y1="124.46" x2="38.1" y2="121.92" width="0.1524" layer="91"/>
 <label x="38.1" y="114.3" size="1.778" layer="95"/>
+<pinref part="D1" gate="G$1" pin="BLUE_CATHODE"/>
+<wire x1="38.1" y1="121.92" x2="38.1" y2="111.76" width="0.1524" layer="91"/>
+<junction x="38.1" y="121.92"/>
 </segment>
 </net>
 <net name="ARDUINO_TX" class="0">
@@ -6797,10 +6803,9 @@ COM-09264 (Diffuse)</description>
 </net>
 <net name="N$16" class="0">
 <segment>
-<wire x1="312.42" y1="78.74" x2="312.42" y2="81.28" width="0.1524" layer="91"/>
 <pinref part="R3" gate="G$1" pin="2"/>
 <pinref part="LED5" gate="G$1" pin="A"/>
-<junction x="312.42" y="81.28"/>
+<wire x1="312.42" y1="78.74" x2="312.42" y2="81.28" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$17" class="0">
@@ -7003,6 +7008,7 @@ COM-09264 (Diffuse)</description>
 <segment>
 <pinref part="R3" gate="G$1" pin="1"/>
 <pinref part="GND30" gate="1" pin="GND"/>
+<wire x1="312.42" y1="66.04" x2="312.42" y2="68.58" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="GND24" gate="1" pin="GND"/>
@@ -7053,6 +7059,10 @@ COM-09264 (Diffuse)</description>
 <segment>
 <pinref part="GND10" gate="1" pin="GND"/>
 <pinref part="LED2" gate="G$1" pin="C"/>
+</segment>
+<segment>
+<pinref part="GND15" gate="1" pin="GND"/>
+<pinref part="D1" gate="G$1" pin="CATHODE"/>
 </segment>
 </net>
 <net name="N$10" class="0">
