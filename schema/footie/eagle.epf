@@ -375,18 +375,12 @@ UsedLibrary="/home/christian/eagle/lbr/zetex.lbr"
 UsedLibrary="/home/christian/eagle/lbr/zilog.lbr"
 
 [Win_1]
-Type="Control Panel"
-Loc="266 162 1038 652"
-State=0
-Number=0
-
-[Win_2]
 Type="Schematic Editor"
-Loc="2 64 601 463"
+Loc="88 92 687 491"
 State=1
 Number=1
 File="V1.0B/board.sch"
-View="-10.0547 -27.5504 302.384 187.324"
+View="173.188 128.253 240.675 174.666"
 WireWidths=" 0 0.3048 0.6096 0.8128 1.016 1.27 1.4224 1.6764 1.778 1.9304 2.1844 2.54 3.81 6.4516 0.4064 0.1524"
 PadDiameters=" 0.254 0.3048 0.4064 0.6096 0.8128 1.016 1.27 1.4224 1.6764 1.778 1.9304 2.1844 2.54 3.81 6.4516 0"
 PadDrills=" 0.5 0.6 0.7 0.9 1 1.1 1.2 1.3 1.4 1.5 1.6 2 2.2 2.8 3.2 0.8"
@@ -425,8 +419,14 @@ ArcDirection=0
 AddLevel=2
 PadsSameType=0
 Layer=91
-Views=" 1: -10.0547 -27.5504 302.384 187.324"
+Views=" 1: 173.188 128.253 240.675 174.666"
 Sheet="1"
+
+[Win_2]
+Type="Control Panel"
+Loc="266 162 1038 652"
+State=2
+Number=0
 
 [Desktop]
 Screen="1920 1080"
