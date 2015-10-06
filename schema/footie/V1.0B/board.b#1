@@ -142,7 +142,7 @@
 <wire x1="78.41" y1="0" x2="78.41" y2="81.27" width="0" layer="20"/>
 <wire x1="78.41" y1="81.27" x2="0" y2="81.27" width="0" layer="20"/>
 <wire x1="0" y1="81.27" x2="0" y2="0" width="0" layer="20"/>
-<text x="58.42" y="60.96" size="1.778" layer="1" font="vector">FOOTIE 1.0B V</text>
+<text x="57.15" y="60.96" size="1.778" layer="1" font="vector">FOOTIE 1.0B V</text>
 <text x="2.54" y="1.27" size="1.016" layer="21">ISP</text>
 <text x="8.89" y="27.94" size="1.016" layer="21">SDCARD</text>
 <text x="27.94" y="2.54" size="1.016" layer="21">START</text>

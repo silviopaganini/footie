@@ -142,7 +142,7 @@
 <wire x1="78.41" y1="0" x2="78.41" y2="81.27" width="0" layer="20"/>
 <wire x1="78.41" y1="81.27" x2="0" y2="81.27" width="0" layer="20"/>
 <wire x1="0" y1="81.27" x2="0" y2="0" width="0" layer="20"/>
-<text x="58.42" y="60.96" size="1.778" layer="1" font="vector">FOOTIE 1.0V</text>
+<text x="58.42" y="60.96" size="1.778" layer="1" font="vector">FOOTIE 1.0B V</text>
 <text x="2.54" y="1.27" size="1.016" layer="21">ISP</text>
 <text x="8.89" y="27.94" size="1.016" layer="21">SDCARD</text>
 <text x="27.94" y="2.54" size="1.016" layer="21">START</text>
@@ -2095,8 +2095,10 @@ design rules under a new name.</description>
 <wire x1="21.59" y1="43.31" x2="20.32" y2="42.04" width="0.254" layer="1"/>
 <via x="41.91" y="33.02" extent="1-16" drill="0.5"/>
 <contactref element="R13" pad="2"/>
-<wire x1="25.4" y1="54.61" x2="26.8" y2="52.07" width="0" layer="19" extent="1-1"/>
-<wire x1="55.88" y1="16.5401" x2="55.88" y2="16.51" width="0" layer="19" extent="1-1"/>
+<wire x1="26.8" y1="52.07" x2="26.8" y2="54.48" width="0.254" layer="1"/>
+<wire x1="26.8" y1="54.48" x2="26.67" y2="54.61" width="0.254" layer="1"/>
+<wire x1="26.67" y1="54.61" x2="25.4" y2="54.61" width="0.254" layer="1"/>
+<wire x1="55.88" y1="16.51" x2="55.88" y2="16.5401" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="N$10">
 <contactref element="S_TRACK" pad="1"/>
@@ -2598,8 +2600,8 @@ design rules under a new name.</description>
 <approved hash="1,20,162ea6dea52815d8"/>
 <approved hash="3,1,1c5d33a333751c8b"/>
 <approved hash="3,1,3bf1e3049643167d"/>
-<approved hash="5,1,6edd038ab6dec87f"/>
 <approved hash="5,1,6e9d893efc010854"/>
+<approved hash="5,1,6edd038ab6dec87f"/>
 <approved hash="19,1,af99cb3448dce799"/>
 </errors>
 </board>

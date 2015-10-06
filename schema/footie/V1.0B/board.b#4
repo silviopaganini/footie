@@ -1205,6 +1205,8 @@ design rules under a new name.</description>
 <element name="R11" library="SparkFun-Passives" package="1206" value="10k" x="1.27" y="-13.97"/>
 <element name="R12" library="SparkFun-Passives" package="1206" value="4.7k" x="1.27" y="-17.78"/>
 <element name="R13" library="SparkFun-Passives" package="1206" value="10k" x="1.27" y="-21.59"/>
+<element name="R14" library="SparkFun-Passives" package="1206" value="4.7k" x="1.27" y="-25.4"/>
+<element name="R15" library="SparkFun-Passives" package="1206" value="10k" x="1.27" y="-29.21"/>
 </elements>
 <signals>
 <signal name="+3V3">
@@ -1499,7 +1501,6 @@ design rules under a new name.</description>
 <wire x1="21.59" y1="13.97" x2="20.32" y2="12.7" width="0.254" layer="1"/>
 </signal>
 <signal name="SD_MOSI">
-<contactref element="U2" pad="3"/>
 <via x="43.18" y="20.32" extent="1-16" drill="0.5"/>
 <via x="22.86" y="17.78" extent="1-16" drill="0.5"/>
 <wire x1="22.86" y1="17.78" x2="30.48" y2="17.78" width="0.254" layer="16"/>
@@ -1523,13 +1524,14 @@ design rules under a new name.</description>
 <wire x1="40.1066" y1="22.4282" x2="40.1066" y2="20.8534" width="0.254" layer="1"/>
 <wire x1="40.1066" y1="20.8534" x2="40.64" y2="20.32" width="0.254" layer="1"/>
 <wire x1="40.64" y1="20.32" x2="43.18" y2="20.32" width="0.254" layer="1"/>
-<wire x1="8.35" y1="19.93" x2="7.23" y2="19.93" width="0.254" layer="1"/>
 <wire x1="7.23" y1="19.93" x2="6.35" y2="19.05" width="0.254" layer="1"/>
 <wire x1="6.35" y1="19.05" x2="6.35" y2="16.51" width="0.254" layer="1"/>
 <wire x1="6.35" y1="16.51" x2="7.62" y2="15.24" width="0.254" layer="1"/>
 <wire x1="7.62" y1="15.24" x2="7.62" y2="12.7" width="0.254" layer="1"/>
 <wire x1="7.62" y1="12.7" x2="6.35" y2="7.62" width="0.254" layer="1"/>
 <wire x1="6.35" y1="7.62" x2="5.08" y2="6.35" width="0.254" layer="1"/>
+<contactref element="R14" pad="1"/>
+<wire x1="7.62" y1="1.27" x2="-0.13" y2="-25.4" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="D3">
 <contactref element="S_TRACK" pad="2"/>
@@ -2056,8 +2058,10 @@ design rules under a new name.</description>
 <contactref element="U2" pad="GND1"/>
 <contactref element="C6" pad="1"/>
 <contactref element="R11" pad="1"/>
+<contactref element="R15" pad="2"/>
 <wire x1="55.88" y1="16.51" x2="55.88" y2="16.5401" width="0" layer="19" extent="1-1"/>
 <wire x1="-0.13" y1="-13.97" x2="5.08" y2="3.81" width="0" layer="19" extent="1-1"/>
+<wire x1="2.67" y1="-29.21" x2="-0.13" y2="-13.97" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="N$10">
 <contactref element="S_TRACK" pad="1"/>
@@ -2138,6 +2142,13 @@ design rules under a new name.</description>
 </signal>
 <signal name="N$24">
 <contactref element="R13" pad="2"/>
+</signal>
+<signal name="N$26">
+<contactref element="R15" pad="1"/>
+<contactref element="R14" pad="2"/>
+<contactref element="U2" pad="3"/>
+<wire x1="2.67" y1="-25.4" x2="-0.13" y2="-29.21" width="0" layer="19" extent="1-1"/>
+<wire x1="8.35" y1="19.93" x2="2.67" y2="-25.4" width="0" layer="19" extent="1-1"/>
 </signal>
 </signals>
 <errors>
