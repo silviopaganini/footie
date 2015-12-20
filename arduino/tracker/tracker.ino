@@ -74,6 +74,8 @@ void setup() {
   ledColor(0,0,0);
   delay(1000);
   
+  setNavigation();
+  
 }
   
   
