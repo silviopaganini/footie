@@ -138,9 +138,9 @@
 </layers>
 <board>
 <plain>
-<wire x1="0" y1="0" x2="68.25" y2="0" width="0" layer="20"/>
-<wire x1="68.25" y1="0" x2="68.25" y2="53.33" width="0" layer="20"/>
-<wire x1="68.25" y1="53.33" x2="0" y2="53.33" width="0" layer="20"/>
+<wire x1="0" y1="0" x2="69.52" y2="0" width="0" layer="20"/>
+<wire x1="69.52" y1="0" x2="69.52" y2="53.33" width="0" layer="20"/>
+<wire x1="69.52" y1="53.33" x2="0" y2="53.33" width="0" layer="20"/>
 <wire x1="0" y1="53.33" x2="0" y2="0" width="0" layer="20"/>
 <text x="20.32" y="49.53" size="1.778" layer="1" font="vector">FOOTIE 2.0V</text>
 </plain>
@@ -2031,7 +2031,6 @@ design rules under a new name.</description>
 <via x="62.23" y="6.35" extent="1-16" drill="0.6"/>
 <via x="54.61" y="11.43" extent="1-16" drill="0.6"/>
 <via x="36.83" y="12.7" extent="1-16" drill="0.6"/>
-<wire x1="39.42" y1="14.56" x2="36.83" y2="12.7" width="0" layer="19" extent="1-1"/>
 <via x="29.34" y="36.7" extent="1-16" drill="0.6"/>
 </signal>
 <signal name="N$10">
