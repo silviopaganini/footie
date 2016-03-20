@@ -19,8 +19,10 @@ height:200px;
 }
     </style>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="markerclusterer.js"></script>
+   <!-- <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>-->
+    <script src="https://maps.googleapis.com/maps/api/js"></script>
 
-    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
     <script>
 function initialize() {
   var myLatlng = new google.maps.LatLng(-25.363882,131.044922);
@@ -30,6 +32,8 @@ function initialize() {
   }
   var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 
+
+var mcOptions = {gridSize: 50, maxZoom: 15};
  /* var marker = new google.maps.Marker({
       position: myLatlng,
       map: map,
@@ -38,13 +42,16 @@ function initialize() {
 
   $("#add_button").click(function(e) {
 	var text = $("#coord").val();
+         $("#coord").val("");
 	//var lines = text.split("\n");
 
 	var lastLA = 0;
 	var lastLG = 0;
 
         var lines = JSON.parse(text);
-console.log(lines);
+//console.log(lines);
+
+        var markers = [];
 
 	for (i = 0;i < lines.length;i++) {
 		
@@ -55,20 +62,23 @@ console.log(lines);
 		var LA = lines[i].lat;
 		var LG = lines[i].lng;
                 if (lastLA != LA && lastLG != LG) {
-			console.log(LA+" - "+LG);
+			//console.log(LA+" - "+LG);
 			lastLA = LA;
 			lastLG = LG;
 			var myLatlng = new google.maps.LatLng(LA,LG);
 			 var marker = new google.maps.Marker({
 			      position: myLatlng,
-			      map: map,
 			      title: i+""
 			  });
 			if (i == 0)  { map.setCenter(myLatlng);
-				map.setZoom(12);
+				map.setZoom(15);
 			}
+                        markers.push(marker);
 		}
+		
+
 	}	
+       var mc = new MarkerClusterer(map, markers, mcOptions);	
 });
 }
 

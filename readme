@@ -1,0 +1,8 @@
+## Light meaning ##
+blick green at the start = sdcard found 
+solid read at the start = sdcard fail
+
+solid pink = gps mode but not fix
+solid blue = bluetooth mode 
+solid green = gps mode and found fix
+no light = gps mode off and bluetooth mode off

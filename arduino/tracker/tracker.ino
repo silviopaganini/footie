@@ -20,9 +20,9 @@ boolean GPS_ENABLE = true;
 boolean BT_ENABLE = false;
 
 int pinBT = 5;
-int pinLEDRed = 10;
-int pinLEDBlue = 6;
-int pinLEDGreen = 9;
+int pinLEDRed = 6;
+int pinLEDBlue = 9;
+int pinLEDGreen = 10;
 
 unsigned long lastPressedMode = 0;
 unsigned long lastPressedGPS = 0;
@@ -101,9 +101,9 @@ void loop() {
  File dataFile = SD.open(tmpFile,  O_CREAT | O_APPEND | O_WRITE); //Append the file 
  //Make sure that file is ready and gps as well
  if (dataFile) {
-   // if (gps_ready) {
+    if (GPS_ENABLE) {
    
-    if (gps.location.isValid()) {
+    if (gps.location.isValid() && gps.location.isUpdated()) {
      // if ((millis()-lastWrite) > MAX_DELAY) {
                #ifdef DEBUG
                 Serial.println("Location wrote into the file");
@@ -116,6 +116,10 @@ void loop() {
 	      dataFile.print(gps.location.lat(),6);
 	      dataFile.print("\", \"lng\":\"");
 	      dataFile.print(gps.location.lng(),6);
+	      dataFile.print("\", \"sat\":\"");
+	      dataFile.print(gps.satellites.value(),6);
+	      dataFile.print("\", \"age\":\"");
+	      dataFile.print(gps.location.age(),6);
 	      
 	      dataFile.print("\",\"time\": ");
 	      if (gps.date.isValid() && gps.time.isValid()) {
@@ -130,7 +134,7 @@ void loop() {
 	      lastWrite = millis();
     //  }
     }
-   // }
+    }
     dataFile.close();
  }
 #endif
@@ -144,10 +148,10 @@ void loop() {
  else
      if (GPS_ENABLE) {
          readGPS();
-         if (gps.location.isValid())
+         if (gps.location.isValid() && gps.location.isUpdated())
            ledColor(0,255,0);
          else
-           ledColor(255,100,50);
+           ledColor(255,0,50);
      } else { //Led off, that means not action made
           ledColor(0,0,0);
      }
@@ -159,6 +163,7 @@ void buttonPower() {
   if ((millis()-lastPressedGPS) < 1000) return;
   Serial.println("button mode");
   GPS_ENABLE = !GPS_ENABLE;
+  Serial.print("Mode gps is: "); Serial.println(GPS_ENABLE);
   lastPressedGPS = millis();
     #ifdef DEBUG
    Serial.println("button power pressed");
