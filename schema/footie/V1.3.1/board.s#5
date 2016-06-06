@@ -5052,7 +5052,9 @@ Based on the following sources:
 <part name="D1" library="diode" deviceset="GF1" device="" value="5v ">
 <attribute name="FARNELL" value="1827607"/>
 </part>
-<part name="U$3" library="footie" deviceset="MS621FE-FL11E" device=""/>
+<part name="U$3" library="footie" deviceset="MS621FE-FL11E" device="">
+<attribute name="FARNELL" value="1614634"/>
+</part>
 </parts>
 <sheets>
 <sheet>
@@ -5168,7 +5170,9 @@ Based on the following sources:
 <instance part="D1" gate="D" x="144.78" y="60.96" rot="R270">
 <attribute name="FARNELL" x="144.78" y="60.96" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
-<instance part="U$3" gate="G$1" x="124.46" y="45.72" rot="R180"/>
+<instance part="U$3" gate="G$1" x="124.46" y="45.72" rot="R180">
+<attribute name="FARNELL" x="124.46" y="45.72" size="1.778" layer="96" rot="R180" display="off"/>
+</instance>
 </instances>
 <busses>
 </busses>

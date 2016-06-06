@@ -5461,12 +5461,22 @@ Based on the following sources:
 <wire x1="99.06" y1="-58.42" x2="116.84" y2="-58.42" width="0.1524" layer="91"/>
 <junction x="99.06" y="-58.42"/>
 </segment>
+<segment>
+<pinref part="R12" gate="G$1" pin="1"/>
+<wire x1="-2.54" y1="142.24" x2="-2.54" y2="134.62" width="0.1524" layer="91"/>
+<label x="-2.54" y="134.62" size="1.778" layer="95" rot="R90"/>
+</segment>
 </net>
 <net name="D9" class="0">
 <segment>
 <pinref part="U6" gate="A" pin="PB1"/>
 <wire x1="63.5" y1="-48.26" x2="48.26" y2="-48.26" width="0.1524" layer="91"/>
 <label x="50.8" y="-48.26" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="R11" gate="G$1" pin="1"/>
+<wire x1="7.62" y1="139.7" x2="7.62" y2="134.62" width="0.1524" layer="91"/>
+<label x="7.62" y="134.62" size="1.778" layer="95" rot="R90"/>
 </segment>
 </net>
 <net name="D10" class="0">
@@ -5986,18 +5996,6 @@ Based on the following sources:
 <pinref part="LED3" gate="A" pin="BLUE_CATHODE"/>
 <pinref part="R10" gate="G$1" pin="2"/>
 <wire x1="17.78" y1="152.4" x2="12.7" y2="152.4" width="0.1524" layer="91"/>
-</segment>
-</net>
-<net name="N$23" class="0">
-<segment>
-<pinref part="R11" gate="G$1" pin="1"/>
-<wire x1="7.62" y1="139.7" x2="7.62" y2="134.62" width="0.1524" layer="91"/>
-</segment>
-</net>
-<net name="N$24" class="0">
-<segment>
-<pinref part="R12" gate="G$1" pin="1"/>
-<wire x1="-2.54" y1="142.24" x2="-2.54" y2="134.62" width="0.1524" layer="91"/>
 </segment>
 </net>
 </nets>

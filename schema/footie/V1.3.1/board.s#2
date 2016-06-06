@@ -5055,6 +5055,9 @@ Based on the following sources:
 <part name="U$3" library="footie" deviceset="MS621FE-FL11E" device="">
 <attribute name="FARNELL" value="1614634"/>
 </part>
+<part name="R10" library="SparkFun-Passives" deviceset="RESISTOR" device="1206" value="1K"/>
+<part name="R11" library="SparkFun-Passives" deviceset="RESISTOR" device="1206" value="1K"/>
+<part name="R12" library="SparkFun-Passives" deviceset="RESISTOR" device="1206" value="1K"/>
 </parts>
 <sheets>
 <sheet>
@@ -5166,13 +5169,16 @@ Based on the following sources:
 <instance part="+3V13" gate="G$1" x="157.48" y="134.62" rot="R270"/>
 <instance part="GND8" gate="1" x="7.62" y="170.18" rot="R180"/>
 <instance part="U1" gate="A" x="251.46" y="91.44" rot="R90"/>
-<instance part="LED3" gate="A" x="7.62" y="152.4" rot="R90"/>
+<instance part="LED3" gate="A" x="7.62" y="157.48" rot="R90"/>
 <instance part="D1" gate="D" x="144.78" y="60.96" rot="R270">
 <attribute name="FARNELL" x="144.78" y="60.96" size="1.778" layer="96" rot="R270" display="off"/>
 </instance>
 <instance part="U$3" gate="G$1" x="124.46" y="45.72" rot="R180">
 <attribute name="FARNELL" x="124.46" y="45.72" size="1.778" layer="96" rot="R180" display="off"/>
 </instance>
+<instance part="R10" gate="G$1" x="17.78" y="147.32" rot="R90"/>
+<instance part="R11" gate="G$1" x="7.62" y="144.78" rot="R90"/>
+<instance part="R12" gate="G$1" x="-2.54" y="147.32" rot="R90"/>
 </instances>
 <busses>
 </busses>
@@ -5455,24 +5461,12 @@ Based on the following sources:
 <wire x1="99.06" y1="-58.42" x2="116.84" y2="-58.42" width="0.1524" layer="91"/>
 <junction x="99.06" y="-58.42"/>
 </segment>
-<segment>
-<label x="2.54" y="137.16" size="1.778" layer="95" rot="R90"/>
-<pinref part="LED3" gate="A" pin="RED_CATHODE"/>
-<wire x1="2.54" y1="147.32" x2="2.54" y2="137.16" width="0.1524" layer="91"/>
-<junction x="2.54" y="147.32"/>
-</segment>
 </net>
 <net name="D9" class="0">
 <segment>
 <pinref part="U6" gate="A" pin="PB1"/>
 <wire x1="63.5" y1="-48.26" x2="48.26" y2="-48.26" width="0.1524" layer="91"/>
 <label x="50.8" y="-48.26" size="1.778" layer="95"/>
-</segment>
-<segment>
-<label x="7.62" y="137.16" size="1.778" layer="95" rot="R90"/>
-<pinref part="LED3" gate="A" pin="GREEN_CATHODE"/>
-<wire x1="7.62" y1="147.32" x2="7.62" y2="137.16" width="0.1524" layer="91"/>
-<junction x="7.62" y="147.32"/>
 </segment>
 </net>
 <net name="D10" class="0">
@@ -5484,10 +5478,9 @@ Based on the following sources:
 <junction x="63.5" y="-50.8"/>
 </segment>
 <segment>
-<label x="12.7" y="137.16" size="1.778" layer="95" rot="R90"/>
-<pinref part="LED3" gate="A" pin="BLUE_CATHODE"/>
-<wire x1="12.7" y1="147.32" x2="12.7" y2="137.16" width="0.1524" layer="91"/>
-<junction x="12.7" y="147.32"/>
+<label x="17.78" y="137.16" size="1.778" layer="95" rot="R90"/>
+<pinref part="R10" gate="G$1" pin="1"/>
+<wire x1="17.78" y1="142.24" x2="17.78" y2="137.16" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="ARDUINO_TX" class="0">
@@ -5865,8 +5858,7 @@ Based on the following sources:
 <segment>
 <pinref part="GND8" gate="1" pin="GND"/>
 <pinref part="LED3" gate="A" pin="ANODE"/>
-<wire x1="7.62" y1="162.56" x2="7.62" y2="167.64" width="0.1524" layer="91"/>
-<junction x="7.62" y="162.56"/>
+<junction x="7.62" y="167.64"/>
 </segment>
 <segment>
 <pinref part="U$3" gate="G$1" pin="GND"/>
@@ -5973,6 +5965,39 @@ Based on the following sources:
 <pinref part="BATTERY_CONNECTOR" gate="G$1" pin="1"/>
 <pinref part="U1" gate="A" pin="D"/>
 <wire x1="241.3" y1="93.98" x2="243.84" y2="93.98" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$17" class="0">
+<segment>
+<pinref part="LED3" gate="A" pin="GREEN_CATHODE"/>
+<pinref part="R11" gate="G$1" pin="2"/>
+<wire x1="7.62" y1="149.86" x2="7.62" y2="152.4" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$18" class="0">
+<segment>
+<pinref part="LED3" gate="A" pin="RED_CATHODE"/>
+<pinref part="R12" gate="G$1" pin="2"/>
+<wire x1="-2.54" y1="152.4" x2="2.54" y2="152.4" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$21" class="0">
+<segment>
+<pinref part="LED3" gate="A" pin="BLUE_CATHODE"/>
+<pinref part="R10" gate="G$1" pin="2"/>
+<wire x1="17.78" y1="152.4" x2="12.7" y2="152.4" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$23" class="0">
+<segment>
+<pinref part="R11" gate="G$1" pin="1"/>
+<wire x1="7.62" y1="139.7" x2="7.62" y2="134.62" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$24" class="0">
+<segment>
+<pinref part="R12" gate="G$1" pin="1"/>
+<wire x1="-2.54" y1="142.24" x2="-2.54" y2="134.62" width="0.1524" layer="91"/>
 </segment>
 </net>
 </nets>

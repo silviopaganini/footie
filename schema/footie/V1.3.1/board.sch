@@ -5113,7 +5113,7 @@ Based on the following sources:
 <instance part="GND22" gate="1" x="266.7" y="142.24"/>
 <instance part="GND23" gate="1" x="307.34" y="147.32"/>
 <instance part="GND24" gate="1" x="314.96" y="142.24"/>
-<instance part="GND25" gate="1" x="325.12" y="144.78"/>
+<instance part="GND25" gate="1" x="325.12" y="139.7"/>
 <instance part="P+1" gate="VCC" x="335.28" y="157.48" rot="R270"/>
 <instance part="BATTERY_CONNECTOR" gate="G$1" x="233.68" y="93.98"/>
 <instance part="GND26" gate="1" x="259.08" y="106.68" rot="R180"/>
@@ -5141,7 +5141,7 @@ Based on the following sources:
 <instance part="C9" gate="G$1" x="320.04" y="93.98"/>
 <instance part="C3" gate="G$1" x="309.88" y="93.98"/>
 <instance part="C4" gate="G$1" x="264.16" y="88.9"/>
-<instance part="C2" gate="G$1" x="325.12" y="149.86"/>
+<instance part="C2" gate="G$1" x="325.12" y="147.32"/>
 <instance part="C8" gate="G$1" x="266.7" y="147.32"/>
 <instance part="LED2" gate="G$1" x="20.32" y="68.58" rot="R180"/>
 <instance part="LED4" gate="G$1" x="279.4" y="142.24" rot="R180"/>
@@ -5593,7 +5593,7 @@ Based on the following sources:
 <pinref part="U4" gate="G$1" pin="VBAT"/>
 <wire x1="304.8" y1="157.48" x2="325.12" y2="157.48" width="0.1524" layer="91"/>
 <wire x1="325.12" y1="157.48" x2="332.74" y2="157.48" width="0.1524" layer="91"/>
-<wire x1="325.12" y1="154.94" x2="325.12" y2="157.48" width="0.1524" layer="91"/>
+<wire x1="325.12" y1="152.4" x2="325.12" y2="157.48" width="0.1524" layer="91"/>
 <junction x="325.12" y="157.48"/>
 <pinref part="P+1" gate="VCC" pin="VCC"/>
 <pinref part="C2" gate="G$1" pin="1"/>
@@ -5787,6 +5787,7 @@ Based on the following sources:
 <segment>
 <pinref part="GND25" gate="1" pin="GND"/>
 <pinref part="C2" gate="G$1" pin="2"/>
+<wire x1="325.12" y1="142.24" x2="325.12" y2="144.78" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="GND22" gate="1" pin="GND"/>
@@ -6001,13 +6002,6 @@ Based on the following sources:
 </nets>
 </sheet>
 </sheets>
-<errors>
-<approved hash="104,1,40.64,83.82,EEPROM,VCC,+3V3,,,"/>
-<approved hash="104,1,292.1,127,U4,VIN,N$2,,,"/>
-<approved hash="104,1,312.42,127,U4,VBAT,VCC,,,"/>
-<approved hash="202,1,307.34,78.74,U5,BP,,,,"/>
-<approved hash="108,1,10.16,12.7,N$7,,,,,"/>
-</errors>
 </schematic>
 </drawing>
 </eagle>
