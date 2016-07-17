@@ -4957,14 +4957,14 @@ Based on the following sources:
 </classes>
 <parts>
 <part name="S_MODE" library="switch-tact" deviceset="DTSM-6" device="">
-<attribute name="MF" value=""/>
-<attribute name="MPN" value=""/>
-<attribute name="OC_FARNELL" value="unknown"/>
+<attribute name="MF" value="TE CONNECTIVITY"/>
+<attribute name="MPN" value="FSM1LP"/>
+<attribute name="OC_FARNELL" value="1813691"/>
 </part>
 <part name="S_TRACK" library="switch-tact" deviceset="DTSM-6" device="">
-<attribute name="MF" value=""/>
-<attribute name="MPN" value=""/>
-<attribute name="OC_FARNELL" value="unknown"/>
+<attribute name="MF" value="TE CONNECTIVITY"/>
+<attribute name="MPN" value="FSM1LP"/>
+<attribute name="OC_FARNELL" value="1813691"/>
 </part>
 <part name="GPS_ANTENNA" library="SparkFun-RF" deviceset="ANTENNA2" device="SMD6">
 <attribute name="MF" value=""/>
@@ -4985,9 +4985,9 @@ Based on the following sources:
 <part name="GND7" library="supply1" deviceset="GND" device=""/>
 <part name="GND10" library="supply1" deviceset="GND" device=""/>
 <part name="U2" library="SparkFun-Connectors" deviceset="USD-SOCKET" device="NEW">
-<attribute name="MF" value=""/>
-<attribute name="MPN" value=""/>
-<attribute name="OC_FARNELL" value="unknown"/>
+<attribute name="MF" value="MULTICOMP"/>
+<attribute name="MPN" value="460DE08C3"/>
+<attribute name="OC_FARNELL" value="1686452"/>
 </part>
 <part name="GND12" library="supply1" deviceset="GND" device=""/>
 <part name="+3V4" library="supply1" deviceset="+3V3" device=""/>
@@ -5037,9 +5037,9 @@ Based on the following sources:
 <part name="GND30" library="supply1" deviceset="GND" device=""/>
 <part name="GND31" library="supply1" deviceset="GND" device=""/>
 <part name="T1" library="transistor" deviceset="2N3565" device="">
-<attribute name="MF" value=""/>
-<attribute name="MPN" value=""/>
-<attribute name="OC_FARNELL" value="unknown"/>
+<attribute name="MF" value="ON SEMICONDUCTOR"/>
+<attribute name="MPN" value="2N5089G"/>
+<attribute name="OC_FARNELL" value="1126530"/>
 </part>
 <part name="GND32" library="supply1" deviceset="GND" device=""/>
 <part name="GND1" library="supply1" deviceset="GND" device=""/>
@@ -5053,12 +5053,12 @@ Based on the following sources:
 <part name="R6" library="SparkFun-Passives" deviceset="RESISTOR" device="1206" value="1K">
 <attribute name="MF" value="VISHAY"/>
 <attribute name="MPN" value="CRCW12061K00FKTA"/>
-<attribute name="OC_FARNELL" value="1653075"/>
+<attribute name="OC_FARNELL" value="unknown"/>
 </part>
 <part name="R2" library="SparkFun-Passives" deviceset="RESISTOR" device="1206" value="1K">
 <attribute name="MF" value="VISHAY"/>
 <attribute name="MPN" value="CRCW12061K00FKTA"/>
-<attribute name="OC_FARNELL" value="1653075"/>
+<attribute name="OC_FARNELL" value="unknown"/>
 </part>
 <part name="R1" library="SparkFun-Passives" deviceset="RESISTOR" device="1206" value="100 ohm">
 <attribute name="MF" value="YAGEO (PHYCOMP)"/>
@@ -5083,12 +5083,12 @@ Based on the following sources:
 <part name="R7" library="SparkFun-Passives" deviceset="RESISTOR" device="1206" value="1K">
 <attribute name="MF" value="VISHAY"/>
 <attribute name="MPN" value="CRCW12061K00FKTA"/>
-<attribute name="OC_FARNELL" value="1653075"/>
+<attribute name="OC_FARNELL" value="unknown"/>
 </part>
 <part name="R5" library="SparkFun-Passives" deviceset="RESISTOR" device="1206" value="1K">
 <attribute name="MF" value="VISHAY"/>
 <attribute name="MPN" value="CRCW12061K00FKTA"/>
-<attribute name="OC_FARNELL" value="1653075"/>
+<attribute name="OC_FARNELL" value="unknown"/>
 </part>
 <part name="C9" library="SparkFun-Capacitors" deviceset="CAP" device="1206" value="4.7 uF">
 <attribute name="MF" value="WALSIN"/>
@@ -5116,19 +5116,19 @@ Based on the following sources:
 <attribute name="OC_FARNELL" value="2497114"/>
 </part>
 <part name="GPS_STATUS" library="eagle-ltspice" deviceset="LED_E" device="">
-<attribute name="MF" value=""/>
-<attribute name="MPN" value=""/>
-<attribute name="OC_FARNELL" value="unknown"/>
+<attribute name="MF" value="KINGBRIGHT"/>
+<attribute name="MPN" value="KPTL-3216ZGC"/>
+<attribute name="OC_FARNELL" value="2217899"/>
 </part>
 <part name="CHARGING" library="eagle-ltspice" deviceset="LED_E" device="">
-<attribute name="MF" value=""/>
-<attribute name="MPN" value=""/>
-<attribute name="OC_FARNELL" value="unknown"/>
+<attribute name="MF" value="KINGBRIGHT"/>
+<attribute name="MPN" value="KPTL-3216ZGC"/>
+<attribute name="OC_FARNELL" value="2217899"/>
 </part>
 <part name="POWER" library="eagle-ltspice" deviceset="LED_E" device="" value="red">
-<attribute name="MF" value=""/>
-<attribute name="MPN" value=""/>
-<attribute name="OC_FARNELL" value="unknown"/>
+<attribute name="MF" value="KINGBRIGHT"/>
+<attribute name="MPN" value="KPTL-3216SURCK-01"/>
+<attribute name="OC_FARNELL" value="2217903"/>
 </part>
 <part name="U6" library="Ava" deviceset="ATMEGA328P-AU" device="">
 <attribute name="MF" value="ATMEL"/>
@@ -5185,9 +5185,9 @@ Based on the following sources:
 <attribute name="MF" value="INFINEON"/>
 </part>
 <part name="LED_STATUS" library="pretender" deviceset="LED_RGB_PLCC_AVAGO_MTB0" device="">
-<attribute name="MF" value=""/>
-<attribute name="MPN" value=""/>
-<attribute name="OC_FARNELL" value="unknown"/>
+<attribute name="MF" value="AVAGO TECHNOLOGIES"/>
+<attribute name="MPN" value="ASMB-MTB0-0A3A2"/>
+<attribute name="OC_FARNELL" value="2401105"/>
 </part>
 <part name="D1" library="diode" deviceset="GF1" device="" value="5v ">
 <attribute name="FARNELL" value="1827607"/>
@@ -5204,17 +5204,17 @@ Based on the following sources:
 <part name="R10" library="SparkFun-Passives" deviceset="RESISTOR" device="1206" value="1K">
 <attribute name="MF" value="VISHAY"/>
 <attribute name="MPN" value="CRCW12061K00FKTA"/>
-<attribute name="OC_FARNELL" value="1653075"/>
+<attribute name="OC_FARNELL" value="unknown"/>
 </part>
 <part name="R11" library="SparkFun-Passives" deviceset="RESISTOR" device="1206" value="1K">
 <attribute name="MF" value="VISHAY"/>
 <attribute name="MPN" value="CRCW12061K00FKTA"/>
-<attribute name="OC_FARNELL" value="1653075"/>
+<attribute name="OC_FARNELL" value="unknown"/>
 </part>
 <part name="R12" library="SparkFun-Passives" deviceset="RESISTOR" device="1206" value="1K">
 <attribute name="MF" value="VISHAY"/>
 <attribute name="MPN" value="CRCW12061K00FKTA"/>
-<attribute name="OC_FARNELL" value="1653075"/>
+<attribute name="OC_FARNELL" value="unknown"/>
 </part>
 </parts>
 <sheets>

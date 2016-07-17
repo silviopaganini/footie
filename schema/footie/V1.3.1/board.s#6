@@ -4957,14 +4957,14 @@ Based on the following sources:
 </classes>
 <parts>
 <part name="S_MODE" library="switch-tact" deviceset="DTSM-6" device="">
-<attribute name="MF" value=""/>
-<attribute name="MPN" value=""/>
-<attribute name="OC_FARNELL" value="unknown"/>
+<attribute name="MF" value="TE CONNECTIVITY"/>
+<attribute name="MPN" value="FSM1LP"/>
+<attribute name="OC_FARNELL" value="1813691"/>
 </part>
 <part name="S_TRACK" library="switch-tact" deviceset="DTSM-6" device="">
-<attribute name="MF" value=""/>
-<attribute name="MPN" value=""/>
-<attribute name="OC_FARNELL" value="unknown"/>
+<attribute name="MF" value="TE CONNECTIVITY"/>
+<attribute name="MPN" value="FSM1LP"/>
+<attribute name="OC_FARNELL" value="1813691"/>
 </part>
 <part name="GPS_ANTENNA" library="SparkFun-RF" deviceset="ANTENNA2" device="SMD6">
 <attribute name="MF" value=""/>
@@ -4985,9 +4985,9 @@ Based on the following sources:
 <part name="GND7" library="supply1" deviceset="GND" device=""/>
 <part name="GND10" library="supply1" deviceset="GND" device=""/>
 <part name="U2" library="SparkFun-Connectors" deviceset="USD-SOCKET" device="NEW">
-<attribute name="MF" value=""/>
-<attribute name="MPN" value=""/>
-<attribute name="OC_FARNELL" value="unknown"/>
+<attribute name="MF" value="MULTICOMP"/>
+<attribute name="MPN" value="460DE08C3"/>
+<attribute name="OC_FARNELL" value="1686452"/>
 </part>
 <part name="GND12" library="supply1" deviceset="GND" device=""/>
 <part name="+3V4" library="supply1" deviceset="+3V3" device=""/>
@@ -5037,9 +5037,9 @@ Based on the following sources:
 <part name="GND30" library="supply1" deviceset="GND" device=""/>
 <part name="GND31" library="supply1" deviceset="GND" device=""/>
 <part name="T1" library="transistor" deviceset="2N3565" device="">
-<attribute name="MF" value=""/>
-<attribute name="MPN" value=""/>
-<attribute name="OC_FARNELL" value="unknown"/>
+<attribute name="MF" value="ON SEMICONDUCTOR"/>
+<attribute name="MPN" value="2N5089G"/>
+<attribute name="OC_FARNELL" value="1126530"/>
 </part>
 <part name="GND32" library="supply1" deviceset="GND" device=""/>
 <part name="GND1" library="supply1" deviceset="GND" device=""/>
@@ -5141,7 +5141,11 @@ Based on the following sources:
 </part>
 <part name="GND34" library="supply1" deviceset="GND" device=""/>
 <part name="+3V12" library="supply1" deviceset="+3V3" device=""/>
-<part name="Q2" library="crystal" deviceset="CRYSTAL" device="CTS406"/>
+<part name="Q2" library="crystal" deviceset="CRYSTAL" device="CTS406">
+<attribute name="MF" value="ABRACON"/>
+<attribute name="MPN" value="ABMM2-8.000MHZ-E2-T"/>
+<attribute name="OC_FARNELL" value="1611803"/>
+</part>
 <part name="C10" library="SparkFun-Capacitors" deviceset="CAP" device="1206" value="22 uF">
 <attribute name="MF" value="MULTICOMP"/>
 <attribute name="MPN" value="MC1206F226Z100CT"/>
@@ -5185,9 +5189,9 @@ Based on the following sources:
 <attribute name="MF" value="INFINEON"/>
 </part>
 <part name="LED_STATUS" library="pretender" deviceset="LED_RGB_PLCC_AVAGO_MTB0" device="">
-<attribute name="MF" value=""/>
-<attribute name="MPN" value=""/>
-<attribute name="OC_FARNELL" value="unknown"/>
+<attribute name="MF" value="AVAGO TECHNOLOGIES"/>
+<attribute name="MPN" value="ASMB-MTB0-0A3A2"/>
+<attribute name="OC_FARNELL" value="2401105"/>
 </part>
 <part name="D1" library="diode" deviceset="GF1" device="" value="5v ">
 <attribute name="FARNELL" value="1827607"/>
