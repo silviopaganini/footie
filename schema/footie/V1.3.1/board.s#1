@@ -1282,8 +1282,8 @@ Manufacturer: Hirose&lt;br&gt;&lt;br&gt;
 <wire x1="4.2" y1="-2.1" x2="4.2" y2="-1.7" width="0.2032" layer="21"/>
 <wire x1="-2" y1="-2.1" x2="-4.1" y2="-2.1" width="0.2032" layer="21"/>
 <wire x1="-4.1" y1="-2.1" x2="-4.1" y2="-1.8" width="0.2032" layer="21"/>
-<smd name="P$1" x="-3.4" y="0.27" dx="3" dy="1.6" layer="1" rot="R90"/>
-<smd name="P$2" x="3.4" y="0.27" dx="3" dy="1.6" layer="1" rot="R90"/>
+<smd name="P$1" x="-3.4" y="0.651" dx="4.016" dy="1.6" layer="1" rot="R90"/>
+<smd name="P$2" x="3.4" y="0.651" dx="4.016" dy="1.6" layer="1" rot="R90"/>
 <smd name="VCC" x="-1" y="-2" dx="1" dy="5.5" layer="1"/>
 <smd name="GND" x="1" y="-2" dx="1" dy="5.5" layer="1"/>
 <text x="2.54" y="-5.08" size="1.27" layer="25">&gt;Name</text>
@@ -1738,8 +1738,8 @@ will be further integrated into the Sparkfun Library for other footprints.  It c
 <smd name="4" x="0.46" y="1.27" dx="0.6" dy="1.55" layer="1"/>
 <smd name="5" x="1.46" y="1.27" dx="0.6" dy="1.55" layer="1"/>
 <smd name="6" x="2.46" y="1.27" dx="0.6" dy="1.55" layer="1"/>
-<smd name="P$1" x="-3.84" y="-0.955" dx="1.2" dy="1.8" layer="1"/>
-<smd name="P$2" x="3.76" y="-0.955" dx="1.2" dy="1.8" layer="1"/>
+<smd name="P$1" x="-3.84" y="-0.955" dx="1.2" dy="2.308" layer="1"/>
+<smd name="P$2" x="3.76" y="-0.955" dx="1.2" dy="2.308" layer="1"/>
 <text x="-1.27" y="2.54" size="0.4064" layer="25">&gt;Name</text>
 <text x="-1.27" y="-2.54" size="0.4064" layer="27">&gt;VALUE</text>
 </package>
@@ -4810,12 +4810,12 @@ Based on the following sources:
 </class>
 </classes>
 <parts>
-<part name="S_MODE" library="switch-tact" deviceset="DTSM-6" device="">
+<part name="S_MODE" library="switch-tact" deviceset="DTSM-6" device="" value="MODE">
 <attribute name="MF" value="TE CONNECTIVITY"/>
 <attribute name="MPN" value="FSM1LP"/>
 <attribute name="OC_FARNELL" value="1813691"/>
 </part>
-<part name="S_TRACK" library="switch-tact" deviceset="DTSM-6" device="">
+<part name="S_TRACK" library="switch-tact" deviceset="DTSM-6" device="" value="TRACK">
 <attribute name="MF" value="TE CONNECTIVITY"/>
 <attribute name="MPN" value="FSM1LP"/>
 <attribute name="OC_FARNELL" value="1813691"/>
@@ -4839,8 +4839,6 @@ Based on the following sources:
 <attribute name="OC_FARNELL" value="unknown"/>
 </part>
 <part name="+3V7" library="supply1" deviceset="+3V3" device=""/>
-<part name="GND16" library="supply1" deviceset="GND" device=""/>
-<part name="GND17" library="supply1" deviceset="GND" device=""/>
 <part name="U4" library="SparkFun-PowerIC" deviceset="MCP73831" device="">
 <attribute name="MF" value="MICROCHIP"/>
 <attribute name="MPN" value="MCP73831T-2ACI/OT"/>
@@ -5126,8 +5124,6 @@ Based on the following sources:
 <attribute name="MPN" x="281.94" y="50.8" size="1.778" layer="96" display="off"/>
 </instance>
 <instance part="+3V7" gate="G$1" x="264.16" y="20.32" rot="R90"/>
-<instance part="GND16" gate="1" x="309.88" y="7.62" rot="MR0"/>
-<instance part="GND17" gate="1" x="327.66" y="17.78" rot="MR270"/>
 <instance part="U4" gate="G$1" x="294.64" y="154.94">
 <attribute name="OC_FARNELL" x="294.64" y="154.94" size="1.778" layer="96" display="off"/>
 <attribute name="MF" x="294.64" y="154.94" size="1.778" layer="96" display="off"/>
@@ -5817,14 +5813,6 @@ Based on the following sources:
 <wire x1="193.04" y1="96.52" x2="190.5" y2="121.92" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<pinref part="BLUETOOTH" gate="G$1" pin="GND1"/>
-<pinref part="GND16" gate="1" pin="GND"/>
-</segment>
-<segment>
-<pinref part="BLUETOOTH" gate="G$1" pin="GND2"/>
-<pinref part="GND17" gate="1" pin="GND"/>
-</segment>
-<segment>
 <pinref part="MICRO_USB" gate="G$1" pin="GND"/>
 <pinref part="GND21" gate="1" pin="GND"/>
 <wire x1="259.08" y1="165.1" x2="256.54" y2="165.1" width="0.1524" layer="91"/>
@@ -6090,7 +6078,7 @@ Based on the following sources:
 <junction x="33.02" y="-55.88"/>
 </segment>
 </net>
-<net name="N$12" class="0">
+<net name="N$7" class="0">
 <segment>
 <wire x1="30.48" y1="185.42" x2="30.48" y2="129.54" width="0.1524" layer="91" style="longdash"/>
 <wire x1="30.48" y1="129.54" x2="-15.24" y2="129.54" width="0.1524" layer="91" style="longdash"/>

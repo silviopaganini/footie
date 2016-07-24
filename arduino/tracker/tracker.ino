@@ -32,6 +32,7 @@ boolean isFirstWrite = true;
 
 
 void setup() {
+  
   Serial.begin(9600);
   gpsSerial.begin(9600);  
   
@@ -39,21 +40,20 @@ void setup() {
   pinMode(pinLEDRed,OUTPUT);
   pinMode(pinLEDBlue,OUTPUT);
   pinMode(pinLEDGreen,OUTPUT);
-  ledColor(0,0,0);
   digitalWrite(pinBT,LOW);
   
   attachInterrupt(0, buttonPower, RISING);
   attachInterrupt(1, buttonMode, RISING);
 
+  ledColor(0,0,0);
   
   #ifdef SDWRITE
   // make sure that the default chip select pin is set to
   // output, even if you don't use it:
   pinMode(10, OUTPUT);
-  pinMode(chipSelect, OUTPUT);
-  
+  pinMode(chipSelect, OUTPUT);  
   if (!SD.begin(chipSelect)) {
-    ledColor(255,0,0); //Solid led means something wrong
+    ledColor(25,0,0); //Solid led means something wrong
     Serial.println("Card failed, or not present");
     // don't do anything more:
     while(true);
@@ -65,11 +65,11 @@ void setup() {
   #endif
   
   //Blinking means ok
-  ledColor(0,255,0);
+  ledColor(0,25,0);
   delay(100);
   ledColor(0,0,0);
   delay(100);
-  ledColor(0,255,0);
+  ledColor(0,25,0);
   delay(100);
   ledColor(0,0,0);
   delay(1000);
@@ -143,15 +143,15 @@ void loop() {
  //Read command from bluetooth and dont read update from GPS
  if (BT_ENABLE) {
      readCommand();
-     ledColor(0,0,255);
+     ledColor(0,0,25);
  }
  else
      if (GPS_ENABLE) {
          readGPS();
          if (gps.location.isValid() && gps.location.isUpdated())
-           ledColor(0,255,0);
+           ledColor(0,25,0);
          else
-           ledColor(255,0,50);
+           ledColor(25,0,50);
      } else { //Led off, that means not action made
           ledColor(0,0,0);
      }

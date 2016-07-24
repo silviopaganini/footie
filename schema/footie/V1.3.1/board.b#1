@@ -140,10 +140,10 @@
 </layers>
 <board>
 <plain>
-<wire x1="0" y1="0" x2="51.95" y2="0.1" width="0" layer="20"/>
-<wire x1="51.95" y1="0.1" x2="51.75" y2="50.15" width="0" layer="20"/>
-<wire x1="51.75" y1="50.15" x2="-0.2" y2="50.05" width="0" layer="20"/>
-<wire x1="-0.2" y1="50.05" x2="0" y2="0" width="0" layer="20"/>
+<wire x1="-0.9" y1="0" x2="51.95" y2="0.1" width="0" layer="20"/>
+<wire x1="51.95" y1="0.1" x2="51.85" y2="50.65" width="0" layer="20"/>
+<wire x1="51.85" y1="50.65" x2="-1" y2="50.55" width="0" layer="20"/>
+<wire x1="-1" y1="50.55" x2="-0.9" y2="0" width="0" layer="20"/>
 </plain>
 <libraries>
 <library name="SparkFun-Connectors">
@@ -167,8 +167,8 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <wire x1="4.2" y1="-2.1" x2="4.2" y2="-1.7" width="0.2032" layer="21"/>
 <wire x1="-2" y1="-2.1" x2="-4.1" y2="-2.1" width="0.2032" layer="21"/>
 <wire x1="-4.1" y1="-2.1" x2="-4.1" y2="-1.8" width="0.2032" layer="21"/>
-<smd name="P$1" x="-3.4" y="0.27" dx="3" dy="1.6" layer="1" rot="R90"/>
-<smd name="P$2" x="3.4" y="0.27" dx="3" dy="1.6" layer="1" rot="R90"/>
+<smd name="P$1" x="-3.4" y="0.651" dx="4.016" dy="1.6" layer="1" rot="R90"/>
+<smd name="P$2" x="3.4" y="0.651" dx="4.016" dy="1.6" layer="1" rot="R90"/>
 <smd name="VCC" x="-1" y="-2" dx="1" dy="5.5" layer="1"/>
 <smd name="GND" x="1" y="-2" dx="1" dy="5.5" layer="1"/>
 <text x="2.54" y="-5.08" size="1.27" layer="25">&gt;Name</text>
@@ -187,8 +187,8 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <smd name="4" x="0.46" y="1.27" dx="0.6" dy="1.55" layer="1"/>
 <smd name="5" x="1.46" y="1.27" dx="0.6" dy="1.55" layer="1"/>
 <smd name="6" x="2.46" y="1.27" dx="0.6" dy="1.55" layer="1"/>
-<smd name="P$1" x="-3.84" y="-0.955" dx="1.2" dy="1.8" layer="1"/>
-<smd name="P$2" x="3.76" y="-0.955" dx="1.2" dy="1.8" layer="1"/>
+<smd name="P$1" x="-3.84" y="-0.955" dx="1.2" dy="2.308" layer="1"/>
+<smd name="P$2" x="3.76" y="-0.955" dx="1.2" dy="2.308" layer="1"/>
 <text x="-1.27" y="2.54" size="0.4064" layer="25">&gt;Name</text>
 <text x="-1.27" y="-2.54" size="0.4064" layer="27">&gt;VALUE</text>
 </package>
@@ -1079,10 +1079,12 @@ design rules under a new name.</description>
 </pass>
 </autorouter>
 <elements>
-<element name="BATTERY_CONNECTOR" library="SparkFun-Connectors" package="JST-2-SMD-VERT" value="3.7v" x="48.35" y="32.12" rot="R270">
+<element name="BATTERY_CONNECTOR" library="SparkFun-Connectors" package="JST-2-SMD-VERT" value="3.7v" x="48.35" y="32.12" smashed="yes" rot="R270">
 <attribute name="OC_FARNELL" value="unknown" x="48.35" y="32.12" size="1.778" layer="27" rot="R270" display="off"/>
 <attribute name="MF" value="" x="48.35" y="32.12" size="1.778" layer="27" rot="R270" display="off"/>
 <attribute name="MPN" value="" x="48.35" y="32.12" size="1.778" layer="27" rot="R270" display="off"/>
+<attribute name="NAME" x="43.27" y="29.58" size="1.27" layer="25" rot="R270" display="off"/>
+<attribute name="VALUE" x="46.82" y="36.83" size="1.27" layer="27"/>
 </element>
 <element name="BLUETOOTH" library="SerialPortBluetooth" package="BLUETOOTH_SMD" value="HC_05" x="48.86" y="39.45" rot="MR0">
 <attribute name="OC_FARNELL" value="unknown" x="48.86" y="39.45" size="1.778" layer="28" rot="MR0" display="off"/>
@@ -1119,10 +1121,12 @@ design rules under a new name.</description>
 <attribute name="MF" value="WALSIN" x="39.7" y="35.81" size="1.778" layer="27" rot="R180" display="off"/>
 <attribute name="MPN" value="1206B106K160CT" x="39.7" y="35.81" size="1.778" layer="27" rot="R180" display="off"/>
 </element>
-<element name="C5" library="SparkFun-Capacitors" package="1206" value="0.1 uF" x="43.74" y="42.32" rot="R270">
+<element name="C5" library="SparkFun-Capacitors" package="1206" value="0.1 uF" x="43.74" y="42.32" smashed="yes" rot="R270">
 <attribute name="OC_FARNELL" value="1288252" x="43.74" y="42.32" size="1.778" layer="27" rot="R270" display="off"/>
 <attribute name="MF" value="KEMET" x="43.74" y="42.32" size="1.778" layer="27" rot="R270" display="off"/>
 <attribute name="MPN" value="C0402C104K4RACTU" x="43.74" y="42.32" size="1.778" layer="27" rot="R270" display="off"/>
+<attribute name="NAME" x="44.983" y="40.59" size="0.4064" layer="25" rot="R270"/>
+<attribute name="VALUE" x="44.916" y="43.917" size="0.4064" layer="27" rot="R270"/>
 </element>
 <element name="C6" library="SparkFun-Capacitors" package="1206" value="0.1 uF" x="24.95" y="36.11" rot="R180">
 <attribute name="OC_FARNELL" value="1288252" x="24.95" y="36.11" size="1.778" layer="27" rot="R180" display="off"/>
@@ -1144,43 +1148,55 @@ design rules under a new name.</description>
 <attribute name="MF" value="WALSIN" x="35.48" y="27.81" size="1.778" layer="27" rot="R270" display="off"/>
 <attribute name="MPN" value="1206B475K500CT" x="35.48" y="27.81" size="1.778" layer="27" rot="R270" display="off"/>
 </element>
-<element name="CHARGING" library="eagle-ltspice" package="LED_1206" value="" x="28.83" y="12.5">
+<element name="CHARGING" library="eagle-ltspice" package="LED_1206" value="" x="28.83" y="12.5" smashed="yes">
 <attribute name="OC_FARNELL" value="2217899" x="28.83" y="12.5" size="1.778" layer="27" display="off"/>
 <attribute name="SPICETYPE" value="diode" x="28.83" y="12.5" size="1.778" layer="27" display="off"/>
 <attribute name="SPICEPREFIX" value="D" x="28.83" y="12.5" size="1.778" layer="27" display="off"/>
 <attribute name="SPICEMODEL" value="NONE" x="28.83" y="12.5" size="1.778" layer="27" display="off"/>
 <attribute name="MF" value="KINGBRIGHT" x="28.83" y="12.5" size="1.778" layer="27" display="off"/>
 <attribute name="MPN" value="KPTL-3216ZGC" x="28.83" y="12.5" size="1.778" layer="27" display="off"/>
+<attribute name="NAME" x="27.46" y="13.57" size="0.4064" layer="25"/>
+<attribute name="VALUE" x="27.56" y="9.96" size="1.27" layer="27"/>
 </element>
-<element name="D1" library="diode" package="SMA-DO214AC" value="5v " x="9.51" y="18.9" rot="R180">
+<element name="D1" library="diode" package="SMA-DO214AC" value="5v " x="9.51" y="18.9" smashed="yes" rot="R180">
 <attribute name="OC_FARNELL" value="9398112" x="9.51" y="18.9" size="1.778" layer="27" rot="R180" display="off"/>
 <attribute name="FARNELL" value="1827607" x="9.51" y="18.9" size="1.778" layer="27" rot="R180" display="off"/>
 <attribute name="MF" value="VISHAY" x="9.51" y="18.9" size="1.778" layer="27" rot="R180" display="off"/>
 <attribute name="MPN" value="BZG03C18TR3" x="9.51" y="18.9" size="1.778" layer="27" rot="R180" display="off"/>
+<attribute name="NAME" x="12.7875" y="19.385" size="0.6096" layer="25" rot="R270"/>
+<attribute name="VALUE" x="12.685" y="21.7575" size="1.27" layer="27" rot="R180" display="off"/>
 </element>
-<element name="DEBUG" library="SparkFun-Connectors" package="JST-6-SMD-VERT-1.0MM" value="JST_VERTICAL" x="42.04" y="47.22" rot="R180">
+<element name="DEBUG" library="SparkFun-Connectors" package="JST-6-SMD-VERT-1.0MM" value="JST_VERTICAL" x="42.04" y="47.22" smashed="yes" rot="R180">
 <attribute name="OC_FARNELL" value="unknown" x="42.04" y="47.22" size="1.778" layer="27" rot="R180" display="off"/>
 <attribute name="PROD_ID" value="CONN-08249" x="42.04" y="47.22" size="1.778" layer="27" rot="R180" display="off"/>
 <attribute name="MF" value="" x="42.04" y="47.22" size="1.778" layer="27" rot="R180" display="off"/>
 <attribute name="MPN" value="" x="42.04" y="47.22" size="1.778" layer="27" rot="R180" display="off"/>
+<attribute name="NAME" x="47.02" y="49.01" size="0.4064" layer="25" rot="R270"/>
+<attribute name="VALUE" x="36.64" y="49.11" size="0.4064" layer="27" rot="R270"/>
 </element>
-<element name="GPS_STATUS" library="eagle-ltspice" package="LED_1206" value="" x="28.83" y="15.04">
+<element name="GPS_STATUS" library="eagle-ltspice" package="LED_1206" value="" x="28.83" y="15.04" smashed="yes">
 <attribute name="OC_FARNELL" value="2217899" x="28.83" y="15.04" size="1.778" layer="27" display="off"/>
 <attribute name="SPICETYPE" value="diode" x="28.83" y="15.04" size="1.778" layer="27" display="off"/>
 <attribute name="SPICEPREFIX" value="D" x="28.83" y="15.04" size="1.778" layer="27" display="off"/>
 <attribute name="SPICEMODEL" value="NONE" x="28.83" y="15.04" size="1.778" layer="27" display="off"/>
 <attribute name="MF" value="KINGBRIGHT" x="28.83" y="15.04" size="1.778" layer="27" display="off"/>
 <attribute name="MPN" value="KPTL-3216ZGC" x="28.83" y="15.04" size="1.778" layer="27" display="off"/>
+<attribute name="NAME" x="27.16" y="16.21" size="0.4064" layer="25"/>
+<attribute name="VALUE" x="27.56" y="12.5" size="1.27" layer="27"/>
 </element>
-<element name="JP2" library="SparkFun-Connectors" package="2X3-NS" value="AVR_SPI_PRG_6NS" x="19.91" y="41.47" rot="R90">
+<element name="JP2" library="SparkFun-Connectors" package="2X3-NS" value="AVR_SPI_PRG_6NS" x="19.91" y="41.47" smashed="yes" rot="R90">
 <attribute name="OC_FARNELL" value="unknown" x="19.91" y="41.47" size="1.778" layer="27" rot="R90" display="off"/>
 <attribute name="MF" value="" x="19.91" y="41.47" size="1.778" layer="27" rot="R90" display="off"/>
 <attribute name="MPN" value="" x="19.91" y="41.47" size="1.778" layer="27" rot="R90" display="off"/>
+<attribute name="NAME" x="16.735" y="37.66" size="1.27" layer="25" ratio="10" rot="R90" display="off"/>
+<attribute name="VALUE" x="24.355" y="37.66" size="1.27" layer="27" rot="R90" display="off"/>
 </element>
-<element name="LED_STATUS" library="pretender" package="LED_RGB_PLCC_AVAGO_MTB0" value="LED_RGB_PLCC_AVAGO_MTB0" x="48.55" y="2.84" rot="R270">
+<element name="LED_STATUS" library="pretender" package="LED_RGB_PLCC_AVAGO_MTB0" value="LED_RGB_PLCC_AVAGO_MTB0" x="48.55" y="2.84" smashed="yes" rot="R270">
 <attribute name="OC_FARNELL" value="2401105" x="48.55" y="2.84" size="1.778" layer="27" rot="R270" display="off"/>
 <attribute name="MF" value="AVAGO TECHNOLOGIES" x="48.55" y="2.84" size="1.778" layer="27" rot="R270" display="off"/>
 <attribute name="MPN" value="ASMB-MTB0-0A3A2" x="48.55" y="2.84" size="1.778" layer="27" rot="R270" display="off"/>
+<attribute name="NAME" x="45.0966" y="4.6312" size="0.4064" layer="25"/>
+<attribute name="VALUE" x="46.0982" y="-0.317" size="0.6096" layer="27" display="off"/>
 </element>
 <element name="MICRO_USB" library="SparkFun-Connectors" package="USB-B-MICRO-SMD_V03" value="5V" x="27.31" y="47.52" rot="R270">
 <attribute name="OC_FARNELL" value="unknown" x="27.31" y="47.52" size="1.778" layer="27" rot="R270" display="off"/>
@@ -1188,104 +1204,130 @@ design rules under a new name.</description>
 <attribute name="MF" value="" x="27.31" y="47.52" size="1.778" layer="27" rot="R270" display="off"/>
 <attribute name="MPN" value="" x="27.31" y="47.52" size="1.778" layer="27" rot="R270" display="off"/>
 </element>
-<element name="POWER" library="eagle-ltspice" package="LED_1206" value="red" x="28.83" y="10.06">
+<element name="POWER" library="eagle-ltspice" package="LED_1206" value="red" x="28.83" y="10.06" smashed="yes">
 <attribute name="OC_FARNELL" value="2217903" x="28.83" y="10.06" size="1.778" layer="27" display="off"/>
 <attribute name="SPICETYPE" value="diode" x="28.83" y="10.06" size="1.778" layer="27" display="off"/>
 <attribute name="SPICEPREFIX" value="D" x="28.83" y="10.06" size="1.778" layer="27" display="off"/>
 <attribute name="SPICEMODEL" value="NONE" x="28.83" y="10.06" size="1.778" layer="27" display="off"/>
 <attribute name="MF" value="KINGBRIGHT" x="28.83" y="10.06" size="1.778" layer="27" display="off"/>
 <attribute name="MPN" value="KPTL-3216SURCK-01" x="28.83" y="10.06" size="1.778" layer="27" display="off"/>
+<attribute name="NAME" x="27.86" y="11.13" size="0.4064" layer="25"/>
+<attribute name="VALUE" x="27.56" y="7.52" size="1.27" layer="27" display="off"/>
 </element>
-<element name="Q2" library="crystal" package="CTS406" value="" x="3.81" y="26.67" rot="R90">
+<element name="Q2" library="crystal" package="CTS406" value="" x="3.81" y="26.67" smashed="yes" rot="R90">
 <attribute name="OC_FARNELL" value="1611803" x="3.81" y="26.67" size="1.778" layer="27" rot="R90" display="off"/>
 <attribute name="OC_NEWARK" value="unknown" x="3.81" y="26.67" size="1.778" layer="27" rot="R90" display="off"/>
 <attribute name="MF" value="ABRACON" x="3.81" y="26.67" size="1.778" layer="27" rot="R90" display="off"/>
 <attribute name="MPN" value="ABMM2-8.000MHZ-E2-T" x="3.81" y="26.67" size="1.778" layer="27" rot="R90" display="off"/>
+<attribute name="NAME" x="1.27" y="27.43" size="0.6096" layer="25" rot="R90"/>
+<attribute name="VALUE" x="7.62" y="24.13" size="1.27" layer="27" rot="R90"/>
 </element>
 <element name="R1" library="SparkFun-Passives" package="1206" value="100 ohm" x="43.2" y="13.15" rot="R90">
 <attribute name="OC_FARNELL" value="9240888" x="43.2" y="13.15" size="1.778" layer="27" rot="R90" display="off"/>
 <attribute name="MF" value="YAGEO (PHYCOMP)" x="43.2" y="13.15" size="1.778" layer="27" rot="R90" display="off"/>
 <attribute name="MPN" value="RC1206FR-07100RL" x="43.2" y="13.15" size="1.778" layer="27" rot="R90" display="off"/>
 </element>
-<element name="R10" library="SparkFun-Passives" package="1206" value="1K" x="43.83" y="3.9" rot="R270">
+<element name="R10" library="SparkFun-Passives" package="1206" value="1K" x="43.83" y="3.9" smashed="yes" rot="R270">
 <attribute name="OC_FARNELL" value="1653075" x="43.83" y="3.9" size="1.778" layer="27" rot="R270" display="off"/>
 <attribute name="MF" value="VISHAY" x="43.83" y="3.9" size="1.778" layer="27" rot="R270" display="off"/>
 <attribute name="MPN" value="CRCW12061K00FKTA" x="43.83" y="3.9" size="1.778" layer="27" rot="R270" display="off"/>
+<attribute name="NAME" x="42.273" y="2.77" size="0.4064" layer="25" rot="R270"/>
+<attribute name="VALUE" x="42.306" y="4.297" size="0.4064" layer="27" rot="R270"/>
 </element>
-<element name="R11" library="SparkFun-Passives" package="1206" value="1K" x="48.5" y="6.81" rot="R180">
+<element name="R11" library="SparkFun-Passives" package="1206" value="1K" x="48.5" y="6.81" smashed="yes" rot="R180">
 <attribute name="OC_FARNELL" value="1653075" x="48.5" y="6.81" size="1.778" layer="27" rot="R180" display="off"/>
 <attribute name="MF" value="VISHAY" x="48.5" y="6.81" size="1.778" layer="27" rot="R180" display="off"/>
 <attribute name="MPN" value="CRCW12061K00FKTA" x="48.5" y="6.81" size="1.778" layer="27" rot="R180" display="off"/>
+<attribute name="NAME" x="45.77" y="7.567" size="0.4064" layer="25" rot="R180"/>
+<attribute name="VALUE" x="50.497" y="8.334" size="0.4064" layer="27" rot="R180"/>
 </element>
 <element name="R12" library="SparkFun-Passives" package="1206" value="1K" x="48.52" y="9.58">
 <attribute name="OC_FARNELL" value="1653075" x="48.52" y="9.58" size="1.778" layer="27" display="off"/>
 <attribute name="MF" value="VISHAY" x="48.52" y="9.58" size="1.778" layer="27" display="off"/>
 <attribute name="MPN" value="CRCW12061K00FKTA" x="48.52" y="9.58" size="1.778" layer="27" display="off"/>
 </element>
-<element name="R13" library="SparkFun-Passives" package="1206" value="220 Ohm" x="18.18" y="17.36" rot="R90">
+<element name="R13" library="SparkFun-Passives" package="1206" value="220 Ohm" x="18.18" y="17.36" smashed="yes" rot="R90">
 <attribute name="OC_FARNELL" value="1653075" x="18.18" y="17.36" size="1.778" layer="27" rot="R90" display="off"/>
 <attribute name="MF" value="VISHAY" x="18.18" y="17.36" size="1.778" layer="27" rot="R90" display="off"/>
 <attribute name="MPN" value="CRCW12061K00FKTA" x="18.18" y="17.36" size="1.778" layer="27" rot="R90" display="off"/>
+<attribute name="NAME" x="17.037" y="17.19" size="0.4064" layer="25" rot="R90"/>
+<attribute name="VALUE" x="19.804" y="14.763" size="0.4064" layer="27" rot="R90"/>
 </element>
 <element name="R14" library="SparkFun-Passives" package="1206" value="220 Ohm" x="18.35" y="11.81" rot="R90">
 <attribute name="OC_FARNELL" value="1653075" x="18.35" y="11.81" size="1.778" layer="27" rot="R90" display="off"/>
 <attribute name="MF" value="VISHAY" x="18.35" y="11.81" size="1.778" layer="27" rot="R90" display="off"/>
 <attribute name="MPN" value="CRCW12061K00FKTA" x="18.35" y="11.81" size="1.778" layer="27" rot="R90" display="off"/>
 </element>
-<element name="R2" library="SparkFun-Passives" package="1206" value="1K" x="9.17" y="20.87" rot="R180">
+<element name="R2" library="SparkFun-Passives" package="1206" value="1K" x="9.17" y="20.87" smashed="yes" rot="R180">
 <attribute name="OC_FARNELL" value="1653075" x="9.17" y="20.87" size="1.778" layer="27" rot="R180" display="off"/>
 <attribute name="MF" value="VISHAY" x="9.17" y="20.87" size="1.778" layer="27" rot="R180" display="off"/>
 <attribute name="MPN" value="CRCW12061K00FKTA" x="9.17" y="20.87" size="1.778" layer="27" rot="R180" display="off"/>
+<attribute name="NAME" x="11.74" y="22.527" size="0.4064" layer="25" rot="R180"/>
+<attribute name="VALUE" x="10.567" y="22.394" size="0.4064" layer="27" rot="R180"/>
 </element>
-<element name="R3" library="SparkFun-Passives" package="1206" value="10K" x="23.43" y="10.04">
+<element name="R3" library="SparkFun-Passives" package="1206" value="10K" x="23.43" y="10.04" smashed="yes">
 <attribute name="OC_FARNELL" value="1469970" x="23.43" y="10.04" size="1.778" layer="27" display="off"/>
 <attribute name="MF" value="VISHAY" x="23.43" y="10.04" size="1.778" layer="27" display="off"/>
 <attribute name="MPN" value="CRCW120610K0FKEA" x="23.43" y="10.04" size="1.778" layer="27" display="off"/>
+<attribute name="NAME" x="20.817" y="10.16" size="0.4064" layer="25" rot="R90"/>
+<attribute name="VALUE" x="22.033" y="8.516" size="0.4064" layer="27"/>
 </element>
-<element name="R4" library="SparkFun-Passives" package="1206" value="10K" x="41.06" y="42.19" rot="R270">
+<element name="R4" library="SparkFun-Passives" package="1206" value="10K" x="41.06" y="42.19" smashed="yes" rot="R270">
 <attribute name="OC_FARNELL" value="1469970" x="41.06" y="42.19" size="1.778" layer="27" rot="R270" display="off"/>
 <attribute name="MF" value="VISHAY" x="41.06" y="42.19" size="1.778" layer="27" rot="R270" display="off"/>
 <attribute name="MPN" value="CRCW120610K0FKEA" x="41.06" y="42.19" size="1.778" layer="27" rot="R270" display="off"/>
+<attribute name="NAME" x="39.503" y="40.36" size="0.4064" layer="25" rot="R270"/>
+<attribute name="VALUE" x="39.536" y="44.187" size="0.4064" layer="27" rot="R270"/>
 </element>
 <element name="R5" library="SparkFun-Passives" package="1206" value="1K" x="24.13" y="5.08" rot="MR0">
 <attribute name="OC_FARNELL" value="1653075" x="24.13" y="5.08" size="1.778" layer="28" rot="MR0" display="off"/>
 <attribute name="MF" value="VISHAY" x="24.13" y="5.08" size="1.778" layer="28" rot="MR0" display="off"/>
 <attribute name="MPN" value="CRCW12061K00FKTA" x="24.13" y="5.08" size="1.778" layer="28" rot="MR0" display="off"/>
 </element>
-<element name="R6" library="SparkFun-Passives" package="1206" value="1K" x="23.47" y="15.14" rot="R180">
+<element name="R6" library="SparkFun-Passives" package="1206" value="1K" x="23.47" y="15.14" smashed="yes" rot="R180">
 <attribute name="OC_FARNELL" value="1653075" x="23.47" y="15.14" size="1.778" layer="27" rot="R180" display="off"/>
 <attribute name="MF" value="VISHAY" x="23.47" y="15.14" size="1.778" layer="27" rot="R180" display="off"/>
 <attribute name="MPN" value="CRCW12061K00FKTA" x="23.47" y="15.14" size="1.778" layer="27" rot="R180" display="off"/>
+<attribute name="NAME" x="23.54" y="16.697" size="0.4064" layer="25" rot="R180"/>
+<attribute name="VALUE" x="24.867" y="16.664" size="0.4064" layer="27" rot="R180"/>
 </element>
 <element name="R7" library="SparkFun-Passives" package="1206" value="1K" x="36.83" y="5.08" rot="MR0">
 <attribute name="OC_FARNELL" value="1653075" x="36.83" y="5.08" size="1.778" layer="28" rot="MR0" display="off"/>
 <attribute name="MF" value="VISHAY" x="36.83" y="5.08" size="1.778" layer="28" rot="MR0" display="off"/>
 <attribute name="MPN" value="CRCW12061K00FKTA" x="36.83" y="5.08" size="1.778" layer="28" rot="MR0" display="off"/>
 </element>
-<element name="R8" library="SparkFun-Passives" package="1206" value="330" x="23.47" y="12.5">
+<element name="R8" library="SparkFun-Passives" package="1206" value="330" x="23.47" y="12.5" smashed="yes">
 <attribute name="OC_FARNELL" value="1100177" x="23.47" y="12.5" size="1.778" layer="27" display="off"/>
 <attribute name="MF" value="WELWYN" x="23.47" y="12.5" size="1.778" layer="27" display="off"/>
 <attribute name="MPN" value="WCR1206-330RFI" x="23.47" y="12.5" size="1.778" layer="27" display="off"/>
+<attribute name="NAME" x="20.2" y="13.343" size="0.4064" layer="25"/>
+<attribute name="VALUE" x="20.924" y="12.073" size="0.4064" layer="27" rot="R90"/>
 </element>
 <element name="R9" library="SparkFun-Passives" package="1206" value="2K" x="24.97" y="40.77" rot="R90">
 <attribute name="OC_FARNELL" value="1469985" x="24.97" y="40.77" size="1.778" layer="27" rot="R90" display="off"/>
 <attribute name="MF" value="VISHAY" x="24.97" y="40.77" size="1.778" layer="27" rot="R90" display="off"/>
 <attribute name="MPN" value="CRCW12062K00FKEA" x="24.97" y="40.77" size="1.778" layer="27" rot="R90" display="off"/>
 </element>
-<element name="S_MODE" library="switch-tact" package="DTSM-6" value="DTSM-6" x="36.83" y="4.78">
+<element name="S_MODE" library="switch-tact" package="DTSM-6" value="MODE" x="36.83" y="4.78" smashed="yes">
 <attribute name="OC_FARNELL" value="1813691" x="36.83" y="4.78" size="1.778" layer="27" display="off"/>
 <attribute name="MF" value="TE CONNECTIVITY" x="36.83" y="4.78" size="1.778" layer="27" display="off"/>
 <attribute name="MPN" value="FSM1LP" x="36.83" y="4.78" size="1.778" layer="27" display="off"/>
+<attribute name="NAME" x="34.29" y="8.59" size="1.27" layer="25" display="off"/>
+<attribute name="VALUE" x="34.79" y="8.3" size="0.8128" layer="27"/>
 </element>
-<element name="S_TRACK" library="switch-tact" package="DTSM-6" value="DTSM-6" x="24.13" y="5.08">
+<element name="S_TRACK" library="switch-tact" package="DTSM-6" value="TRACK" x="24.13" y="5.08" smashed="yes">
 <attribute name="OC_FARNELL" value="1813691" x="24.13" y="5.08" size="1.778" layer="27" display="off"/>
 <attribute name="MF" value="TE CONNECTIVITY" x="24.13" y="5.08" size="1.778" layer="27" display="off"/>
 <attribute name="MPN" value="FSM1LP" x="24.13" y="5.08" size="1.778" layer="27" display="off"/>
+<attribute name="NAME" x="21.59" y="8.89" size="1.27" layer="25" display="off"/>
+<attribute name="VALUE" x="31.41" y="5.8" size="0.8128" layer="27" rot="R180"/>
 </element>
-<element name="T1" library="transistor" package="TO92" value="2N3565" x="37.82" y="12.72">
+<element name="T1" library="transistor" package="TO92" value="2N3565" x="37.82" y="12.72" smashed="yes">
 <attribute name="OC_FARNELL" value="1126530" x="37.82" y="12.72" size="1.778" layer="27" display="off"/>
 <attribute name="MF" value="ON SEMICONDUCTOR" x="37.82" y="12.72" size="1.778" layer="27" display="off"/>
 <attribute name="MPN" value="2N5089G" x="37.82" y="12.72" size="1.778" layer="27" display="off"/>
+<attribute name="NAME" x="35.595" y="15.555" size="0.6096" layer="25" ratio="10"/>
+<attribute name="VALUE" x="38.095" y="15.75" size="0.4064" layer="27" ratio="10"/>
 </element>
 <element name="U$3" library="footie" package="MS621FE-FL11E" value="MS621FE-FL11E" x="10.46" y="20.52" rot="MR0">
 <attribute name="OC_FARNELL" value="1614634" x="10.46" y="20.52" size="1.778" layer="28" rot="MR0" display="off"/>
@@ -1293,19 +1335,23 @@ design rules under a new name.</description>
 <attribute name="MF" value="SEIKO INSTRUMENTS" x="10.46" y="20.52" size="1.778" layer="28" rot="MR0" display="off"/>
 <attribute name="MPN" value="MS621FE-FL11E" x="10.46" y="20.52" size="1.778" layer="28" rot="MR0" display="off"/>
 </element>
-<element name="U1" library="pretender" package="SOT95P237X112-3N_O" value="IRLML2246TRPBF" x="42.71" y="28.27" rot="R270">
+<element name="U1" library="pretender" package="SOT95P237X112-3N_O" value="IRLML2246TRPBF" x="42.71" y="28.27" smashed="yes" rot="R270">
 <attribute name="OC_FARNELL" value="1888166" x="42.71" y="28.27" size="1.778" layer="27" rot="R270" display="off"/>
 <attribute name="OC_NEWARK" value="40T7450" x="42.71" y="28.27" size="1.778" layer="27" rot="R270" display="off"/>
 <attribute name="SUPPLIER" value="International Rectifier" x="42.71" y="28.27" size="1.778" layer="27" rot="R270" display="off"/>
 <attribute name="PACKAGE" value="SOT-3" x="42.71" y="28.27" size="1.778" layer="27" rot="R270" display="off"/>
 <attribute name="MF" value="INFINEON" x="42.71" y="28.27" size="1.778" layer="27" rot="R270" display="off"/>
 <attribute name="MPN" value="IRLML2246TRPBF" x="42.71" y="28.27" size="1.778" layer="27" rot="R270" display="off"/>
+<attribute name="NAME" x="44.615" y="28.5494" size="0.6096" layer="25" ratio="10" rot="SR270"/>
+<attribute name="VALUE" x="40.17" y="28.5494" size="0.6096" layer="27" ratio="10" rot="SR270" display="off"/>
 </element>
-<element name="U2" library="SparkFun-Connectors" package="MICRO-SD-SOCKET-PP" value="USD-SOCKETNEW" x="15.51" y="35.22" rot="MR270">
+<element name="U2" library="SparkFun-Connectors" package="MICRO-SD-SOCKET-PP" value="USD-SOCKETNEW" x="15.51" y="35.22" smashed="yes" rot="MR270">
 <attribute name="OC_FARNELL" value="1686452" x="15.51" y="35.22" size="1.778" layer="28" rot="MR270" display="off"/>
 <attribute name="PROD_ID" value="CONN-07820" x="15.51" y="35.22" size="1.778" layer="28" rot="MR270" display="off"/>
 <attribute name="MF" value="MULTICOMP" x="15.51" y="35.22" size="1.778" layer="28" rot="MR270" display="off"/>
 <attribute name="MPN" value="460DE08C3" x="15.51" y="35.22" size="1.778" layer="28" rot="MR270" display="off"/>
+<attribute name="NAME" x="16.86" y="45.81" size="0.8128" layer="26" rot="MR270"/>
+<attribute name="VALUE" x="10.43" y="44.11" size="0.8128" layer="28" rot="MR270" display="off"/>
 </element>
 <element name="U3" library="CAM-M8Q" package="CAM-M8Q" value="CAM-M8Q" x="9.29" y="7.82" rot="R180"/>
 <element name="U4" library="SparkFun-PowerIC" package="SOT23-5" value="MCP73831" x="28.51" y="40.26">
@@ -1314,13 +1360,15 @@ design rules under a new name.</description>
 <attribute name="MF" value="MICROCHIP" x="28.51" y="40.26" size="1.778" layer="27" display="off"/>
 <attribute name="MPN" value="MCP73831T-2ACI/OT" x="28.51" y="40.26" size="1.778" layer="27" display="off"/>
 </element>
-<element name="U5" library="SparkFun-PowerIC" package="SOT23-5" value="3.3 regulator" x="39.76" y="32.18" rot="R90">
+<element name="U5" library="SparkFun-PowerIC" package="SOT23-5" value="3.3 regulator" x="39.76" y="32.18" smashed="yes" rot="R90">
 <attribute name="OC_FARNELL" value="1663083" x="39.76" y="32.18" size="1.778" layer="27" rot="R90" display="off"/>
 <attribute name="PROD_ID" value="VREG-00822" x="39.76" y="32.18" size="1.778" layer="27" rot="R90" display="off"/>
 <attribute name="MF" value="MICREL SEMICONDUCTOR" x="39.76" y="32.18" size="1.778" layer="27" rot="R90" display="off"/>
 <attribute name="MPN" value="MIC5205-3.3YM5 TR" x="39.76" y="32.18" size="1.778" layer="27" rot="R90" display="off"/>
+<attribute name="NAME" x="41.609" y="34.201" size="0.4064" layer="25" rot="R180"/>
+<attribute name="VALUE" x="40.0725" y="34.2505" size="0.4064" layer="27" rot="R180"/>
 </element>
-<element name="U6" library="Ava" package="QFP80P900X900X120-32N" value="ATMEGA328P-AU" x="15.37" y="29.06">
+<element name="U6" library="Ava" package="QFP80P900X900X120-32N" value="ATMEGA328P-AU" x="15.37" y="29.06" smashed="yes">
 <attribute name="OC_FARNELL" value="1715486" x="15.37" y="29.06" size="1.778" layer="27" display="off"/>
 <attribute name="OC_NEWARK" value="14R4631" x="15.37" y="29.06" size="1.778" layer="27" display="off"/>
 <attribute name="SUPPLIER" value="Atmel" x="15.37" y="29.06" size="1.778" layer="27" display="off"/>
@@ -1328,6 +1376,8 @@ design rules under a new name.</description>
 <attribute name="DESCRIPTION" value="8-bit Microcontroller with In-System Programmable Flash" x="15.37" y="29.06" size="1.778" layer="27" display="off"/>
 <attribute name="MF" value="ATMEL" x="15.37" y="29.06" size="1.778" layer="27" display="off"/>
 <attribute name="MPN" value="ATMEGA328P-AU" x="15.37" y="29.06" size="1.778" layer="27" display="off"/>
+<attribute name="NAME" x="10.5694" y="21.1606" size="2.0828" layer="25" ratio="10" rot="SR0" display="off"/>
+<attribute name="VALUE" x="7.5156" y="33.025" size="0.4064" layer="27" ratio="6" rot="SR0"/>
 </element>
 </elements>
 <signals>
@@ -1353,10 +1403,10 @@ design rules under a new name.</description>
 <contactref element="D1" pad="A"/>
 <wire x1="4.49" y1="14.02" x2="2.036715625" y2="13.854796875" width="0.3048" layer="1"/>
 <wire x1="2.036715625" y1="13.854796875" x2="1.52" y2="13.82" width="0.3048" layer="1"/>
-<wire x1="1.52" y1="13.82" x2="0.7" y2="13" width="0.3048" layer="1"/>
-<wire x1="0.7" y1="13" x2="0.7" y2="6" width="0.3048" layer="1"/>
-<wire x1="0.7" y1="6" x2="0.9" y2="5.8" width="0.3048" layer="1"/>
-<wire x1="0.9" y1="5.8" x2="4.07" y2="5.8" width="0.3048" layer="1"/>
+<wire x1="1.52" y1="13.82" x2="1.1" y2="13" width="0.3048" layer="1"/>
+<wire x1="1.1" y1="13" x2="1" y2="6" width="0.3048" layer="1"/>
+<wire x1="1" y1="6" x2="1.3" y2="5.8" width="0.3048" layer="1"/>
+<wire x1="1.3" y1="5.8" x2="4.07" y2="5.8" width="0.3048" layer="1"/>
 <wire x1="4.07" y1="5.8" x2="4.49" y2="6.02" width="0.3048" layer="1"/>
 <wire x1="1.8" y1="17.04" x2="1.8" y2="14.0915125" width="0.3048" layer="1"/>
 <wire x1="1.8" y1="14.0915125" x2="2.036715625" y2="13.854796875" width="0.3048" layer="1"/>
@@ -1680,15 +1730,15 @@ design rules under a new name.</description>
 <wire x1="16.5" y1="23.2" x2="16.6" y2="24.8" width="0.254" layer="1"/>
 <wire x1="18" y1="21.9" x2="16.5" y2="23.2" width="0.254" layer="1"/>
 <wire x1="20" y1="22" x2="18" y2="21.9" width="0.254" layer="1"/>
-<wire x1="25.1" y1="16.8" x2="20" y2="22" width="0.254" layer="1"/>
-<wire x1="25.1" y1="16.3" x2="25.1" y2="16.8" width="0.254" layer="16"/>
-<wire x1="34.3" y1="7.1" x2="25.1" y2="16.3" width="0.254" layer="16"/>
+<wire x1="25.2" y1="16.9" x2="20" y2="22" width="0.254" layer="1"/>
+<wire x1="25.2" y1="16.4" x2="25.2" y2="16.9" width="0.254" layer="16"/>
+<wire x1="34.3" y1="7.1" x2="25.2" y2="16.4" width="0.254" layer="16"/>
 <wire x1="38" y1="7.1" x2="34.3" y2="7.1" width="0.254" layer="16"/>
 <wire x1="38.4" y1="7.5" x2="38" y2="7.1" width="0.254" layer="16"/>
 <wire x1="40.6" y1="5.3" x2="38.4" y2="7.5" width="0.254" layer="1"/>
 <wire x1="43.83" y1="5.3" x2="40.6" y2="5.3" width="0.254" layer="1"/>
 <wire x1="16.6" y1="24.8" x2="16.5638" y2="24.8182" width="0.254" layer="1"/>
-<via x="25.1" y="16.8" extent="1-16" drill="0.6"/>
+<via x="25.2" y="16.9" extent="1-16" drill="0.6"/>
 <via x="38.4" y="7.5" extent="1-16" drill="0.6"/>
 </signal>
 <signal name="ARDUINO_TX">
@@ -1697,7 +1747,10 @@ design rules under a new name.</description>
 <contactref element="DEBUG" pad="5"/>
 <wire x1="40.4" y1="45.5" x2="40.6" y2="46.3" width="0.254" layer="1"/>
 <wire x1="35.8" y1="41" x2="38.95" y2="44.05" width="0.254" layer="1"/>
-<wire x1="38.95" y1="44.05" x2="40.5" y2="45.3" width="0.254" layer="1"/>
+<wire x1="38.95" y1="44.05" x2="40.2" y2="45" width="0.254" layer="1"/>
+<wire x1="40.2" y1="45" x2="40.4" y2="45" width="0.254" layer="1"/>
+<wire x1="40.4" y1="45" x2="40.4" y2="45.3" width="0.254" layer="1"/>
+<wire x1="40.4" y1="45.3" x2="40.5" y2="45.3" width="0.254" layer="1"/>
 <wire x1="40.5" y1="45.3" x2="40.5" y2="45.5" width="0.254" layer="1"/>
 <wire x1="40.5" y1="45.5" x2="40.4" y2="45.5" width="0.254" layer="1"/>
 <wire x1="35.8" y1="36.1" x2="35.8" y2="41" width="0.254" layer="1"/>
@@ -1717,13 +1770,13 @@ design rules under a new name.</description>
 <wire x1="13.4" y1="33.3" x2="13.3634" y2="33.3018" width="0.254" layer="1"/>
 <via x="23.8" y="21.9" extent="1-16" drill="0.6"/>
 <via x="13.9" y="31.8" extent="1-16" drill="0.6"/>
-<wire x1="39.1" y1="44.5" x2="39.1" y2="44.4" width="0.254" layer="1"/>
-<wire x1="41" y1="44.5" x2="39.1" y2="44.5" width="0.254" layer="16"/>
+<wire x1="38.6" y1="44.5" x2="39.1" y2="44.4" width="0.254" layer="1"/>
+<wire x1="41" y1="44.5" x2="38.6" y2="44.5" width="0.254" layer="16"/>
 <wire x1="47.5" y1="38" x2="41" y2="44.5" width="0.254" layer="16"/>
 <wire x1="48.8" y1="38" x2="47.5" y2="38" width="0.254" layer="16"/>
 <wire x1="39.1" y1="44.4" x2="38.95" y2="44.05" width="0.254" layer="1"/>
 <wire x1="48.8" y1="38" x2="48.86" y2="37.95" width="0.254" layer="16"/>
-<via x="39.1" y="44.5" extent="1-16" drill="0.6"/>
+<via x="38.6" y="44.5" extent="1-16" drill="0.6"/>
 </signal>
 <signal name="ARDUINO_RX">
 <contactref element="BLUETOOTH" pad="1"/>
@@ -1924,12 +1977,19 @@ design rules under a new name.</description>
 <wire x1="48.8" y1="21.5" x2="48.86" y2="21.45" width="0.254" layer="16"/>
 <via x="44.3" y="18" extent="1-16" drill="0.6"/>
 <via x="47.1" y="21.4" extent="1-16" drill="0.6"/>
+<contactref element="BLUETOOTH" pad="21"/>
+<contactref element="BLUETOOTH" pad="22"/>
+<wire x1="35.86" y1="21.45" x2="35.86" y2="18.04" width="0.4064" layer="16"/>
+<wire x1="35.86" y1="18.04" x2="36.6" y2="17.3" width="0.4064" layer="16"/>
+<wire x1="36.6" y1="17.3" x2="37.1" y2="17.3" width="0.4064" layer="16"/>
+<wire x1="37.1" y1="17.3" x2="43.6" y2="17.3" width="0.4064" layer="16"/>
+<wire x1="43.6" y1="17.3" x2="44.3" y2="18" width="0.4064" layer="16"/>
+<wire x1="37.11" y1="19.7" x2="37.11" y2="17.31" width="0.4064" layer="16"/>
+<wire x1="37.11" y1="17.31" x2="37.1" y2="17.3" width="0.4064" layer="16"/>
 </signal>
 <signal name="GND" class="1">
 <contactref element="JP2" pad="6"/>
 <contactref element="U2" pad="6"/>
-<contactref element="BLUETOOTH" pad="21"/>
-<contactref element="BLUETOOTH" pad="22"/>
 <contactref element="MICRO_USB" pad="GND1"/>
 <contactref element="U4" pad="2"/>
 <contactref element="U5" pad="2"/>
@@ -1973,17 +2033,17 @@ design rules under a new name.</description>
 <contactref element="U3" pad="5"/>
 <contactref element="U$3" pad="GND"/>
 <contactref element="C7" pad="2"/>
-<via x="0.7" y="1.8" extent="1-16" drill="0.6"/>
-<via x="1.9" y="1.8" extent="1-16" drill="0.6"/>
-<via x="1.9" y="3" extent="1-16" drill="0.6"/>
-<via x="0.7" y="3" extent="1-16" drill="0.6"/>
-<via x="0.7" y="4.2" extent="1-16" drill="0.6"/>
-<via x="1.9" y="4.2" extent="1-16" drill="0.6"/>
+<via x="0.9" y="1.8" extent="1-16" drill="0.6"/>
+<via x="2" y="1.8" extent="1-16" drill="0.6"/>
+<via x="2" y="3" extent="1-16" drill="0.6"/>
+<via x="0.9" y="3" extent="1-16" drill="0.6"/>
+<via x="0.9" y="4.2" extent="1-16" drill="0.6"/>
+<via x="2" y="4.2" extent="1-16" drill="0.6"/>
 <wire x1="4.49" y1="3.02" x2="4.49" y2="1.87" width="0.3048" layer="1"/>
 <wire x1="4.49" y1="5.02" x2="4.49" y2="4.02" width="0.3048" layer="1"/>
 <wire x1="4.49" y1="4.02" x2="4.49" y2="3.02" width="0.3048" layer="1"/>
-<wire x1="4.49" y1="3.02" x2="1.92" y2="3.02" width="0.3048" layer="1"/>
-<wire x1="1.92" y1="3.02" x2="1.9" y2="3" width="0.3048" layer="1"/>
+<wire x1="4.49" y1="3.02" x2="1.92" y2="2.92" width="0.3048" layer="1"/>
+<wire x1="1.92" y1="2.92" x2="2" y2="3" width="0.3048" layer="1"/>
 <wire x1="14.09" y1="1.87" x2="14.09" y2="3.02" width="0.3048" layer="1"/>
 <wire x1="14.09" y1="6.02" x2="14.09" y2="7.02" width="0.3048" layer="1"/>
 <wire x1="14.09" y1="9.02" x2="14.09" y2="10.02" width="0.3048" layer="1"/>
@@ -2073,10 +2133,9 @@ design rules under a new name.</description>
 <wire x1="22.3" y1="7.5" x2="22.3" y2="7.4" width="0.254" layer="16"/>
 <via x="22" y="7.8" extent="1-16" drill="0.6"/>
 <polygon width="0.254" layer="1">
-<vertex x="-0.2" y="50.2"/>
-<vertex x="0" y="-0.1"/>
-<vertex x="6.2" y="-0.1"/>
-<vertex x="6.3" y="0"/>
+<vertex x="-1" y="50.5"/>
+<vertex x="-0.8" y="0.2"/>
+<vertex x="6.3" y="0.2"/>
 <vertex x="6.3" y="5.6"/>
 <vertex x="6.1" y="5.8"/>
 <vertex x="12.3" y="5.8"/>
@@ -2085,8 +2144,8 @@ design rules under a new name.</description>
 <vertex x="51.8" y="50.3"/>
 </polygon>
 <polygon width="0.254" layer="16">
-<vertex x="-0.2" y="50.2"/>
-<vertex x="0" y="0"/>
+<vertex x="-1" y="50.1"/>
+<vertex x="-0.8" y="-0.1"/>
 <vertex x="6.1" y="0"/>
 <vertex x="6.1" y="5.7"/>
 <vertex x="12.4" y="5.7"/>
@@ -2350,10 +2409,10 @@ design rules under a new name.</description>
 <contactref element="U$3" pad="3V"/>
 <contactref element="U3" pad="8"/>
 <wire x1="4.49" y1="7.02" x2="1.78" y2="7.02" width="0.3048" layer="1"/>
-<wire x1="1.78" y1="7.02" x2="1.6" y2="7.2" width="0.3048" layer="1"/>
-<via x="1.6" y="7.2" extent="1-16" drill="0.6"/>
-<wire x1="1.6" y1="7.2" x2="1.6" y2="12.6" width="0.3048" layer="16"/>
-<wire x1="1.6" y1="12.6" x2="4.1" y2="14.8" width="0.3048" layer="16"/>
+<wire x1="1.78" y1="7.02" x2="1.9" y2="7.3" width="0.3048" layer="1"/>
+<via x="1.9" y="7.3" extent="1-16" drill="0.6"/>
+<wire x1="1.9" y1="7.3" x2="1.9" y2="12.6" width="0.3048" layer="16"/>
+<wire x1="1.9" y1="12.6" x2="4.1" y2="14.8" width="0.3048" layer="16"/>
 <wire x1="9" y1="20.56" x2="9.26" y2="20.82" width="0.3048" layer="16"/>
 <wire x1="4.1" y1="14.8" x2="4.1" y2="19.4" width="0.254" layer="16"/>
 <wire x1="4.1" y1="19.4" x2="5.3" y2="20.6" width="0.254" layer="16"/>

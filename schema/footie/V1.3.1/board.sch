@@ -1282,8 +1282,8 @@ Manufacturer: Hirose&lt;br&gt;&lt;br&gt;
 <wire x1="4.2" y1="-2.1" x2="4.2" y2="-1.7" width="0.2032" layer="21"/>
 <wire x1="-2" y1="-2.1" x2="-4.1" y2="-2.1" width="0.2032" layer="21"/>
 <wire x1="-4.1" y1="-2.1" x2="-4.1" y2="-1.8" width="0.2032" layer="21"/>
-<smd name="P$1" x="-3.4" y="0.27" dx="3" dy="1.6" layer="1" rot="R90"/>
-<smd name="P$2" x="3.4" y="0.27" dx="3" dy="1.6" layer="1" rot="R90"/>
+<smd name="P$1" x="-3.4" y="0.651" dx="4.016" dy="1.6" layer="1" rot="R90"/>
+<smd name="P$2" x="3.4" y="0.651" dx="4.016" dy="1.6" layer="1" rot="R90"/>
 <smd name="VCC" x="-1" y="-2" dx="1" dy="5.5" layer="1"/>
 <smd name="GND" x="1" y="-2" dx="1" dy="5.5" layer="1"/>
 <text x="2.54" y="-5.08" size="1.27" layer="25">&gt;Name</text>
@@ -1738,8 +1738,8 @@ will be further integrated into the Sparkfun Library for other footprints.  It c
 <smd name="4" x="0.46" y="1.27" dx="0.6" dy="1.55" layer="1"/>
 <smd name="5" x="1.46" y="1.27" dx="0.6" dy="1.55" layer="1"/>
 <smd name="6" x="2.46" y="1.27" dx="0.6" dy="1.55" layer="1"/>
-<smd name="P$1" x="-3.84" y="-0.955" dx="1.2" dy="1.8" layer="1"/>
-<smd name="P$2" x="3.76" y="-0.955" dx="1.2" dy="1.8" layer="1"/>
+<smd name="P$1" x="-3.84" y="-0.955" dx="1.2" dy="2.308" layer="1"/>
+<smd name="P$2" x="3.76" y="-0.955" dx="1.2" dy="2.308" layer="1"/>
 <text x="-1.27" y="2.54" size="0.4064" layer="25">&gt;Name</text>
 <text x="-1.27" y="-2.54" size="0.4064" layer="27">&gt;VALUE</text>
 </package>
@@ -4810,12 +4810,12 @@ Based on the following sources:
 </class>
 </classes>
 <parts>
-<part name="S_MODE" library="switch-tact" deviceset="DTSM-6" device="">
+<part name="S_MODE" library="switch-tact" deviceset="DTSM-6" device="" value="MODE">
 <attribute name="MF" value="TE CONNECTIVITY"/>
 <attribute name="MPN" value="FSM1LP"/>
 <attribute name="OC_FARNELL" value="1813691"/>
 </part>
-<part name="S_TRACK" library="switch-tact" deviceset="DTSM-6" device="">
+<part name="S_TRACK" library="switch-tact" deviceset="DTSM-6" device="" value="TRACK">
 <attribute name="MF" value="TE CONNECTIVITY"/>
 <attribute name="MPN" value="FSM1LP"/>
 <attribute name="OC_FARNELL" value="1813691"/>
@@ -4839,8 +4839,6 @@ Based on the following sources:
 <attribute name="OC_FARNELL" value="unknown"/>
 </part>
 <part name="+3V7" library="supply1" deviceset="+3V3" device=""/>
-<part name="GND16" library="supply1" deviceset="GND" device=""/>
-<part name="GND17" library="supply1" deviceset="GND" device=""/>
 <part name="U4" library="SparkFun-PowerIC" deviceset="MCP73831" device="">
 <attribute name="MF" value="MICROCHIP"/>
 <attribute name="MPN" value="MCP73831T-2ACI/OT"/>
@@ -5126,8 +5124,6 @@ Based on the following sources:
 <attribute name="MPN" x="281.94" y="50.8" size="1.778" layer="96" display="off"/>
 </instance>
 <instance part="+3V7" gate="G$1" x="264.16" y="20.32" rot="R90"/>
-<instance part="GND16" gate="1" x="309.88" y="7.62" rot="MR0"/>
-<instance part="GND17" gate="1" x="327.66" y="17.78" rot="MR270"/>
 <instance part="U4" gate="G$1" x="294.64" y="154.94">
 <attribute name="OC_FARNELL" x="294.64" y="154.94" size="1.778" layer="96" display="off"/>
 <attribute name="MF" x="294.64" y="154.94" size="1.778" layer="96" display="off"/>
@@ -5794,11 +5790,23 @@ Based on the following sources:
 <pinref part="T1" gate="G$1" pin="C"/>
 <wire x1="279.4" y1="17.78" x2="276.86" y2="17.78" width="0.1524" layer="91"/>
 <wire x1="276.86" y1="17.78" x2="274.32" y2="17.78" width="0.1524" layer="91"/>
-<wire x1="274.32" y1="17.78" x2="274.32" y2="10.16" width="0.1524" layer="91"/>
+<wire x1="274.32" y1="17.78" x2="274.32" y2="12.7" width="0.1524" layer="91"/>
 <junction x="274.32" y="10.16"/>
 <junction x="279.4" y="17.78"/>
 <pinref part="BLUETOOTH" gate="G$1" pin="GND"/>
 <junction x="276.86" y="17.78"/>
+<pinref part="BLUETOOTH" gate="G$1" pin="GND1"/>
+<wire x1="274.32" y1="12.7" x2="274.32" y2="10.16" width="0.1524" layer="91"/>
+<wire x1="309.88" y1="10.16" x2="309.88" y2="5.08" width="0.1524" layer="91"/>
+<wire x1="309.88" y1="5.08" x2="279.4" y2="5.08" width="0.1524" layer="91"/>
+<wire x1="279.4" y1="5.08" x2="279.4" y2="12.7" width="0.1524" layer="91"/>
+<wire x1="279.4" y1="12.7" x2="274.32" y2="12.7" width="0.1524" layer="91"/>
+<junction x="274.32" y="12.7"/>
+<pinref part="BLUETOOTH" gate="G$1" pin="GND2"/>
+<wire x1="325.12" y1="17.78" x2="330.2" y2="17.78" width="0.1524" layer="91"/>
+<wire x1="330.2" y1="17.78" x2="330.2" y2="5.08" width="0.1524" layer="91"/>
+<wire x1="330.2" y1="5.08" x2="309.88" y2="5.08" width="0.1524" layer="91"/>
+<junction x="309.88" y="5.08"/>
 </segment>
 </net>
 <net name="GND" class="1">
@@ -5815,14 +5823,6 @@ Based on the following sources:
 <wire x1="198.12" y1="91.44" x2="198.12" y2="96.52" width="0.1524" layer="91"/>
 <wire x1="198.12" y1="96.52" x2="193.04" y2="96.52" width="0.1524" layer="91"/>
 <wire x1="193.04" y1="96.52" x2="190.5" y2="121.92" width="0.1524" layer="91"/>
-</segment>
-<segment>
-<pinref part="BLUETOOTH" gate="G$1" pin="GND1"/>
-<pinref part="GND16" gate="1" pin="GND"/>
-</segment>
-<segment>
-<pinref part="BLUETOOTH" gate="G$1" pin="GND2"/>
-<pinref part="GND17" gate="1" pin="GND"/>
 </segment>
 <segment>
 <pinref part="MICRO_USB" gate="G$1" pin="GND"/>
