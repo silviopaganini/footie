@@ -5019,7 +5019,6 @@ Based on the following sources:
 <attribute name="OC_FARNELL" value="1469970"/>
 </part>
 <part name="+3V13" library="supply1" deviceset="+3V3" device=""/>
-<part name="GND8" library="supply1" deviceset="GND" device=""/>
 <part name="U1" library="pretender" deviceset="IRLML2246TRPBF" device="">
 <attribute name="MF" value="INFINEON"/>
 </part>
@@ -5055,7 +5054,11 @@ Based on the following sources:
 <attribute name="MPN" value="CRCW12061K00FKTA"/>
 <attribute name="OC_FARNELL" value="1653075"/>
 </part>
-<part name="U3" library="CAM-M8Q" deviceset="CAM-M8Q" device=""/>
+<part name="U3" library="CAM-M8Q" deviceset="CAM-M8Q" device="">
+<attribute name="MF" value=""/>
+<attribute name="MPN" value=""/>
+<attribute name="OC_FARNELL" value="unknown"/>
+</part>
 <part name="GND9" library="supply1" deviceset="GND" device=""/>
 <part name="GND15" library="supply1" deviceset="GND" device=""/>
 <part name="R13" library="SparkFun-Passives" deviceset="RESISTOR" device="1206" value="220 Ohm">
@@ -5074,9 +5077,10 @@ Based on the following sources:
 <part name="GND37" library="supply1" deviceset="GND" device=""/>
 <part name="C7" library="SparkFun-Capacitors" deviceset="CAP" device="1206" value="4.7 uF">
 <attribute name="MF" value="WALSIN"/>
-<attribute name="MPN" value="1206B106K160CT"/>
-<attribute name="OC_FARNELL" value="2497081"/>
+<attribute name="MPN" value="1206B475K500CT"/>
+<attribute name="OC_FARNELL" value="2497114"/>
 </part>
+<part name="+3V1" library="supply1" deviceset="+3V3" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -5301,7 +5305,6 @@ Based on the following sources:
 <attribute name="MPN" x="144.78" y="134.62" size="1.778" layer="96" display="off"/>
 </instance>
 <instance part="+3V13" gate="G$1" x="157.48" y="134.62" rot="R270"/>
-<instance part="GND8" gate="1" x="7.62" y="170.18" rot="R180"/>
 <instance part="U1" gate="A" x="251.46" y="91.44" rot="R90">
 <attribute name="MF" x="251.46" y="91.44" size="1.778" layer="96" display="off"/>
 </instance>
@@ -5337,7 +5340,11 @@ Based on the following sources:
 <attribute name="MF" x="-2.54" y="147.32" size="1.778" layer="96" display="off"/>
 <attribute name="MPN" x="-2.54" y="147.32" size="1.778" layer="96" display="off"/>
 </instance>
-<instance part="U3" gate="G$1" x="63.5" y="88.9"/>
+<instance part="U3" gate="G$1" x="63.5" y="88.9">
+<attribute name="OC_FARNELL" x="63.5" y="88.9" size="1.778" layer="96" display="off"/>
+<attribute name="MF" x="63.5" y="88.9" size="1.778" layer="96" display="off"/>
+<attribute name="MPN" x="63.5" y="88.9" size="1.778" layer="96" display="off"/>
+</instance>
 <instance part="GND9" gate="1" x="48.26" y="60.96" rot="R270"/>
 <instance part="GND15" gate="1" x="76.2" y="60.96" rot="R90"/>
 <instance part="R13" gate="G$1" x="35.56" y="78.74" rot="R180">
@@ -5359,6 +5366,7 @@ Based on the following sources:
 <attribute name="MF" x="142.24" y="93.98" size="1.778" layer="96" display="off"/>
 <attribute name="MPN" x="142.24" y="93.98" size="1.778" layer="96" display="off"/>
 </instance>
+<instance part="+3V1" gate="G$1" x="7.62" y="172.72"/>
 </instances>
 <busses>
 </busses>
@@ -5459,6 +5467,11 @@ Based on the following sources:
 <junction x="119.38" y="96.52"/>
 <pinref part="D1" gate="D" pin="A"/>
 <junction x="114.3" y="96.52"/>
+</segment>
+<segment>
+<pinref part="LED_STATUS" gate="A" pin="ANODE"/>
+<pinref part="+3V1" gate="G$1" pin="+3V3"/>
+<wire x1="7.62" y1="167.64" x2="7.62" y2="170.18" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="GPSRX" class="0">
@@ -5959,11 +5972,6 @@ Based on the following sources:
 <wire x1="248.92" y1="96.52" x2="259.08" y2="96.52" width="0.1524" layer="91"/>
 <junction x="259.08" y="104.14"/>
 <wire x1="259.08" y1="96.52" x2="259.08" y2="104.14" width="0.1524" layer="91"/>
-</segment>
-<segment>
-<pinref part="GND8" gate="1" pin="GND"/>
-<pinref part="LED_STATUS" gate="A" pin="ANODE"/>
-<junction x="7.62" y="167.64"/>
 </segment>
 <segment>
 <pinref part="U3" gate="G$1" pin="GND@9"/>

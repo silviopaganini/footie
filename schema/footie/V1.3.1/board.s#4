@@ -5795,8 +5795,6 @@ Based on the following sources:
 <junction x="279.4" y="17.78"/>
 <pinref part="BLUETOOTH" gate="G$1" pin="GND"/>
 <junction x="276.86" y="17.78"/>
-<wire x1="279.4" y1="7.62" x2="279.4" y2="10.16" width="0.1524" layer="91"/>
-<wire x1="279.4" y1="10.16" x2="274.32" y2="10.16" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="GND" class="1">

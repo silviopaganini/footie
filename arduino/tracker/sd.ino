@@ -24,7 +24,7 @@ void createNewFile() {
         //Write the new number into last.txt
         writeLastNumber(num);
         #ifdef DEBUG
-        Serial.print("Numberation file increased: ");
+        gpsSerial.print("Numberation file increased: ");
         #endif
         //Define the new filename
         FILENAME = "data";
@@ -32,11 +32,11 @@ void createNewFile() {
         FILENAME.concat(".txt");
         writeJSONTag(1);
         #ifdef DEBUG
-        Serial.println(FILENAME);
+        gpsSerial.println(FILENAME);
         #endif
     }  else {
       #ifdef DEBUG
-      Serial.println("No numberation file");
+      gpsSerial.println("No numberation file");
       #endif
       FILENAME = "data1.txt";
       writeJSONTag(1);
@@ -67,12 +67,12 @@ void writeLastNumber(int number) { //O_WRITE | O_CREAT | O_TRUNC
     File fileNumber = SD.open("last.txt", O_WRITE | O_CREAT | O_TRUNC); //Trunc will set the length to 0, equal to erase the file
     if (fileNumber) {
        #ifdef DEBUG
-       Serial.println("writing number");
+       gpsSerial.println("writing number");
        #endif
        fileNumber.print(number);
     } 
     #ifdef DEBUG
-    else Serial.println("fail to write number");
+    else gpsSerial.println("fail to write number");
     #endif
     fileNumber.close();
 }

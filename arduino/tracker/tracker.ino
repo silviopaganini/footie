@@ -1,5 +1,6 @@
+
+
 #include <SoftwareSerial.h>
-#include <TinyGPS++.h>
 
 #define SDWRITE
 //#define DEBUG
@@ -12,9 +13,8 @@
 const int chipSelect = 4;
 String FILENAME = "data1.txt"; //Default filename
 
-TinyGPSPlus gps;
 boolean gps_ready = false;
-SoftwareSerial gpsSerial(8, 7); // RX, TX
+SoftwareSerial gpsSerial(7,8); // RX, TX
 
 boolean GPS_ENABLE = true;
 boolean BT_ENABLE = false;
@@ -31,6 +31,28 @@ unsigned long lastWrite = 0;
 boolean isFirstWrite = true;
 
 
+struct GNRMC
+{
+   float lastFix;
+   bool status;
+   char lat[20];
+   char latD;
+   char lng[20];
+   char lngD;
+   unsigned long date;
+   
+
+};
+
+struct GNGSA
+{
+   uint8_t statusFix;
+   uint8_t numSat;   
+};
+
+GNRMC msg_GNRMC;
+GNGSA msg_GNGSA;
+
 void setup() {
   
   Serial.begin(9600);
@@ -40,7 +62,7 @@ void setup() {
   pinMode(pinLEDRed,OUTPUT);
   pinMode(pinLEDBlue,OUTPUT);
   pinMode(pinLEDGreen,OUTPUT);
-  digitalWrite(pinBT,LOW);
+  digitalWrite(pinBT,HIGH);
   
   attachInterrupt(0, buttonPower, RISING);
   attachInterrupt(1, buttonMode, RISING);
@@ -54,12 +76,16 @@ void setup() {
   pinMode(chipSelect, OUTPUT);  
   if (!SD.begin(chipSelect)) {
     ledColor(25,0,0); //Solid led means something wrong
-    Serial.println("Card failed, or not present");
+    #ifdef DEBUG
+    gpsSerial.println("Card failed, or not present");
+    #endif
     // don't do anything more:
     while(true);
 
   }
-  Serial.println("card initialized.");
+  #ifdef DEBUG
+  gpsSerial.println("card initialized.");
+  #endif
   createNewFile();
   
   #endif
@@ -74,7 +100,7 @@ void setup() {
   ledColor(0,0,0);
   delay(1000);
   
-  setNavigation();
+//  setNavigation();
   
 }
   
@@ -85,16 +111,18 @@ void loop() {
   
 #ifdef DEBUG 
    //if (gps_ready) {
-   /*  Serial.print(F("Location: ")); 
+   /* gpsSerial.print(F("Location: ")); 
      if (gps.location.isValid()) {
-         Serial.print(gps.location.lat(), 6);
-         Serial.print(F(","));
-         Serial.print(gps.location.lng(), 6);
+         gpsSerial.print(gps.location.lat(), 6);
+         gpsSerial.print(F(","));
+         gpsSerial.print(gps.location.lng(), 6);
      } else 
-         Serial.print(F("INVALID"));
-     Serial.println();*/
+         gpsSerial.print(F("INVALID"));
+     gpsSerial.println();*/
    //}
 #endif
+
+
 #ifdef SDWRITE   
  char tmpFile[FILENAME.length()+1];
  FILENAME.toCharArray(tmpFile, sizeof(tmpFile));
@@ -103,32 +131,25 @@ void loop() {
  if (dataFile) {
     if (GPS_ENABLE) {
    
-    if (gps.location.isValid() && gps.location.isUpdated()) {
+    if (gps_ready) {
      // if ((millis()-lastWrite) > MAX_DELAY) {
-               #ifdef DEBUG
-                Serial.println("Location wrote into the file");
-                #endif
+              // #ifdef DEBUG
+                gpsSerial.println("Location wrote into the file");
+              //  #endif
               //Write coma to separate records
               if (!isFirstWrite) dataFile.print(",");
               else isFirstWrite = false;
               //Write data
 	      dataFile.print("{\"lat\":\"");
-	      dataFile.print(gps.location.lat(),6);
+	      dataFile.print(msg_GNRMC.lat);
 	      dataFile.print("\", \"lng\":\"");
-	      dataFile.print(gps.location.lng(),6);
+	      dataFile.print(msg_GNRMC.lng);
 	      dataFile.print("\", \"sat\":\"");
-	      dataFile.print(gps.satellites.value(),6);
-	      dataFile.print("\", \"age\":\"");
-	      dataFile.print(gps.location.age(),6);
+	      dataFile.print(msg_GNGSA.numSat,6);
 	      
 	      dataFile.print("\",\"time\": ");
-	      if (gps.date.isValid() && gps.time.isValid()) {
-		    unsigned long timestamp = makeTime(gps.time.hour(),gps.time.minute(),gps.time.second(),gps.date.day(),gps.date.month(),gps.date.year());
-                    dataFile.print(timestamp);
-              }
-	      else
-		 dataFile.print("-1"); 
-
+	 
+              dataFile.print(msg_GNRMC.date);
               dataFile.println("}");
               
 	      lastWrite = millis();
@@ -148,7 +169,7 @@ void loop() {
  else
      if (GPS_ENABLE) {
          readGPS();
-         if (gps.location.isValid() && gps.location.isUpdated())
+         if (gps_ready) //CHANGE THIS //  if (gps.location.isValid() && gps.location.isUpdated())
            ledColor(0,25,0);
          else
            ledColor(25,0,50);
@@ -161,12 +182,14 @@ void loop() {
 // Enable or disable the gps tracking
 void buttonPower() {
   if ((millis()-lastPressedGPS) < 1000) return;
-  Serial.println("button mode");
+  #ifdef DEBUG
+  gpsSerial.println("button mode");
+  #endif
   GPS_ENABLE = !GPS_ENABLE;
-  Serial.print("Mode gps is: "); Serial.println(GPS_ENABLE);
+  gpsSerial.print("Mode gps is: "); gpsSerial.println(GPS_ENABLE);
   lastPressedGPS = millis();
     #ifdef DEBUG
-   Serial.println("button power pressed");
+   gpsSerial.println("button power pressed");
    #endif
 }
 
@@ -185,13 +208,14 @@ void buttonMode() {
   }
   lastPressedMode = millis();
   #ifdef DEBUG
-   Serial.println("button mode pressed");
+   gpsSerial.println("button mode pressed");
    #endif
 }
 
 
 void ledColor(int red,int green,int blue) {
-  analogWrite(pinLEDRed,red);
-  analogWrite(pinLEDGreen,green);
-  analogWrite(pinLEDBlue,blue);
+  
+  analogWrite(pinLEDRed,255);
+  analogWrite(pinLEDGreen,255);
+  analogWrite(pinLEDBlue,255);
 }

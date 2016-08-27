@@ -5055,7 +5055,11 @@ Based on the following sources:
 <attribute name="MPN" value="CRCW12061K00FKTA"/>
 <attribute name="OC_FARNELL" value="1653075"/>
 </part>
-<part name="U3" library="CAM-M8Q" deviceset="CAM-M8Q" device=""/>
+<part name="U3" library="CAM-M8Q" deviceset="CAM-M8Q" device="">
+<attribute name="MF" value=""/>
+<attribute name="MPN" value=""/>
+<attribute name="OC_FARNELL" value="unknown"/>
+</part>
 <part name="GND9" library="supply1" deviceset="GND" device=""/>
 <part name="GND15" library="supply1" deviceset="GND" device=""/>
 <part name="R13" library="SparkFun-Passives" deviceset="RESISTOR" device="1206" value="220 Ohm">
@@ -5074,8 +5078,8 @@ Based on the following sources:
 <part name="GND37" library="supply1" deviceset="GND" device=""/>
 <part name="C7" library="SparkFun-Capacitors" deviceset="CAP" device="1206" value="4.7 uF">
 <attribute name="MF" value="WALSIN"/>
-<attribute name="MPN" value="1206B106K160CT"/>
-<attribute name="OC_FARNELL" value="2497081"/>
+<attribute name="MPN" value="1206B475K500CT"/>
+<attribute name="OC_FARNELL" value="2497114"/>
 </part>
 </parts>
 <sheets>
@@ -5337,7 +5341,11 @@ Based on the following sources:
 <attribute name="MF" x="-2.54" y="147.32" size="1.778" layer="96" display="off"/>
 <attribute name="MPN" x="-2.54" y="147.32" size="1.778" layer="96" display="off"/>
 </instance>
-<instance part="U3" gate="G$1" x="63.5" y="88.9"/>
+<instance part="U3" gate="G$1" x="63.5" y="88.9">
+<attribute name="OC_FARNELL" x="63.5" y="88.9" size="1.778" layer="96" display="off"/>
+<attribute name="MF" x="63.5" y="88.9" size="1.778" layer="96" display="off"/>
+<attribute name="MPN" x="63.5" y="88.9" size="1.778" layer="96" display="off"/>
+</instance>
 <instance part="GND9" gate="1" x="48.26" y="60.96" rot="R270"/>
 <instance part="GND15" gate="1" x="76.2" y="60.96" rot="R90"/>
 <instance part="R13" gate="G$1" x="35.56" y="78.74" rot="R180">
@@ -5790,11 +5798,23 @@ Based on the following sources:
 <pinref part="T1" gate="G$1" pin="C"/>
 <wire x1="279.4" y1="17.78" x2="276.86" y2="17.78" width="0.1524" layer="91"/>
 <wire x1="276.86" y1="17.78" x2="274.32" y2="17.78" width="0.1524" layer="91"/>
-<wire x1="274.32" y1="17.78" x2="274.32" y2="10.16" width="0.1524" layer="91"/>
+<wire x1="274.32" y1="17.78" x2="274.32" y2="12.7" width="0.1524" layer="91"/>
 <junction x="274.32" y="10.16"/>
 <junction x="279.4" y="17.78"/>
 <pinref part="BLUETOOTH" gate="G$1" pin="GND"/>
 <junction x="276.86" y="17.78"/>
+<pinref part="BLUETOOTH" gate="G$1" pin="GND1"/>
+<wire x1="274.32" y1="12.7" x2="274.32" y2="10.16" width="0.1524" layer="91"/>
+<wire x1="309.88" y1="10.16" x2="309.88" y2="5.08" width="0.1524" layer="91"/>
+<wire x1="309.88" y1="5.08" x2="279.4" y2="5.08" width="0.1524" layer="91"/>
+<wire x1="279.4" y1="5.08" x2="279.4" y2="12.7" width="0.1524" layer="91"/>
+<wire x1="279.4" y1="12.7" x2="274.32" y2="12.7" width="0.1524" layer="91"/>
+<junction x="274.32" y="12.7"/>
+<pinref part="BLUETOOTH" gate="G$1" pin="GND2"/>
+<wire x1="325.12" y1="17.78" x2="330.2" y2="17.78" width="0.1524" layer="91"/>
+<wire x1="330.2" y1="17.78" x2="330.2" y2="5.08" width="0.1524" layer="91"/>
+<wire x1="330.2" y1="5.08" x2="309.88" y2="5.08" width="0.1524" layer="91"/>
+<junction x="309.88" y="5.08"/>
 </segment>
 </net>
 <net name="GND" class="1">
