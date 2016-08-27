@@ -9,7 +9,6 @@ void setup() {
 
   pinMode(pinBT,OUTPUT);
     digitalWrite(pinBT,HIGH);
-  Serial.begin(9600);
    gps.begin(9600);  
   
 
