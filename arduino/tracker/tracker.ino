@@ -22,8 +22,8 @@ boolean BT_ENABLE = false;
 
 int pinBT = 5;
 int pinLEDRed = 6;
-int pinLEDBlue = 9;
-int pinLEDGreen = 10;
+int pinLEDBlue = 10;
+int pinLEDGreen = 9;
 
 unsigned long lastPressedMode = 0;
 unsigned long lastPressedGPS = 0;
@@ -37,9 +37,9 @@ struct GNRMC
 {
   long lastFix;
   bool status;
-  char lat[8];
+  char latitude[10];
   char latD;
-  char lng[8];
+  char longitude[10];
   char lngD;
   long date;
   bool written;
@@ -91,6 +91,13 @@ void setup() {
   //  setNavigation();
   initStruct();
   updateLed();
+  
+  
+  delay(3000);
+  gpsSerial.println("hello");
+ // sendToGPS();
+    gpsSerial.println("done");
+
 }
 
 void loop() {
@@ -106,10 +113,6 @@ void loop() {
   else {
     if (GPS_ENABLE) {
       readGPS();
-      if (GPS_READY) //CHANGE THIS //  if (gps.location.isValid() && gps.location.isUpdated())
-        ledColor(0,25,0);
-      else
-        ledColor(25,0,50);
     }
   }
   
@@ -119,6 +122,15 @@ void loop() {
   #endif
 
 }
+
+//Init the struct
+void initStruct() {
+  msg_GNRMC.status = false;
+  msg_GNRMC.written = false;
+  msg_GNGSA.statusFix = 1;
+  msg_GNGSA.numSat = 0;
+}
+
 
 
 // Enable or disable the gps tracking
@@ -161,14 +173,9 @@ void buttonMode() {
 }
 
 
-void ledColor(int red,int green,int blue) {
-
-  analogWrite(pinLEDRed,red);
-  analogWrite(pinLEDGreen,green);
-  analogWrite(pinLEDBlue,blue);
-}
 
 
+//Method to write the sdcard
 #ifdef SDWRITE
 void writeOnFile() {
 
@@ -189,14 +196,16 @@ void writeOnFile() {
         if (!isFirstWrite) dataFile.print(",");
         else isFirstWrite = false;
         //Write data
-        dataFile.print("{\"lat\":\"");
-        dataFile.print(msg_GNRMC.lat);
+        dataFile.print("{\"time\":\"");
+        dataFile.print(msg_GNRMC.lastFix);
+        dataFile.print("\", \"lat\":\"");
+        dataFile.print(msg_GNRMC.latitude);
         dataFile.print("\", \"lng\":\"");
-        dataFile.print(msg_GNRMC.lng);
+        dataFile.print(msg_GNRMC.longitude);
         dataFile.print("\", \"sat\":\"");
-        dataFile.print(msg_GNGSA.numSat,2);
+        dataFile.print(msg_GNGSA.numSat);
 
-        dataFile.print("\",\"time\": ");
+        dataFile.print("\",\"date\": ");
 
         dataFile.print(msg_GNRMC.date,6);
         dataFile.println("}");
@@ -212,17 +221,25 @@ void writeOnFile() {
 #endif
 
 
-void initStruct() {
 
-  msg_GNRMC.status = false;
-  msg_GNRMC.written = false;
-  msg_GNGSA.statusFix = 1;
-  msg_GNGSA.numSat = 0;
+
+/// LED functions
+
+void ledColor(int red,int green,int blue) {
+  analogWrite(pinLEDRed,red);
+  analogWrite(pinLEDGreen,green);
+  analogWrite(pinLEDBlue,blue);
 }
 
-
-
 void updateLed() {
+  #ifdef DEBUG
+  gpsSerial.print("GPS ENABLE: ");
+  gpsSerial.print(GPS_ENABLE);
+  gpsSerial.print(" GPS READY: ");
+  gpsSerial.print(GPS_READY);
+  gpsSerial.print(" BT ENABLE: ");
+  gpsSerial.println(BT_ENABLE);
+  #endif
   if (GPS_ENABLE) {
     if (GPS_READY) 
       ledColor(255,0,255); //Green
@@ -230,7 +247,7 @@ void updateLed() {
       ledColor(0,255,0); //-
   }  
   else if (BT_ENABLE) {
-    ledColor(0,255,255); //Blue
+    ledColor(255,255,0); //Blue
   } 
   else {
     ledColor(255,255,255); //None
@@ -238,6 +255,7 @@ void updateLed() {
 }
 
 
+//Calculate free ram
 #ifdef PRINTRAM
 int freeRam () {
  extern int __heap_start, *__brkval; 

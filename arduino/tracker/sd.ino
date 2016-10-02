@@ -100,4 +100,24 @@ void initSD() {
 #endif
 
 
+void sendToGPS() {
+  #ifdef SDWRITE
+  File myFile = SD.open("gps.ubx");
+  if (myFile) {
+      byte b = 0;
+      while (myFile.available()) {
+         b = myFile.read();
+         //if (b == 0xB5) 
+         //  Serial.println();
+    	 //Serial.print(b,HEX);
+         Serial.write(b);
+      }
+     
+  } 
+  myFile.close();
+  #endif
+
+}
+
+
 

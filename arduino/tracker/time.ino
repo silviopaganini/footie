@@ -1,4 +1,4 @@
-#define SECS_PER_MIN  (60UL)
+/*#define SECS_PER_MIN  (60UL)
 #define SECS_PER_HOUR (3600UL)
 #define SECS_PER_DAY  (SECS_PER_HOUR * 24UL)
 
@@ -42,4 +42,4 @@ long makeTime(int hr,int min,int sec,int dy, int mnth, int yr){
   seconds+= min * SECS_PER_MIN;
   seconds+= sec;
   return (long)seconds; 
-}
+}*/
