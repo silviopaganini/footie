@@ -1530,6 +1530,18 @@ design rules under a new name.</description>
 <wire x1="23.5" y1="35.3" x2="20.9" y2="35.3" width="0.254" layer="1"/>
 <wire x1="18.7" y1="38.9" x2="18.64" y2="38.93" width="0.254" layer="1"/>
 <wire x1="23.5" y1="35.3" x2="23.55" y2="36.11" width="0.254" layer="1"/>
+<contactref element="LED_STATUS" pad="1"/>
+<wire x1="41.6" y1="2.5" x2="40.9" y2="2.5" width="0.254" layer="1"/>
+<wire x1="43" y1="3.9" x2="41.6" y2="2.5" width="0.254" layer="1"/>
+<wire x1="45.5" y1="3.9" x2="43" y2="3.9" width="0.254" layer="1"/>
+<wire x1="47.4" y1="3.9" x2="45.5" y2="3.9" width="0.254" layer="16"/>
+<wire x1="48.5" y1="2.8" x2="47.4" y2="3.9" width="0.254" layer="16"/>
+<wire x1="49.2" y1="2.1" x2="48.5" y2="2.8" width="0.254" layer="1"/>
+<wire x1="50" y1="2.1" x2="49.2" y2="2.1" width="0.254" layer="1"/>
+<wire x1="40.9" y1="2.5" x2="40.805" y2="2.53" width="0.254" layer="1"/>
+<wire x1="50" y1="2.1" x2="50.05" y2="2.09" width="0.254" layer="1"/>
+<via x="45.5" y="3.9" extent="1-16" drill="0.6"/>
+<via x="48.5" y="2.8" extent="1-16" drill="0.6"/>
 </signal>
 <signal name="GPSRX">
 <contactref element="U6" pad="11"/>
@@ -1837,13 +1849,16 @@ design rules under a new name.</description>
 <wire x1="26.1" y1="42.4" x2="24.5" y2="44" width="0.254" layer="16"/>
 <wire x1="39.4" y1="42.4" x2="26.1" y2="42.4" width="0.254" layer="16"/>
 <wire x1="41.6" y1="42.4" x2="39.4" y2="42.4" width="0.254" layer="1"/>
-<wire x1="43.1" y1="40.9" x2="41.6" y2="42.4" width="0.254" layer="1"/>
+<wire x1="43.1" y1="40.9" x2="42.75" y2="41.25" width="0.254" layer="1"/>
+<wire x1="42.75" y1="41.25" x2="41.6" y2="42.4" width="0.254" layer="1"/>
 <wire x1="43.7" y1="40.9" x2="43.1" y2="40.9" width="0.254" layer="1"/>
 <wire x1="21.2" y1="44" x2="21.18" y2="44.01" width="0.254" layer="1"/>
 <wire x1="43.7" y1="40.9" x2="43.74" y2="40.92" width="0.254" layer="1"/>
 <via x="23.2" y="44" extent="1-16" drill="0.6"/>
 <via x="39.4" y="42.4" extent="1-16" drill="0.6"/>
-<wire x1="41.6" y1="42.4" x2="41.06" y2="40.79" width="0" layer="19" extent="1-1"/>
+<wire x1="42.3" y1="40.8" x2="42.75" y2="41.25" width="0.254" layer="1"/>
+<wire x1="41.1" y1="40.8" x2="42.3" y2="40.8" width="0.254" layer="1"/>
+<wire x1="41.1" y1="40.8" x2="41.06" y2="40.79" width="0.254" layer="1"/>
 </signal>
 <signal name="N$2">
 <contactref element="MICRO_USB" pad="VBUS1"/>
@@ -1872,7 +1887,11 @@ design rules under a new name.</description>
 <wire x1="22" y1="12.5" x2="22.07" y2="12.5" width="0.254" layer="1"/>
 <via x="28.9" y="40.3" extent="1-16" drill="0.6"/>
 <via x="28.9" y="20.1" extent="1-16" drill="0.6"/>
-<wire x1="29.5" y1="41.5" x2="32.07" y2="41.66" width="0" layer="19" extent="1-1"/>
+<wire x1="30.5" y1="41.5" x2="29.6" y2="41.5" width="0.254" layer="1"/>
+<wire x1="30.7" y1="41.7" x2="30.5" y2="41.5" width="0.254" layer="1"/>
+<wire x1="32" y1="41.7" x2="30.7" y2="41.7" width="0.254" layer="1"/>
+<wire x1="29.6" y1="41.5" x2="29.46" y2="41.5601" width="0.254" layer="1"/>
+<wire x1="32" y1="41.7" x2="32.07" y2="41.66" width="0.254" layer="1"/>
 </signal>
 <signal name="N$11">
 <contactref element="U4" pad="1"/>
@@ -2021,7 +2040,6 @@ design rules under a new name.</description>
 <contactref element="C6" pad="1"/>
 <contactref element="BATTERY_CONNECTOR" pad="VCC"/>
 <contactref element="U1" pad="1"/>
-<contactref element="LED_STATUS" pad="1"/>
 <contactref element="U3" pad="14"/>
 <contactref element="U3" pad="15"/>
 <contactref element="U3" pad="18"/>
@@ -2239,16 +2257,6 @@ design rules under a new name.</description>
 <via x="34.1" y="22.1" extent="1-16" drill="0.6"/>
 <via x="39.8" y="27.8" extent="1-16" drill="0.6"/>
 <via x="39.8" y="30.7" extent="1-16" drill="0.6"/>
-<wire x1="39.6" y1="5.1" x2="38.2" y2="5.1" width="0.254" layer="1"/>
-<wire x1="39.8" y1="4.9" x2="39.6" y2="5.1" width="0.254" layer="1"/>
-<wire x1="41" y1="6.1" x2="39.8" y2="4.9" width="0.254" layer="16"/>
-<wire x1="45.6" y1="6.1" x2="41" y2="6.1" width="0.254" layer="16"/>
-<wire x1="48.6" y1="2.8" x2="45.6" y2="6.1" width="0.254" layer="16"/>
-<wire x1="49.6" y1="2.1" x2="48.6" y2="2.8" width="0.254" layer="1"/>
-<wire x1="50.4" y1="2.1" x2="49.6" y2="2.1" width="0.254" layer="1"/>
-<wire x1="50.4" y1="2.1" x2="50.05" y2="2.09" width="0.254" layer="1"/>
-<via x="39.8" y="4.9" extent="1-16" drill="0.6"/>
-<via x="48.6" y="2.8" extent="1-16" drill="0.6"/>
 </signal>
 <signal name="N$10">
 <contactref element="S_TRACK" pad="1"/>

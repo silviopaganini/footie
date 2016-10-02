@@ -194,8 +194,8 @@ void parseGNRMC() {
   for (int i = 5;i < bufferIndex;i++) {
     if (buffer[i] == ',') {
       if (coma == 1) {
-         msg_GNRMC.lastFix = atol(sbuffer);
-        //strcpy(msg_GNRMC.lastFix, sbuffer);
+         //msg_GNRMC.lastFix = atol(sbuffer);
+        strcpy(msg_GNRMC.lastFix, sbuffer);
       } 
       else if (coma == 2) {
         if (sbuffer[0] == 'A') msg_GNRMC.status = true;
@@ -236,8 +236,8 @@ void parseGNRMC() {
         }
       } 
       else if (coma == 9) {
-        msg_GNRMC.date = atol(sbuffer);
-        //strcpy(msg_GNRMC.date, sbuffer);
+        //msg_GNRMC.date = atol(sbuffer);
+        strcpy(msg_GNRMC.date, sbuffer);
       } 
       coma += 1;
       x = 0;

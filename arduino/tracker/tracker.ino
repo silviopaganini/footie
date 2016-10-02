@@ -35,13 +35,13 @@ boolean isFirstWrite = true;
 
 struct GNRMC
 {
-  long lastFix;
+  char lastFix[10];
   bool status;
   char latitude[10];
   char latD;
   char longitude[10];
   char lngD;
-  long date;
+  char date[10];
   bool written;
 
 
@@ -207,7 +207,7 @@ void writeOnFile() {
 
         dataFile.print("\",\"date\": ");
 
-        dataFile.print(msg_GNRMC.date,6);
+        dataFile.print(msg_GNRMC.date);
         dataFile.println("}");
 
         lastWrite = millis();

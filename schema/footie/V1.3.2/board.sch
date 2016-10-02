@@ -6038,10 +6038,10 @@ DPDT SMT slide switch, AYZ0202, SWCH-08179</description>
 <label x="137.16" y="157.48" size="1.778" layer="95"/>
 </segment>
 <segment>
-<wire x1="86.36" y1="81.28" x2="63.5" y2="81.28" width="0.1524" layer="91"/>
-<label x="86.36" y="83.82" size="1.778" layer="95" rot="R180"/>
-<pinref part="JP1" gate="G$1" pin="5"/>
-<wire x1="63.5" y1="91.44" x2="63.5" y2="81.28" width="0.1524" layer="91"/>
+<label x="86.36" y="78.74" size="1.778" layer="95" rot="R180"/>
+<pinref part="JP1" gate="G$1" pin="4"/>
+<wire x1="60.96" y1="91.44" x2="60.96" y2="76.2" width="0.1524" layer="91"/>
+<wire x1="60.96" y1="76.2" x2="86.36" y2="76.2" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="ARDUINO_RX" class="0">
@@ -6060,10 +6060,10 @@ DPDT SMT slide switch, AYZ0202, SWCH-08179</description>
 <label x="137.16" y="160.02" size="1.778" layer="95"/>
 </segment>
 <segment>
-<label x="86.36" y="78.74" size="1.778" layer="95" rot="R180"/>
-<pinref part="JP1" gate="G$1" pin="4"/>
-<wire x1="60.96" y1="91.44" x2="60.96" y2="76.2" width="0.1524" layer="91"/>
-<wire x1="60.96" y1="76.2" x2="86.36" y2="76.2" width="0.1524" layer="91"/>
+<wire x1="86.36" y1="81.28" x2="63.5" y2="81.28" width="0.1524" layer="91"/>
+<label x="86.36" y="83.82" size="1.778" layer="95" rot="R180"/>
+<pinref part="JP1" gate="G$1" pin="5"/>
+<wire x1="63.5" y1="91.44" x2="63.5" y2="81.28" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="DTR" class="0">
