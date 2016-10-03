@@ -12,7 +12,7 @@ void readGPS()
     } 
     else {
       if (inChar == '\n' || bufferIndex > 99) { 
-       // printBuffer();
+        // printBuffer();
         createStructure();
         resetBuffer();
       } 
@@ -26,93 +26,93 @@ void readGPS()
 
 }
 
-/*
 
- uint8_t setNav[] = {
- 0xB5, 0X62, 0X06, 0x02, 0x08, 0x00, 0x01, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0xFF, 0x0D, 0xAC };
- //   0xB5, 0x62, 0x06 , 0x24 , 0x24 , 0x00 , 0xFF , 0xFF , 0x03 , 0x03 , 0x00 , 0x00 , 0x00 , 0x00 , 0x10, 0x27 , 0x00 , 0x00 , 0x05 , 0x00 , 0xFA , 0x00 , 0xFA , 0x00 , 0x64 , 0x00 , 0x2C , 0x01 , 0x00 , 0x00 , 0x00 , 0x00 , 0x10 , 0x27 , 0x00 , 0x00 , 0x00 , 0x00 , 0x00 , 0x00 , 0x00 , 0x00 , 0x4A , 0x75                       };
- 
- byte gps_set_sucess = 0 ;
- 
- 
- void setNavigation() {
- while(!gps_set_sucess)
- {
- sendUBX(setNav, sizeof(setNav)/sizeof(uint8_t));
- gps_set_sucess=getUBX_ACK(setNav);
- }
- gps_set_sucess=0;
- }
- 
- 
- // Send a byte array of UBX protocol to the GPS
- void sendUBX(uint8_t *MSG, uint8_t len) {
- for(int i=0; i<len; i++) {
- Serial.write(MSG[i]);
- }
- Serial.println();
- }
- 
- 
- 
- // Calculate expected UBX ACK packet and parse UBX response from GPS
- boolean getUBX_ACK(uint8_t *MSG) {
- uint8_t b;
- uint8_t ackByteID = 0;
- uint8_t ackPacket[10];
- unsigned long startTime = millis();
- Serial.print(" * Reading ACK response: ");
- 
- // Construct the expected ACK packet    
- ackPacket[0] = 0xB5;	// header
- ackPacket[1] = 0x62;	// header
- ackPacket[2] = 0x05;	// class
- ackPacket[3] = 0x01;	// id
- ackPacket[4] = 0x02;	// length
- ackPacket[5] = 0x00;
- ackPacket[6] = MSG[2];	// ACK class
- ackPacket[7] = MSG[3];	// ACK id
- ackPacket[8] = 0;		// CK_A
- ackPacket[9] = 0;		// CK_B
- 
- // Calculate the checksums
- for (uint8_t i=2; i<8; i++) {
- ackPacket[8] = ackPacket[8] + ackPacket[i];
- ackPacket[9] = ackPacket[9] + ackPacket[8];
- }
- 
- while (1) {
- 
- // Test for success
- if (ackByteID > 9) {
- // All packets in order!
- Serial.println(" (SUCCESS!)");
- return true;
- }
- 
- // Timeout if no valid response in 3 seconds
- if (millis() - startTime > 3000) { 
- Serial.println(" (FAILED!)");
- return false;
- }
- 
- // Make sure data is available to read
- if (Serial.available()) {
- b = Serial.read();
- 
- // Check that bytes arrive in sequence as per expected ACK packet
- if (b == ackPacket[ackByteID]) { 
- ackByteID++;
- Serial.print(b, HEX);
- } 
- else {
- ackByteID = 0;	// Reset and look again, invalid order
- }
- 
- }
- }
- }
- */
+
+uint8_t setNav[] = {
+  // 0xB5, 0X62, 0X06, 0x02, 0x08, 0x00, 0x01, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0xFF, 0x0D, 0xAC };
+  0xB5, 0x62, 0x06 , 0x24 , 0x24 , 0x00 , 0xFF , 0xFF , 0x03 , 0x03 , 0x00 , 0x00 , 0x00 , 0x00 , 0x10, 0x27 , 0x00 , 0x00 , 0x05 , 0x00 , 0xFA , 0x00 , 0xFA , 0x00 , 0x64 , 0x00 , 0x2C , 0x01 , 0x00 , 0x00 , 0x00 , 0x00 , 0x10 , 0x27 , 0x00 , 0x00 , 0x00 , 0x00 , 0x00 , 0x00 , 0x00 , 0x00 , 0x4A , 0x75                       };
+
+byte gps_set_sucess = 0 ;
+
+
+void setNavigation() {
+  while(!gps_set_sucess)
+  {
+    sendUBX(setNav, sizeof(setNav)/sizeof(uint8_t));
+    gps_set_sucess=getUBX_ACK(setNav);
+  }
+  gps_set_sucess=0;
+}
+
+
+// Send a byte array of UBX protocol to the GPS
+void sendUBX(uint8_t *MSG, uint8_t len) {
+  for(int i=0; i<len; i++) {
+    Serial.write(MSG[i]);
+  }
+  Serial.println();
+}
+
+
+
+// Calculate expected UBX ACK packet and parse UBX response from GPS
+boolean getUBX_ACK(uint8_t *MSG) {
+  uint8_t b;
+  uint8_t ackByteID = 0;
+  uint8_t ackPacket[10];
+  unsigned long startTime = millis();
+  gpsSerial.print(" * Reading ACK response: ");
+
+  // Construct the expected ACK packet    
+  ackPacket[0] = 0xB5;	// header
+  ackPacket[1] = 0x62;	// header
+  ackPacket[2] = 0x05;	// class
+  ackPacket[3] = 0x01;	// id
+  ackPacket[4] = 0x02;	// length
+  ackPacket[5] = 0x00;
+  ackPacket[6] = MSG[2];	// ACK class
+  ackPacket[7] = MSG[3];	// ACK id
+  ackPacket[8] = 0;		// CK_A
+  ackPacket[9] = 0;		// CK_B
+
+  // Calculate the checksums
+  for (uint8_t i=2; i<8; i++) {
+    ackPacket[8] = ackPacket[8] + ackPacket[i];
+    ackPacket[9] = ackPacket[9] + ackPacket[8];
+  }
+
+  while (1) {
+
+    // Test for success
+    if (ackByteID > 9) {
+      // All packets in order!
+      gpsSerial.println(" (SUCCESS!)");
+      return true;
+    }
+
+    // Timeout if no valid response in 3 seconds
+    if (millis() - startTime > 3000) { 
+      gpsSerial.println(" (FAILED!)");
+      return false;
+    }
+
+    // Make sure data is available to read
+    if (Serial.available()) {
+      b = Serial.read();
+
+      // Check that bytes arrive in sequence as per expected ACK packet
+      if (b == ackPacket[ackByteID]) { 
+        ackByteID++;
+        gpsSerial.print(b, HEX);
+      } 
+      else {
+        ackByteID = 0;	// Reset and look again, invalid order
+      }
+
+    }
+  }
+}
+
 
 /*
 $sk,123519,A,4807.038,N,01131.000,E,022.4,084.4,230394,003.1,W*6A
@@ -164,23 +164,23 @@ void createStructure() {
           if (buffer[4] == 'A') {
             //  printBuffer();
             //    gpsSerial.println("found GNGSA");
-             
+
             parseGNGSA();
           }
         }
       }
 
     }
-     //GPGSV
-     if (buffer[1] == 'P') {
-            if (buffer[2] == 'G') {
-                    if (buffer[3] == 'S') {
-                            if (buffer[4] == 'V') {
-                              parseGPGSV();
-                            }
-                    }
-            }
-     }
+    //GPGSV
+    if (buffer[1] == 'P') {
+      if (buffer[2] == 'G') {
+        if (buffer[3] == 'S') {
+          if (buffer[4] == 'V') {
+            parseGPGSV();
+          }
+        }
+      }
+    }
   }
 
 }
@@ -194,7 +194,7 @@ void parseGNRMC() {
   for (int i = 5;i < bufferIndex;i++) {
     if (buffer[i] == ',') {
       if (coma == 1) {
-         //msg_GNRMC.lastFix = atol(sbuffer);
+        //msg_GNRMC.lastFix = atol(sbuffer);
         strcpy(msg_GNRMC.lastFix, sbuffer);
       } 
       else if (coma == 2) {
@@ -207,15 +207,17 @@ void parseGNRMC() {
       else if (coma == 4) {  
         msg_GNRMC.latD =  sbuffer[0];
         //Convert string to float
-        char mlat[8] = {msg_GNRMC.latitude[0],msg_GNRMC.latitude[1],msg_GNRMC.latitude[2],msg_GNRMC.latitude[3],msg_GNRMC.latitude[4],msg_GNRMC.latitude[5],msg_GNRMC.latitude[6],msg_GNRMC.latitude[7]}; 
+        char mlat[8] = {
+          msg_GNRMC.latitude[0],msg_GNRMC.latitude[1],msg_GNRMC.latitude[2],msg_GNRMC.latitude[3],msg_GNRMC.latitude[4],msg_GNRMC.latitude[5],msg_GNRMC.latitude[6],msg_GNRMC.latitude[7]        }; 
         double  lat = atof(mlat);  
         int head = (int)(lat/100);
         lat =  (lat - (head*100))/60 + head;
         //Convert float to string
         if (msg_GNRMC.latD  == 'N') {
-           dtostrf(lat,2,6,msg_GNRMC.latitude);
-        } else {
-           dtostrf(-lat,2,6,msg_GNRMC.latitude);
+          dtostrf(lat,2,6,msg_GNRMC.latitude);
+        } 
+        else {
+          dtostrf(-lat,2,6,msg_GNRMC.latitude);
         }
       } 
       else if (coma == 5) {
@@ -224,15 +226,17 @@ void parseGNRMC() {
       else if (coma == 6) {                 
         msg_GNRMC.lngD =  sbuffer[0];
         //Convert string to float
-        char mlat[8] = {msg_GNRMC.longitude[0],msg_GNRMC.longitude[1],msg_GNRMC.longitude[2],msg_GNRMC.longitude[3],msg_GNRMC.longitude[4],msg_GNRMC.longitude[5],msg_GNRMC.longitude[6],msg_GNRMC.longitude[7]}; 
+        char mlat[8] = {
+          msg_GNRMC.longitude[0],msg_GNRMC.longitude[1],msg_GNRMC.longitude[2],msg_GNRMC.longitude[3],msg_GNRMC.longitude[4],msg_GNRMC.longitude[5],msg_GNRMC.longitude[6],msg_GNRMC.longitude[7]        }; 
         double  lng = atof(mlat);  
         int head = (int)(lng/1000);
         lng =  (lng - (head*1000))/60 + head;
         //Convert float to string
         if (msg_GNRMC.lngD  == 'E') {
-           dtostrf(lng,2,6,msg_GNRMC.longitude);
-        } else {
-           dtostrf(-lng,2,6,msg_GNRMC.longitude);
+          dtostrf(lng,2,6,msg_GNRMC.longitude);
+        } 
+        else {
+          dtostrf(-lng,2,6,msg_GNRMC.longitude);
         }
       } 
       else if (coma == 9) {
@@ -248,21 +252,21 @@ void parseGNRMC() {
       x += 1;
     }
   }
-  
+
   if (msg_GNRMC.written) msg_GNRMC.written = false;
-  
+
 #ifdef DEBUG
   gpsSerial.print("Last fix"); 
   gpsSerial.println(msg_GNRMC.lastFix);
   gpsSerial.print("Last status"); 
   gpsSerial.println(msg_GNRMC.status);
   gpsSerial.print("Lat");
- // gpsSerial.println(msg_GNRMC.latD); 
+  // gpsSerial.println(msg_GNRMC.latD); 
   gpsSerial.println(msg_GNRMC.latitude);
   gpsSerial.print("lng "); 
-//  gpsSerial.print(msg_GNRMC.lngD); */
+  //  gpsSerial.print(msg_GNRMC.lngD); */
   gpsSerial.println(msg_GNRMC.longitude);
-  
+
   gpsSerial.print("date "); 
   gpsSerial.println(msg_GNRMC.date);
 
@@ -301,9 +305,9 @@ void parseGNGSA() {
 
   if (msg_GNGSA.statusFix == 3 || msg_GNGSA.statusFix == 2) GPS_READY = true;
   else if (msg_GNGSA.statusFix == 1) GPS_READY = false;
-  
+
   updateLed();
-  
+
 
 #ifdef DEBUG
   gpsSerial.print("status fix is: ");
@@ -323,8 +327,8 @@ void parseGPGSV() {
   for (int i = 5;i < bufferIndex;i++) {
     if (buffer[i] == ',') {
       if (coma >= 3 && coma <= 11) {
-         msg_GNGSA.numSat = atoi(sbuffer);
-         break;
+        msg_GNGSA.numSat = atoi(sbuffer);
+        break;
       }   
       coma += 1;
       x = 0;
@@ -358,5 +362,6 @@ void resetBuffer() {
   memset(buffer, 0, sizeof(buffer));
   bufferIndex = 0;
 }
+
 
 

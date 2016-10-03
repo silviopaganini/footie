@@ -95,6 +95,7 @@ void setup() {
   
   delay(3000);
   gpsSerial.println("hello");
+  setNavigation();
  // sendToGPS();
     gpsSerial.println("done");
 
