@@ -84,7 +84,7 @@ void initSD() {
   pinMode(10, OUTPUT);
   pinMode(chipSelect, OUTPUT);  
   if (!SD.begin(chipSelect)) {
-    ledColor(25,0,0); //Solid led means something wrong
+    ledColor(0,255,255); //Solid led means something wrong
 #ifdef DEBUG
     gpsSerial.println("Card failed, or not present");
 #endif

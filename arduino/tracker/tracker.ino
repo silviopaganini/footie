@@ -33,28 +33,18 @@ boolean isFirstWrite = true;
 
 
 
-struct GNRMC
+struct MSG_GPS
 {
   char lastFix[10];
   bool status;
-  char latitude[10];
-  char latD;
-  char longitude[10];
-  char lngD;
-  char date[10];
+  char latitude[13];
+  char longitude[13];
   bool written;
-
-
-};
-
-struct GNGSA
-{
   uint8_t statusFix;
-  uint8_t numSat;   
+  uint8_t numSat; 
 };
 
-GNRMC msg_GNRMC;
-GNGSA msg_GNGSA;
+MSG_GPS msg_GPS;
 
 
 
@@ -95,16 +85,14 @@ void setup() {
   
   delay(3000);
   gpsSerial.println("hello");
-  setNavigation();
+ // setNavigation();
  // sendToGPS();
-    gpsSerial.println("done");
+  gpsSerial.println("done");
+
 
 }
 
 void loop() {
-
-  readGPS();
-
 #ifdef SDWRITE   
   writeOnFile();
 #endif
@@ -126,10 +114,11 @@ void loop() {
 
 //Init the struct
 void initStruct() {
-  msg_GNRMC.status = false;
-  msg_GNRMC.written = false;
-  msg_GNGSA.statusFix = 1;
-  msg_GNGSA.numSat = 0;
+  memset(msg_GPS.latitude, 0, sizeof(msg_GPS.latitude));
+  msg_GPS.status = false;
+  msg_GPS.written = false;
+  msg_GPS.statusFix = 1;
+  msg_GPS.numSat = 0;
 }
 
 
@@ -188,7 +177,7 @@ void writeOnFile() {
     //Is GPS tracking mode enable
     if (GPS_ENABLE) {
       //Is the GPS data ready
-      if (GPS_READY && !msg_GNRMC.written) {
+      if (GPS_READY && !msg_GPS.written) {
         // if ((millis()-lastWrite) > MAX_DELAY) {
         // #ifdef DEBUG
         gpsSerial.println("Location wrote into the file");
@@ -198,21 +187,17 @@ void writeOnFile() {
         else isFirstWrite = false;
         //Write data
         dataFile.print("{\"time\":\"");
-        dataFile.print(msg_GNRMC.lastFix);
+        dataFile.print(msg_GPS.lastFix);
         dataFile.print("\", \"lat\":\"");
-        dataFile.print(msg_GNRMC.latitude);
+        dataFile.print(msg_GPS.latitude);
         dataFile.print("\", \"lng\":\"");
-        dataFile.print(msg_GNRMC.longitude);
+        dataFile.print(msg_GPS.longitude);
         dataFile.print("\", \"sat\":\"");
-        dataFile.print(msg_GNGSA.numSat);
-
-        dataFile.print("\",\"date\": ");
-
-        dataFile.print(msg_GNRMC.date);
+        dataFile.print(msg_GPS.numSat);
         dataFile.println("}");
 
         lastWrite = millis();
-        msg_GNRMC.written = true;
+        msg_GPS.written = true;
         //  }
       }
     }
