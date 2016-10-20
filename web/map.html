@@ -11,8 +11,9 @@
         padding: 0px
       }
 .div_input {
+
 	position:absolute;
-top:0;
+top:50px;
 left:0;
 width:100px;
 height:200px;
@@ -34,22 +35,20 @@ function initMap() {
 
   $("#add_button").click(function(e) {
 	var text = $("#coord").val();
-	var lines = text.split("\n");
+        obj = JSON.parse(text);
+        for (i = 0;i < obj.length;i++) {
+            console.log(obj[i]['time']);
+        }
 
 	var lastLA = 0;
 	var lastLG = 0;
 
-	for (i = 1;i < lines.length-1;i++) {
+	for (i = 0;i < obj.length;i++) {
 
-		
-		var startLA = lines[i].indexOf("lat")+6;
-		var stopLA = lines[i].indexOf("lng")-4;
-		var startLG = stopLA+10;
-		var stopLG = lines[i].indexOf("sat")-4;
-		var LA = lines[i].substring(startLA,stopLA);
-		var LG = lines[i].substring(startLG,stopLG);
+		var LA = obj[i]["lat"];
+		var LG = obj[i]["lng"];
 
-                if (lastLA != LA && lastLG != LG) {
+               //if (lastLA != LA && lastLG != LG) {
 			console.log(LA+" - "+LG);
 			lastLA = LA;
 			lastLG = LG;
@@ -59,10 +58,10 @@ function initMap() {
 			      map: map,
 			      title: 'Hello World! '+i
 			  });
-			if (i == 1)  { map.setCenter(myLatlng);
-				map.setZoom(12);
+			if (i == 0)  { map.setCenter(myLatlng);
+				map.setZoom(20);
 			}
-		}
+		//}
 	}	
 });
 }

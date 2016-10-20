@@ -100,17 +100,26 @@ void initSD() {
 #endif
 
 
+uint8_t gpsMsgBuffer[100];
 void sendToGPS() {
+  int clength = 0;
   #ifdef SDWRITE
   File myFile = SD.open("gps.ubx");
   if (myFile) {
       byte b = 0;
+      boolean isFirst = true;
       while (myFile.available()) {
          b = myFile.read();
-         //if (b == 0xB5) 
-         //  Serial.println();
-    	 //Serial.print(b,HEX);
-         Serial.write(b);
+         if (b == 0xB5)  {
+           if (isFirst) {  
+             isFirst = false;
+           } else {
+             sendUBX(gpsMsgBuffer, clength);
+             clength = 0;
+           }
+         }
+          gpsMsgBuffer[clength] = b;
+         clength++;
       }
      
   } 

@@ -1,3 +1,6 @@
+#define TYPE_GNRMC 1
+#define TYPE_GNGSA 2
+#define TYPE_GNGGA 3
 
 char buffer[100];
 int bufferIndex = 0;
@@ -13,7 +16,9 @@ void readGPS()
     } 
     else {
       if (inChar == '\n' || bufferIndex > 99) { 
-        saveBuffer();
+        //strcpy(buffer,"GNGGA,141757.00,4613.39276,N,00844.75574,E,1,05,2.86,340.2,M,423,17,,,,,,,,5.51,2.86,4.71*16");
+       // bufferIndex = 93;
+        //saveBuffer();
         createStructure();
         resetBuffer();
       } 
@@ -75,7 +80,6 @@ void sendUBX(uint8_t *MSG, uint8_t len) {
   for(int i=0; i<len; i++) {
     Serial.write(MSG[i]);
   }
-  Serial.println();
 }
 
 
@@ -86,7 +90,7 @@ boolean getUBX_ACK(uint8_t *MSG) {
   uint8_t ackByteID = 0;
   uint8_t ackPacket[10];
   unsigned long startTime = millis();
-  gpsSerial.print(" * Reading ACK response: ");
+  gpsSerial.print(F(" * Reading ACK response: "));
 
   // Construct the expected ACK packet    
   ackPacket[0] = 0xB5;	// header
@@ -111,20 +115,19 @@ boolean getUBX_ACK(uint8_t *MSG) {
     // Test for success
     if (ackByteID > 9) {
       // All packets in order!
-      gpsSerial.println(" (SUCCESS!)");
+      gpsSerial.println(F(" (SUCCESS!)"));
       return true;
     }
 
     // Timeout if no valid response in 3 seconds
     if (millis() - startTime > 3000) { 
-      gpsSerial.println(" (FAILED!)");
+      gpsSerial.println(F(" (FAILED!)"));
       return false;
     }
 
     // Make sure data is available to read
     if (Serial.available()) {
       b = Serial.read();
-
       // Check that bytes arrive in sequence as per expected ACK packet
       if (b == ackPacket[ackByteID]) { 
         ackByteID++;
@@ -173,8 +176,12 @@ boolean getUBX_ACK(uint8_t *MSG) {
  14   = Diff. reference station ID#
  15   = Checksum
  
-
+ 
  */
+
+
+
+
 void createStructure() {
   if (buffer[0] == 'G') {
     if (buffer[1] == 'N') {
@@ -182,7 +189,7 @@ void createStructure() {
       if (buffer[2] == 'R') {
         if (buffer[3] == 'M') {
           if (buffer[4] == 'C') {
-            parseGNRMC();
+            parseGPS(TYPE_GNRMC);
           }
         }
       }
@@ -190,13 +197,13 @@ void createStructure() {
         // GNGSA
         if (buffer[3] == 'S') {
           if (buffer[4] == 'A') {
-            parseGNGSA();
+            parseGPS(TYPE_GNGSA);
           }
         }
         //GNGGA
         if (buffer[3] == 'G') {
           if (buffer[4] == 'A') {
-            parseGNGGA();
+            parseGPS(TYPE_GNGGA);
           }
         }
       }
@@ -206,129 +213,85 @@ void createStructure() {
 
 
 //$GPRMC,hhmmss,status,latitude,N,longitude,E,spd,cog,ddmmyy,mv,mvE,mode*cs<CR><LF>
-void parseGNRMC() {
+//GNGSA message, get the status FIX which can be 1 = No Fix, 2 = 2D fix, 3 = 3D fix
+
+void parseGPS(int type) {
   int coma = 0;
   int x = 0;
-  char sbuffer[10];
+  char sbuffer[20];
+  memset(sbuffer, 0, sizeof(sbuffer));
+
   for (int i = 5;i < bufferIndex;i++) {
     if (buffer[i] == ',') {
       if (coma == 1) {
-        strcpy(msg_GPS.lastFix, sbuffer);
+        if (type == TYPE_GNRMC || type == TYPE_GNGGA)
+          strcpy(msg_GPS.lastFix, sbuffer);
       } 
       else if (coma == 2) {
-        if (sbuffer[0] == 'A') msg_GPS.status = true;
-        else msg_GPS.status = false;
+        if (type == TYPE_GNGGA)  // Latitude  
+          strcpy(msg_GPS.latitude, sbuffer);
+        else if (type == TYPE_GNGSA) {
+          if (sbuffer[0] == '3')  msg_GPS.statusFix  = 3;
+          else if (sbuffer[0] == '2') msg_GPS.statusFix  = 2;
+          else if (sbuffer[0] == '1') msg_GPS.statusFix  = 1;
+          else msg_GPS.statusFix = 1;
+          break;
+        }
+
       } 
-      else if (coma == 3) {               
-        strcpy(msg_GPS.latitude, sbuffer);
+      else if (coma == 3) {     
+        if (type == TYPE_GNRMC)  // Latitude         
+          strcpy(msg_GPS.latitude, sbuffer);
+        else if (type  == TYPE_GNGGA)
+          updateLatitude(sbuffer[0]); //Latitude N or S
       }
       else if (coma == 4) {  
-        updateLatitude(sbuffer[0]);
+        if (type == TYPE_GNRMC)  //Latitude N or S
+          updateLatitude(sbuffer[0]);
+        else if (type == TYPE_GNGGA) //longitude
+          strcpy(msg_GPS.longitude, sbuffer);
       } 
       else if (coma == 5) {
-        strcpy(msg_GPS.longitude, sbuffer);
+        if (type == TYPE_GNRMC) //longitude
+          strcpy(msg_GPS.longitude, sbuffer);
+        else if (type == TYPE_GNGGA) //longitude E or W    
+          updateLongitude(sbuffer[0]);
+
       }
-      else if (coma == 6) {           
-        updateLongitude(sbuffer[0]);
-        break;
+      else if (coma == 6) {   
+        if (type == TYPE_GNRMC) { //longitude E or W    
+          updateLongitude(sbuffer[0]);
+          break;
+        } 
+
       }  
-      coma += 1;
-      x = 0;
-      memset(sbuffer, 0, sizeof(sbuffer));
-    }
-    else {
-      sbuffer[x] = buffer[i];
-      x += 1;
-    }
-  }
-
-  if (msg_GPS.written) msg_GPS.written = false;
-
-#ifdef DEBUG
-  gpsSerial.print("Last fix"); 
-  gpsSerial.println(msg_GPS.lastFix);
-  gpsSerial.print("Last status"); 
-  gpsSerial.println(msg_GPS.status);
-  gpsSerial.print("Lat");
-  gpsSerial.println(msg_GPS.latitude);
-  gpsSerial.print("lng "); 
-  gpsSerial.println(msg_GPS.longitude);
-#endif
-}
-
-
-//GNGSA message, get the status FIX which can be 1 = No Fix, 2 = 2D fix, 3 = 3D fix
-void parseGNGSA() {
-  int coma = 0;
-  int x = 0;
-  char sbuffer[10];
-  int numSat = 0;
-  for (int i = 5;i < bufferIndex;i++) {
-    if (buffer[i] == ',') {
-      if (coma == 2) {
-        if (sbuffer[0] == '3') msg_GPS.statusFix = 3;
-        else if (sbuffer[0] == '2') msg_GPS.statusFix = 2;
-        else if (sbuffer[0] == '1') msg_GPS.statusFix = 1;
-        else msg_GPS.statusFix = 1;
-        break;
-      } 
-      gpsSerial.println(sbuffer);
-      coma += 1;
-      x = 0;
-      memset(sbuffer, 0, sizeof(sbuffer));
-    } 
-    else {
-      sbuffer[x] = buffer[i];
-      x += 1;
-    }
-  }
-  if (msg_GPS.statusFix == 3 || msg_GPS.statusFix == 2) GPS_READY = true;
-  else if (msg_GPS.statusFix == 1) GPS_READY = false;
-  updateLed();
-#ifdef DEBUG
-  gpsSerial.print("status fix is: ");
-  if (msg_GPS.statusFix == 3) gpsSerial.println(" 3D FIX");
-  if (msg_GPS.statusFix == 2) gpsSerial.println(" 2D FIX");
-  if (msg_GPS.statusFix == 1) gpsSerial.println(" NO FIX");
-  gpsSerial.print("Number of satellite: "); 
-  gpsSerial.println(msg_GPS.numSat);
-#endif
-}
-
-void parseGNGGA() {
-  int coma = 0;
-  int x = 0;
-  char sbuffer[13];
-  int numSat = 0;
-  for (int i = 5;i < bufferIndex;i++) {
-    if (buffer[i] == ',') {
-      if (coma == 1) {
-        strcpy(msg_GPS.lastFix, sbuffer);
-      } 
-      else if (coma == 2) { // Latitude          
-        strcpy(msg_GPS.latitude, sbuffer);
-      } 
-      else if (coma == 3) { //Latitude N or S
-        updateLatitude(sbuffer[0]);
-      } 
-      else if (coma == 4) { //longitude   
-        strcpy(msg_GPS.longitude, sbuffer);
-      } 
-      else if (coma == 5) {  //longitude E or W       
-        updateLongitude(sbuffer[0]);  
-      } 
-      else if (coma == 7) {  //Get amount of satellite used            
-        msg_GPS.numSat =  atoi(sbuffer);
-        break;
+      else if (coma == 7) {  //Get amount of satellite used
+        if (type == TYPE_GNGGA) {
+          msg_GPS.numSat = atoi(sbuffer);  
+          break;
+        }
       }
       coma += 1;
       x = 0;
       memset(sbuffer, 0, sizeof(sbuffer));
-    } 
+    }
     else {
       sbuffer[x] = buffer[i];
       x += 1;
     }
+  }
+  if (type == TYPE_GNGSA) { 
+    if (msg_GPS.statusFix == 3 || msg_GPS.statusFix == 2) GPS_READY = true;
+    else if (msg_GPS.statusFix == 1) GPS_READY = false;
+    updateLed();
+  }
+  //Enable the message to be written
+  if (type == TYPE_GNGGA && msg_GPS.written) { 
+    msg_GPS.written = false;
+  //  char sprint[100];
+  //  sprintf(sprint, "{\"time\":\"%s\", \"lat\":\"%s\", \"lng\":\"%s\", \"status\":\"%d\", \"sat\":\"%d\"}",msg_GPS.lastFix,msg_GPS.latitude,msg_GPS.longitude, msg_GPS.statusFix, msg_GPS.numSat);
+  //  gpsSerial.println(sprint);
+    // msg_GPS.written = true;
   }
 #ifdef DEBUG
   gpsSerial.print("Last fix"); 
@@ -344,50 +307,63 @@ void parseGNGGA() {
 #endif
 }
 
-void updateLatitude(char orientation) {
-  //Convert string to float
 
-  char mlat[11] = { 
-    '0','0','0','0','0','0','0','0','0','0','0'  };
+
+void updateLatitude(char orientation) {
+  int head = 0;
+  char cFloat[8] = { 
+    '0','0','0','0','0','0','0','0'    };
+  int multi = 10;
   for (int t = 0;t < 11;t++) {
     if (((msg_GPS.latitude[t]- '0') >= 0  && (msg_GPS.latitude[t]- '0') <= 9) ||  msg_GPS.latitude[t] == '.') {
-      if (msg_GPS.latitude[t] == '.') 
-        mlat[t] = '.';
-      else 
-        mlat[t] = msg_GPS.latitude[t];
-    } 
+      if (t < 2) {
+        head += (msg_GPS.latitude[t] - '0') *  multi;
+        multi /= 10; 
+
+      } 
+      else {
+        if (msg_GPS.latitude[t] == '.') 
+          cFloat[t-2] = '.';
+        else 
+          cFloat[t-2] = msg_GPS.latitude[t];
+      }     
+    }  
     else break;
   }
 
+  double  lat = atof(cFloat)/60.0 + head;   
 
-  double lat = atof(mlat);
-  int head = (int)(lat/100);
-  lat =  (lat - (head*100))/60 + head;
+
   //Convert float to string
   if (orientation == 'N') dtostrf(lat,2,9,msg_GPS.latitude);
   else dtostrf(-lat,2,9,msg_GPS.latitude);
 }
 
 void updateLongitude(char orientation) {
-  char mlong[11] = { 
-    '0','0','0','0','0','0','0','0','0','0','0'  };
+  int head = 0;
+  char cFloat[8] = { 
+    '0','0','0','0','0','0','0','0'    };
+  int multi = 100;
   for (int t = 0;t < 11;t++) {
     if (((msg_GPS.longitude[t]- '0') >= 0  && (msg_GPS.longitude[t]- '0') <= 9) ||  msg_GPS.longitude[t] == '.') {
-      if (msg_GPS.longitude[t] == '.') 
-        mlong[t] = '.';
-      else 
-        mlong[t] = msg_GPS.longitude[t];
+      if (t < 3) {
+        head += (msg_GPS.longitude[t] - '0') *  multi;
+        multi /= 10; 
+      } 
+      else {
+        if (msg_GPS.longitude[t] == '.') 
+          cFloat[t-3] = '.';
+        else 
+          cFloat[t-3] = msg_GPS.longitude[t];  
+      }
     } 
     else break;
   }
-  double  lng = atof(mlong);  
-  int head = (int)(lng/1000);
-  lng =  (lng - (head*1000))/60.0 + head;
 
+  double  lng = atof(cFloat)/60.0 + head;   
   //Convert float to string
   if (orientation == 'E') dtostrf(lng,2,9,msg_GPS.longitude);
   else  dtostrf(-lng,2,9,msg_GPS.longitude);
-
 }
 
 
@@ -401,6 +377,8 @@ void resetBuffer() {
   memset(buffer, 0, sizeof(buffer));
   bufferIndex = 0;
 }
+
+
 
 
 

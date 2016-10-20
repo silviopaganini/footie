@@ -1,5 +1,3 @@
-
-
 #include <SoftwareSerial.h>
 
 #define SDWRITE
@@ -36,19 +34,20 @@ boolean isFirstWrite = true;
 struct MSG_GPS
 {
   char lastFix[10];
-  bool status;
   char latitude[13];
   char longitude[13];
   bool written;
-  uint8_t statusFix;
-  uint8_t numSat; 
+  int statusFix;
+  int numSat; 
 };
 
 MSG_GPS msg_GPS;
 
 
 
+
 void setup() {
+
   Serial.begin(9600);
   gpsSerial.begin(9600);  
 
@@ -56,7 +55,7 @@ void setup() {
   pinMode(pinLEDRed,OUTPUT);
   pinMode(pinLEDBlue,OUTPUT);
   pinMode(pinLEDGreen,OUTPUT);
-  digitalWrite(pinBT,HIGH);
+  digitalWrite(pinBT,LOW);
 
   attachInterrupt(1, buttonPower, RISING);
   attachInterrupt(0, buttonMode, RISING);
@@ -78,23 +77,27 @@ void setup() {
   ledColor(255,255,255);
   delay(1000);
 
-  //  setNavigation();
   initStruct();
   updateLed();
+
+
+  delay(1000);
   
-  
-  delay(3000);
-  gpsSerial.println("hello");
- // setNavigation();
- // sendToGPS();
-  gpsSerial.println("done");
+  ledColor(0,0,255);
+//  gpsSerial.println(F("hello"));
+  sendToGPS();
+  setNavigation();
+//  gpsSerial.println(F("done"));
+  ledColor(255,255,255);
+  delay(1000);
 
 
 }
 
 void loop() {
 #ifdef SDWRITE   
-  writeOnFile();
+  if (!msg_GPS.written)
+    writeOnFile();
 #endif
   //Read command from bluetooth and dont read update from GPS
   if (BT_ENABLE) 
@@ -104,21 +107,23 @@ void loop() {
       readGPS();
     }
   }
-  
-  #ifdef PRINTRAM
+
+#ifdef PRINTRAM
   gpsSerial.print("Free memory: ");
   gpsSerial.println(freeRam());
-  #endif
+#endif
 
 }
+
+
 
 //Init the struct
 void initStruct() {
   memset(msg_GPS.latitude, 0, sizeof(msg_GPS.latitude));
-  msg_GPS.status = false;
-  msg_GPS.written = false;
+  msg_GPS.written = true;
   msg_GPS.statusFix = 1;
   msg_GPS.numSat = 0;
+  //  GPS_READY = 3;
 }
 
 
@@ -131,6 +136,8 @@ void buttonPower() {
   lastPressedGPS = millis();
 
   updateLed();
+  if (GPS_ENABLE)   createNewFile();
+
 
 #ifdef DEBUG
   gpsSerial.print("Mode gps is: "); 
@@ -180,22 +187,17 @@ void writeOnFile() {
       if (GPS_READY && !msg_GPS.written) {
         // if ((millis()-lastWrite) > MAX_DELAY) {
         // #ifdef DEBUG
-        gpsSerial.println("Location wrote into the file");
+        //gpsSerial.println("Location wrote into the file");
         //  #endif
         //Write coma to separate records
-        if (!isFirstWrite) dataFile.print(",");
+        if (!isFirstWrite) dataFile.print(F(","));
         else isFirstWrite = false;
         //Write data
-        dataFile.print("{\"time\":\"");
-        dataFile.print(msg_GPS.lastFix);
-        dataFile.print("\", \"lat\":\"");
-        dataFile.print(msg_GPS.latitude);
-        dataFile.print("\", \"lng\":\"");
-        dataFile.print(msg_GPS.longitude);
-        dataFile.print("\", \"sat\":\"");
-        dataFile.print(msg_GPS.numSat);
-        dataFile.println("}");
-
+        char sprint[100];
+        if (msg_GPS.statusFix > 3  || msg_GPS.statusFix < 0) msg_GPS.statusFix = 1; //Fix error overflow I suppose
+        
+        sprintf(sprint, "{\"time\":\"%s\", \"lat\":\"%s\", \"lng\":\"%s\", \"status\":\"%d\", \"sat\":\"%d\"}",msg_GPS.lastFix,msg_GPS.latitude,msg_GPS.longitude, msg_GPS.statusFix, msg_GPS.numSat);
+        dataFile.println(sprint);
         lastWrite = millis();
         msg_GPS.written = true;
         //  }
@@ -218,17 +220,19 @@ void ledColor(int red,int green,int blue) {
 }
 
 void updateLed() {
-  #ifdef DEBUG
+#ifdef DEBUG
   gpsSerial.print("GPS ENABLE: ");
   gpsSerial.print(GPS_ENABLE);
   gpsSerial.print(" GPS READY: ");
   gpsSerial.print(GPS_READY);
   gpsSerial.print(" BT ENABLE: ");
   gpsSerial.println(BT_ENABLE);
-  #endif
+#endif
   if (GPS_ENABLE) {
-    if (GPS_READY) 
-      ledColor(255,0,255); //Green
+    if (GPS_READY) {
+      if (msg_GPS.numSat < 8) ledColor(0,90,255); //Orange , less than 8 sat
+      if (msg_GPS.numSat >= 8) ledColor(255,0,255); //Green , 8 and more
+    }
     else
       ledColor(0,255,0); //-
   }  
@@ -244,9 +248,10 @@ void updateLed() {
 //Calculate free ram
 #ifdef PRINTRAM
 int freeRam () {
- extern int __heap_start, *__brkval; 
- int v; 
- return (int) &v - (__brkval == 0 ? (int) &__heap_start : (int) __brkval); 
- }
+  extern int __heap_start, *__brkval; 
+  int v; 
+  return (int) &v - (__brkval == 0 ? (int) &__heap_start : (int) __brkval); 
+}
 #endif
+
 

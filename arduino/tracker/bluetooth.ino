@@ -16,7 +16,7 @@ void readCommand() {
     } 
     else if  (command.indexOf("stop") >= 0) {
       stopBT();
-      gpsSerial.println("bye!");
+      gpsSerial.println(F("bye!"));
     } 
     else if  (command.indexOf("new") >= 0) {
 #ifdef SDWRITE
@@ -38,16 +38,16 @@ void sendFile() {
   FILENAME.toCharArray(tmpFile, sizeof(tmpFile));
   File fileNumber = SD.open(tmpFile,  FILE_READ);
   if (fileNumber) {
-    gpsSerial.println("start print");
+    gpsSerial.println(F("start print"));
     while (fileNumber.available()) {
       gpsSerial.print((char)fileNumber.read());
     }
     //Send the } because it will not write it when button is on only at the new creation of the file
-    gpsSerial.println("]");
-    gpsSerial.println("end");
+    gpsSerial.println(F("]"));
+    gpsSerial.println(F("end"));
   } 
   else 
-    gpsSerial.println("error");
+    gpsSerial.println(F("error"));
   fileNumber.close();
 #endif
 }
